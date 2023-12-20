@@ -51,10 +51,9 @@ const TerminationForm = () => {
         });
       };
     
-    
       const isSubjectValid = () => {
         const { employeeName } = formData;
-        return /^[A-Za-z]+$/.test(employeeName) && employeeName.length >= 2 && employeeName.length <= 50;
+        return /^[A-Za-z]+$/.test (employeeName.length !== 0) || (employeeName.length <2 && employeeName.length >=50);
       };
     
       const handleInputChange = (e) => {

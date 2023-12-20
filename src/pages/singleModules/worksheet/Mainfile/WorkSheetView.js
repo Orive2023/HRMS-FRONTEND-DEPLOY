@@ -19,7 +19,7 @@ import WorkSheetForm from "../WorksheetForm";
 const WorksheetView = () => {
 
   const {
-    worksheet,setWorksheet,formVisible,setFormVisible,toggle,setToggle,recDelete,setRecDelete
+    worksheet,setWorksheet,formVisible,setFormVisible,toggle,setToggle,recDelete,setRecDelete,formData,setFormData
   } =StateWorksheet();
  
 
@@ -101,7 +101,7 @@ const WorksheetView = () => {
                   </h3>
                   <DialogContent>
                   
-                    <WorkSheetForm/>
+                    <WorkSheetForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

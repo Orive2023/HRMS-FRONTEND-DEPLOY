@@ -7,20 +7,18 @@ import { useNavigate } from "react-router-dom";
 import StateWorksheet from "./StateWorksheet";
 import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
 
-const WorksheetForm = () => {
+const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
   const navigate = useNavigate();
 
   const {
-    formData,
-    setFormData,
     setWorksheet,
-    setDescription,
-    setFormVisible,
+    setDesciption,
     project,
     setProject,
     setEmployeeName,
     dateError,
     setDateError,
+    employeeName
   } = StateWorksheet();
 
   const loadWorksheet = async () => {
@@ -43,7 +41,7 @@ const WorksheetForm = () => {
   };
 
   const handledesChange = (e) => {
-    setDescription(e.target.value);
+    setDesciption(e.target.value);
   };
   const enforceMaxLength = (value, maxLength) => {
     return value.slice(0, maxLength);
@@ -81,7 +79,6 @@ const WorksheetForm = () => {
 
   const saveWorksheet = async () => {
     await api.saveWorksheet(formData);
-    alert("Worksheet added successfully");
     navigate("/worksheet");
     setFormData({
       workSheetTitle: "",
@@ -128,9 +125,56 @@ const WorksheetForm = () => {
     },
   ];
 
+  console.log(project)
+  console.log(employeeName)
+
+  const cancelButton = () => {
+    setFormVisible(false)
+    setToggle(false)
+    setFormData({
+      workSheetTitle: "",
+    startDate: "",
+    endDate: "",
+    estimatedHour: "",
+    project: "",
+    employeeName: "",
+    assignedTo: "",
+    description: "",
+    taskName: "",
+    challengepart: "",
+    workProgress: "",
+    createdDate: "",
+    })
+  }
+
+  let buttonCheck = formData.workSheetTitle.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.estimatedHour.length>0 && formData.project.length>0 && formData.employeeName.length>0 && formData.assignedTo.length>0 && formData.taskName.length>0 && formData.description.length>0 && formData.challengepart.length>0 && formData.workProgress.length>0 && formData.createdDate.length>0
+
+
   return (
     <form onSubmit={handleSubmit}>
-      <div className="data-input-fields">
+
+    <div className="data-input-fields">
+    <FormControl fullWidth>
+          <InputLabel id="demo-worksheet-select-label">Employee Name</InputLabel>
+          <Select
+            labelId="demo-worksheet-select-label"
+            id="selectedEmployee"
+            value={formData.employeeName}
+            name="employeeName"
+            label="employeeName"
+            onChange={(e) => handleInputChange(e)}
+            required
+          >
+            {employeeName.map((item, index) => {
+              return (
+                <MenuItem key={index} value={item.employeeName}>
+                  {item.employeeName}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+
         <TextField
           margin="dense"
           label="Title"
@@ -145,9 +189,11 @@ const WorksheetForm = () => {
             minLength: 2,
             maxLength: 100,
           }}
-          error={!isSubjectValid()}
+          error={ formData.workSheetTitle.length !== 0 && !(formData.workSheetTitle.length >= 2 &&
+      formData.workSheetTitle.length <= 10)}
           helperText={
-            !isSubjectValid()
+            formData.workSheetTitle.length !== 0 && !(formData.workSheetTitle.length >= 2 &&
+      formData.workSheetTitle.length <= 10)
               ? "Subject length should be between 2 and 50 characters."
               : ""
           }
@@ -156,27 +202,33 @@ const WorksheetForm = () => {
             handleWorkSheetTitleChange(e);
           }}
         />
+    </div>
+      <div className="data-input-fields">
 
         <TextField
           margin="dense"
           type="date"
+          label="Start Date"
           fullWidth
           name="startDate"
           id="startDate"
           value={formData.startDate}
           onChange={(e) => handleInputChange(e)}
           required
+          InputLabelProps={{shrink:true}}
         />
 
         <TextField
           margin="dense"
           type="date"
+          label="End Date"
           fullWidth
           name="endDate"
           id="endDate"
           value={formData.endDate}
           onChange={(e) => handleInputChange(e)}
           required
+          InputLabelProps={{shrink:true}}
         />
 
         <TextField
@@ -206,8 +258,8 @@ const WorksheetForm = () => {
           >
             {project.map((item, index) => {
               return (
-                <MenuItem key={index} value={item.project}>
-                  {item.project}
+                <MenuItem key={index} value={item.projectTitle}>
+                  {item.projectTitle}
                 </MenuItem>
               );
             })}
@@ -302,6 +354,7 @@ const WorksheetForm = () => {
           required
           error={dateError}
           helperText={dateError ? "Please select the current date" : ""}
+          InputLabelProps={{shrink:true}}
         />
       </div>
 
@@ -311,13 +364,14 @@ const WorksheetForm = () => {
           variant="outlined"
           type="submit"
           onClick={saveWorksheet}
+          disabled={buttonCheck ? false : true}
         >
           Submit
         </Button>
         <Button
           id="input-btn"
           variant="outlined"
-          onClick={() => setFormVisible(false)}
+          onClick={cancelButton}
         >
           Cancel
         </Button>

@@ -20,12 +20,12 @@ const PerformanceTable = ({performances,setRecDelete}) => {
               <th>Punctuality Rating</th>
               <th>Overall Rating</th>
 
-              <th colSpan="3">Actions</th>
+              <th colSpan="1">Actions</th>
             </tr>
           </thead>
 
           <tbody className="text-center">
-            {performances
+            {performances && performances
              
               .map((performances, index) => (
                 <tr key={performances.performanceAppraisalId}>
@@ -39,25 +39,9 @@ const PerformanceTable = ({performances,setRecDelete}) => {
                   <td>{performances.punctualityAndAttendanceRating}</td>
                   <td>{performances.overallRating}</td>
                   <td className="mx-2">
-                    <Link
-                      to={`/performances-profile/${performances.performancesId}`}
-                      className="btn btn-info"
-                    >
-                      <FaEye />
-                    </Link>
-                  </td>
-                  <td className="mx-2">
-                    <Link
-                      to={`/edit-performances/${performances.performancesId}`}
-                      className="btn btn-warning"
-                    >
-                      <FaEdit />
-                    </Link>
-                  </td>
-                  <td className="mx-2">
                     <button
                       className="btn btn-danger"
-                      onClick={() => handleDelete(performances.performancesId)}
+                      onClick={() => handleDelete(performances.performanceAppraisalId)}
                     >
                       <FaTrashAlt />
                     </button>

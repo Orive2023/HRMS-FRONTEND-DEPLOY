@@ -8,8 +8,6 @@ const WorksheetTable = ({worksheet,setRecDelete}) => {
         setRecDelete(id)
     }
 
-    console.log(worksheet)
-
     return (
         <div>
             <table className="table table-bordered table-hover shadow">
@@ -22,7 +20,6 @@ const WorksheetTable = ({worksheet,setRecDelete}) => {
                       <th>Work Progress</th>
                       <th>Start Date</th>
                       <th>End Date</th>
-                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -41,22 +38,7 @@ const WorksheetTable = ({worksheet,setRecDelete}) => {
                           <td>{worksheet.workProgress}</td>
                           <td>{worksheet.startDate}</td>
                           <td>{worksheet.endDate}</td>
-                          <td className="mx-2">
-                            <Link
-                              to={`/worksheet-profile/${worksheet.workSheetId}`}
-                              className="btn btn-info"
-                            >
-                              <FaEye />
-                            </Link>
-                          </td>
-                          <td className="mx-2">
-                            <Link
-                              to={`/edit-worksheet/${worksheet.workSheetId}`}
-                              className="btn btn-warning"
-                            >
-                              <FaEdit />
-                            </Link>
-                          </td>
+                         
                           <td className="mx-2">
                             <button
                               className="btn btn-danger"

@@ -48,6 +48,7 @@ const StatePerformance = () => {
         managersSignatureDate:"",
     
       });
+
   return {
     recDelete,setRecDelete,performances,setPerformances,overallRating,setOverallRating,setPunctualityAndAttendanceRating,punctualityAndAttendanceRating,adaptabilityRating,setAdaptabilityRating,teamworkAndCollaborationRating,setTeamWorkAndCollaborationRating,initiativeAndCreativityRating,setInitiativeAndCreativityRating,jobKnowledgeRating,setJobKnowledgeRating,communicationSkillsRating,setCommunicationSkillsRating,formData,setFormData,formVisible,setFormVisible,toggle,setToggle,qualityOfWorkRating,setQualityOfWorkRating
   }

@@ -30,7 +30,7 @@ export const loadPerformances = async () => {
   }
 }
 
-export const deleteDesignation = async (id) => {
+export const deleteAppraisal = async (id) => {
   try{
       await axios.delete(`${url}/performanceappraisal/delete/${id}`)
   } catch(error) {

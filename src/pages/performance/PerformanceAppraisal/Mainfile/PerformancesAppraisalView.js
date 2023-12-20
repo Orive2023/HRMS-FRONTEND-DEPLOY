@@ -55,7 +55,7 @@ const PerformancesAppraisalView = () => {
   
 
   const handleDelete = async () => {
-    await api.deleteDesignation(recDelete);
+    await api.deleteAppraisal(recDelete);
     loadPerformances();
   };
 
@@ -85,7 +85,7 @@ const PerformancesAppraisalView = () => {
               setToggle(!toggle);
               handleButtonClick();
             }}
-            style={{ height: "35px" }}
+            style={{ height: "35px" , margin:"10px 0"}}
           >
             {toggle ? (
               <div>
@@ -114,7 +114,7 @@ const PerformancesAppraisalView = () => {
               PERFORMANCES APPRAISAL ID
             </h3>
             <DialogContent>
-              <AppraisalForm formData={formData} setFormData={setFormData}/>
+              <AppraisalForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
             </DialogContent>
           </div>
         </Card>

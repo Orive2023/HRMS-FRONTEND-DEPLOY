@@ -6,7 +6,6 @@ import PerformancesAppraisalView from "./PerformanceAppraisal/Mainfile/Performan
 const performanceRoutesData = [
   { path: "/performance/Performance-Indicator", element: <PerformanceIndicatorView /> },
   { path: "/performance/Performance-Appraisal", element: <PerformancesAppraisalView  /> },
- 
 ];
 
 
