@@ -7,20 +7,17 @@ import * as api from "./api";
 import { useNavigate } from "react-router-dom";
 import StateProject from "./StateProject";
 
-const ProjectForm = () => {
+const ProjectForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
   const navigate = useNavigate();
 
   const {
-    formData,
-    setFormVisible,
-    setFormData,
     setClientName,
     setProjectManager,
     setDescription,
     setSummary,
     company,
     setDateError,
-    setProject
+    setProject,setCompany
   } = StateProject();
   const loadProject = async () => {
     const result = await api.loadProject();
@@ -37,13 +34,6 @@ const ProjectForm = () => {
     const month = `${now.getMonth() + 1}`.padStart(2, "0");
     const day = `${now.getDate()}`.padStart(2, "0");
     return `${year}-${month}-${day}`;
-  };
-
-  const handleManualEntryChange = (e) => {
-    setFormData({
-      ...formData,
-      manualCompanyName: e.target.value,
-    });
   };
 
   const handleInputChange = (e) => {
@@ -94,6 +84,17 @@ const ProjectForm = () => {
     })
   }
 
+  const fetchCompany = async () => {
+    const response = await api.fetchCompanies();
+    console.log("first",response)
+    setCompany(response);
+
+};
+
+useEffect(() => {
+  fetchCompany();
+}, []);
+
     const handleSubmit = (e) => {
       
     };
@@ -118,6 +119,26 @@ const ProjectForm = () => {
     const handleSumChange = (e) => {
       setSummary(e.target.value);
     };
+
+    let buttonCheck = (formData.projectTitle.length>0 && formData.clientName.length>0 && formData.companyName.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.projectManagers.length>0 && formData.priority.length>0 && formData.description.length>0 && formData.summary.length>0 && formData.budget.length>0)
+
+    const cancelButton = () => {
+      setFormVisible(false)
+      setToggle(false)
+      setFormData({
+        projectTitle: "",
+        clientName: "",
+        companyName: "",
+        startDate: "",
+        endDate: "",
+        projectManagers: "",
+        priority: "",
+        description: "",
+        summary: "",
+        budget:""
+      })
+    }
+
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -190,6 +211,7 @@ const ProjectForm = () => {
             <TextField
               margin="dense"
               type="date"
+              label="Start Date"
               fullWidth
               name="startDate"
               id="startDate"
@@ -200,10 +222,12 @@ const ProjectForm = () => {
                 min: "2022-01-01", // set your minimum date here
                 max: "2023-12-31", // set your maximum date here
               }}
+              InputLabelProps={{shrink:true}}
             />
             <TextField
               margin="dense"
               type="date"
+              label="End Date"
               fullWidth
               name="endDate"
               id="endDate"
@@ -214,11 +238,7 @@ const ProjectForm = () => {
                 min: "2022-01-01", // set your minimum date here
                 max: "2023-12-31", // set your maximum date here
               }}
-
-              // onInput={(e) => {
-              //   e.target.value = enforceMaxLength(e.target.value, 30);
-              //   handleEndChange(e);
-              // }}
+              InputLabelProps={{shrink:true}}
             />
           </div>
 
@@ -241,6 +261,19 @@ const ProjectForm = () => {
                 e.target.value = enforceMaxLength(e.target.value, 60);
                 handleProjChange(e);
               }}
+            />
+
+            <TextField
+              margin="dense"
+              label="Budget"
+              type="number"
+              fullWidth
+              name="budget"
+              id="budget"
+              value={formData.budget}
+              onChange={(e) => handleInputChange(e)}
+              required
+             
             />
             <TextField
               id="priority"
@@ -311,13 +344,14 @@ const ProjectForm = () => {
               variant="outlined"
               type="submit"
               onClick={saveProject}
+              disabled={buttonCheck ? false : true}
             >
               Submit
             </Button>
             <Button
               id="input-btn"
               variant="outlined"
-              onClick={() => setFormVisible(false)}
+              onClick={cancelButton}
             >
               Cancel
             </Button>

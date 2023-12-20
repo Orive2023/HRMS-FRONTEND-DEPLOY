@@ -24,7 +24,9 @@ const StateProject = () => {
     priority: "",
     description: "",
     summary: "",
+    budget:""
   });
+
   return {
     formData,
     formVisible,

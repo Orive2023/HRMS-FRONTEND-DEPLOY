@@ -12,6 +12,7 @@ const ProjectTable = ({project,setRecDelete}) => {
     
    
   return (
+    
     <div>
         <table className="table table-bordered table-hover shadow">
               <thead>
@@ -20,6 +21,7 @@ const ProjectTable = ({project,setRecDelete}) => {
                   <th>Project Name</th>
                   <th>Client Name</th>
                   <th>Company Name</th>
+                  <th>Budget</th>
                   <th>Start Date</th>
                   <th>End Date</th>
                   <th colSpan={2}>Action</th>
@@ -35,12 +37,13 @@ const ProjectTable = ({project,setRecDelete}) => {
                       <td>{project.projectTitle}</td>
                       <td>{project.clientName}</td>
                       <td>{project.companyName}</td>
+                      <td>{project.budget}</td>
                       <td>{project.startDate}</td>
                       <td>{project.endDate}</td>
                      
                       <td className="mx-2">
                         <Link
-                          to={`/project-edit/${project.projectId}`}
+                          to={`/edit-project/${project.projectsId}`}
                           className="btn btn-warning"
                         >
                           <FaEdit />

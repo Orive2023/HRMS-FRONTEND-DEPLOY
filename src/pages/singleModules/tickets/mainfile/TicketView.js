@@ -102,7 +102,7 @@ const TicketView = () => {
                     <h3> TICKET FORM</h3>
                   </h3>
                   <DialogContent>
-                    <TicketForm formData={formData} setFormData={setFormData}/>
+                    <TicketForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

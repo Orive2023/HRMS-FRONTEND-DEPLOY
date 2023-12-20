@@ -7,19 +7,15 @@ import * as api from "./api";
 import { useNavigate, useState } from "react-router-dom";
 import StateTicket from "./StateTicket";
 
-const TicketForm = ({ formData, setFormData }) => {
+const TicketForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
   const navigate = useNavigate();
   const {
-    setFormVisible,
-    formErrors,
-    setFormErrors,
     setTicket,
     employee,
     setEmployee,
     setErrorCode,
     valueCode,
     setTicketsValue,
-    errorCode,
     ticketsCode,
   } = StateTicket();
   const loadTicket = async () => {
@@ -43,6 +39,8 @@ const TicketForm = ({ formData, setFormData }) => {
       date: "",
     });
   };
+
+  let buttoncheck = (formData.ticketsCode.length > 0) && (formData.subject.length > 0) && (formData.employeeName.length > 0) && (formData.priority.length > 0) && (formData.date.length > 0)
 
   const handleSubmit = (e) => {
     console.log("FormData", formData);
@@ -141,7 +139,17 @@ const TicketForm = ({ formData, setFormData }) => {
     },
   ];
 
-  console.log(formData)
+  const cancelButton = () => {
+    setFormVisible(false)
+    setToggle(false)
+    setFormData({
+      ticketsCode: "",
+      subject: "",
+      employeeName: "",
+      priority: "",
+      date: "",
+    })
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -252,26 +260,14 @@ const TicketForm = ({ formData, setFormData }) => {
       <Button
         type="submit"
         onClick={saveTicket}
-        style={{
-          background: "linear-gradient(to right, #1cb5e0, #000046)",
-          height: "35px",
-          width: "48%",
-          color: "white",
-          margin: "0 7px",
-        }}
+        disabled={buttoncheck ? false : true}
         variant="outlined"
+        style={{marginRight:"10px"}}
       >
         Submit
       </Button>
       <Button
-        onClick={() => setFormVisible(false)}
-        style={{
-          background: "linear-gradient(to left, #1cb5e0, #000046)",
-          height: "35px",
-          width: "48%",
-          color: "white",
-          margin: "0 7px",
-        }}
+        onClick={cancelButton}
         variant="outlined"
       >
         Cancel

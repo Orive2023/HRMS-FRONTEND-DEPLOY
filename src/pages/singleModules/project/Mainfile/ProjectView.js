@@ -27,23 +27,9 @@ const ProjectView = () => {
   }, []);
  
   const {
-    project,formVisible,toggle,setToggle,setCompany,setRecDelete,setProject,recDelete,setFormVisible
+    project,formVisible,toggle,setToggle,setRecDelete,setProject,recDelete,setFormVisible,formData,setFormData
 
  } = StateProject();
-
-  const fetchCompany = async () => {
-    try {
-      const response = await api.fetchCompanies();
-      setCompany(response);
-    } catch (error) {
-      console.error("Error fetching company data", error);
-    }
-  };
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Form submitted:", formData);
-  // };
 
   const loadProject = async () => {
     const result = await api.loadProject()
@@ -63,12 +49,6 @@ const ProjectView = () => {
     }
   })
  
-  console.log(recDelete);
-
-  useEffect(() => {
-    loadProject();
-    fetchCompany();
-  }, []);
 
   return (
     <div>
@@ -90,7 +70,7 @@ const ProjectView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  style={{ height: "35px", margin: "10px 0" }}
                 >
                   {toggle ? (
                     <div companyName="hide">
@@ -119,7 +99,7 @@ const ProjectView = () => {
                     PROJECT FORM
                   </h3>
                   <DialogContent>
-                    <ProjectForm />
+                    <ProjectForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>
