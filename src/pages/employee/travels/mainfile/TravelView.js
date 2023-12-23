@@ -9,6 +9,7 @@ import { MdAdd } from "react-icons/md";
 import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 import * as api from "../api"
 import StateTravel from '../StateTravel';
@@ -65,7 +66,10 @@ const TravelView = () => {
 
   return (
     <div>
-      <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -81,7 +85,7 @@ const TravelView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -101,160 +105,15 @@ const TravelView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                     className="form-header"
                   >
                     <h3> TRAVEL FORM</h3>
                   </h3>
                   <DialogContent>
-                    {/* <form onSubmit={handleSubmit}>
-                      <div className="data-input-fields">
-                        <TextField
-                          id="departmentName"
-                          margin="dense"
-                          select
-                          label="Department Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.departmentName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="departmentName"
-                        >
-                          {Type.map((option, index) => (
-                            <option key={index} value={option.label}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </TextField>
-
-                        <TextField
-                          id="companyName"
-                          margin="dense"
-                          select
-                          label="Company Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.companyName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="companyName"
-                        >
-                          {
-                            company.map((option, index) => (
-                              <option key={index} value={option.companyName}>
-                                {option.companyName}
-                              </option>
-                            ))}
-                        </TextField>
-                      </div>
-                      <div className="data-input-fields">
-                        <TextField
-                          id="departmentHead"
-                          margin="dense"
-                          select
-                          label="Department Head"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.departmentHead}
-                          onChange={(e) => handleInputChange(e)}
-                          name="departmentHead"
-                        >
-                          {Head.map((option, index) => (
-                            <option key={index} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </TextField>
-
-                        <TextField
-                          margin="dense"
-                          label="Create Date"
-                          type="date"
-                          fullWidth
-                          name="createdDate"
-                          id="createdDate"
-                          value={formData.createdDate}
-                          onChange={(e) => handleInputChange(e)}
-                          required
-                          error={dateError}
-                          helperText={dateError && "Please select the current date"}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                        />
-                        <TextField
-                          id="locationName"
-                          margin="dense"
-                          select
-                          label="Location Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.locationName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="locationName"
-                        >
-                          {location.map((option, index) => (
-
-                            <option key={index} value={option.locationName}>
-                              {option.locationName}
-                            </option>
-                          ))}
-                        </TextField>
-
-
-                      </div>
-
-                      <div className="data-buttons">
-
-                        <Button id="input-btn"
-                          variant="outlined"
-                          type="submit"
-                          onClick={saveDepartment}
-
-                        >
-                          Submit
-                        </Button>
-                        <Button id="input-btn"
-                          variant="outlined"
-                          onClick={() => setFormVisible(false)}
-
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-
-
-                    </form> */}
                     <TravelForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>

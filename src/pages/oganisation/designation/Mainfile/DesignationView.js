@@ -15,7 +15,7 @@ import StateDesignation from "../StateDesignation";
 import * as api from "../DesignationApi"
 import DesignationTable from "../DesignationTable";
 import Designationform from "../Designationform";
-
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const DesignationView = () => {
  
@@ -61,7 +61,10 @@ const DesignationView = () => {
 
   return (
     <div>
-    <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
     <div className="dashboard-container">
       <SideBar />
       <div className="head-foot-part">

@@ -274,7 +274,8 @@ const TransferForm = ({formData,
 
       <div className="data-buttons">
         <Button
-          id="input-btn"
+          id="input-btn-submit"
+          className="submit"
           variant="outlined"
           type="submit"
           onClick={saveTransfer}
@@ -282,7 +283,7 @@ const TransferForm = ({formData,
         >
           Submit
         </Button>
-        <Button id="input-btn" variant="outlined" onClick={cancelButton}>
+        <Button id="input-btn-cancel" variant="outlined" className="cancel"onClick={cancelButton}>
           Cancel
         </Button>
       </div>

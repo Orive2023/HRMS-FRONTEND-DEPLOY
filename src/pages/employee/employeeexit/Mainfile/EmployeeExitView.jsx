@@ -7,11 +7,13 @@ import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
 import Dialog from "@mui/material/Dialog";
 import { MdAdd } from "react-icons/md";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import * as api from "../api";
 import StateEmployeeExit from "../StateEmployeeExit";
 import EmployeeExitTable from "../EmployeeExitTable";
 import EmployeeExitForm from "../EmployeeExitForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const EmployeeExitView = () => {
   const {
@@ -59,31 +61,32 @@ const EmployeeExitView = () => {
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
           <section>
-            <div className="above-table">
-              <Button variant="outlined" onClick={handleOpen}>
+            <div
+              className="above-table"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+            <div>
+              <Button variant="outlined" onClick={handleOpen} id="add-btn">
                 <MdAdd className="add" />
-                Add employee exit
+                Add Employee exit
               </Button>
+              </div>
             </div>
             <Dialog open={open} onClose={handleClose}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                EMPLOYEE EXIT
-              </h3>
+              <h3 className="form-header">Add Employee Exit</h3>
               <DialogContent>
                 <EmployeeExitForm
                   formData={formData}
                   setFormData={setFormData}
+                  setOpen={setOpen}
                 />
               </DialogContent>
             </Dialog>

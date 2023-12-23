@@ -13,7 +13,7 @@ const WarningTable = ({warning,setRecDelete}) => {
    
   return (
     <div>
-        <table className="table table-bordered table-hover shadow">
+        <table id='table' className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">
             <th>Warning ID</th>

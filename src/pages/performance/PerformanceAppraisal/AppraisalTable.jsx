@@ -9,7 +9,7 @@ const PerformanceTable = ({performances,setRecDelete}) => {
         setRecDelete(id)
     }
   return (
-    <table className="table table-bordered table-hover shadow">
+    <table id='table' className="table table-bordered table-hover shadow">
           <thead>
             <tr className="text-center">
               <th>Serial No</th>

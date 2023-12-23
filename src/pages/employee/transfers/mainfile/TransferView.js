@@ -17,6 +17,7 @@ import StateTransfer from '../StateTransfer';
 
 import TransferTable from "../TransferTable";
 import TransferForm from "../TransferForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const TransferView = () => {
 
@@ -58,7 +59,11 @@ const TransferView = () => {
 
   return (
     <div>
-      <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
+   
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -74,7 +79,7 @@ const TransferView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -94,15 +99,11 @@ const TransferView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                     className="form-header"
                   >
                     <h3> TRANSFER FORM</h3>
                   </h3>

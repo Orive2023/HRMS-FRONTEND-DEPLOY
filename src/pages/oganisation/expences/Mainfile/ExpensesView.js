@@ -8,6 +8,7 @@ import { BiSolidHide } from "react-icons/bi";
 import Collapse from "@mui/material/Collapse";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import "../../../../../src/styles.css";
 
 
 import ExpensesForm from "../ExpensesForm";
@@ -15,6 +16,7 @@ import ExpensesTable from "../ExpensesTable";
 
 import * as ExpensesApi from "../ExpensesApi";
 import StateExpenses from "../StateExpenses";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 const ExpensesView = () => {
@@ -55,7 +57,10 @@ const ExpensesView = () => {
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -71,7 +76,7 @@ const ExpensesView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -90,17 +95,12 @@ const ExpensesView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                    className="form-header"
                   >
-                    EXPENSES
+                    Add Expenses
                   </h3>
                   <DialogContent>
                     <Card style={{ margin: "20px", border: "1px solid black" }}>

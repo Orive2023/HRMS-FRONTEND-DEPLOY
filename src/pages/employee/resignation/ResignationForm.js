@@ -61,7 +61,7 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
         handleClose();
       };
     
-        // Add your validation logic here
+       
       
         const cancelButton = ()=>
         {
@@ -86,7 +86,7 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
     
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ display: "flex" }}>
+      <div className="data-input-fields">
     <TextField
       margin="dense"
       label="employee name"
@@ -109,7 +109,7 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
         value={formData.noticeDate}
         onChange={(e) => handleInputChange(e)}
         required
-        style={{ margin: "8px 3px" }}
+        
         InputLabelProps={{
           shrink: true,
         }}
@@ -126,7 +126,7 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
         value={formData.resignationDate}
         onChange={(e) => handleInputChange(e)}
         required
-        style={{ margin: "8px 3px" }}
+        
         InputLabelProps={{
           shrink: true,
         }}
@@ -141,13 +141,14 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
       value={formData.resignationReason}
       onChange={(e) => handleInputChange(e)}
       required
-      style={{ marginBottom: "8px" }}
+     
     />
     </div>
     
    <div className="data-buttons">
         <Button
-          id="input-btn"
+          id="input-btn-submit"
+          className="submit"
           variant="outlined"
           type="submit"
           onClick={saveResignation}
@@ -156,7 +157,8 @@ const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
           Submit
         </Button>
         <Button
-          id="input-btn"
+         id="input-btn-cancel"
+         className="cancel"
           variant="outlined"
           onClick={cancelButton}
         >

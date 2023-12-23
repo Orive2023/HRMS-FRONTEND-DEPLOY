@@ -562,22 +562,18 @@ const AppraisalForm = ({
       </div>
 
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "10px",
-          marginTop: "22px",
-        }}
+        className='data-buttons'
       >
         <Button
           type="submit"
           onClick={savePerformances}
           disabled={buttonCheck ? false : true}
           variant="outlined"
+          id='input-btn-submit'
         >
           Submit
         </Button>
-        <Button onClick={cancelButton} variant="outlined">
+        <Button onClick={cancelButton} id='input-btn-cancel' variant="outlined">
           Cancel
         </Button>
       </div>

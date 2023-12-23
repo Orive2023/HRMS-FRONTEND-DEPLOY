@@ -319,7 +319,8 @@ const AwardForm = ({ formData, setFormData, setOpen }) => {
 
       <div className="data-buttons">
         <Button
-          id="input-btn"
+          id="input-btn-submit"
+          className="submit"
           variant="outlined"
           type="submit"
           onClick={saveAward}
@@ -328,7 +329,8 @@ const AwardForm = ({ formData, setFormData, setOpen }) => {
           Submit
         </Button>
         <Button
-          id="input-btn"
+          id="input-btn-cancel"
+          className="cancel"
           variant="outlined"
           onClick={cancelButton}
         >

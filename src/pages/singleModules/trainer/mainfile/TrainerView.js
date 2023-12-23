@@ -13,6 +13,7 @@ import * as api from "../api";
 import StateTrainer from "../StateTrainer";
 import TrainerForm from "../TrainerForm";
 import TrainerTable from "../TrainerTable";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const TrainerView = () => {
   const {
@@ -55,7 +56,10 @@ const TrainerView = () => {
 
   return (
     <div>
+    <div id="header-container" className="header-container">
+      <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">

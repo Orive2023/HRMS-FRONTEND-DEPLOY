@@ -12,11 +12,12 @@ import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
 
-import * as api from "../announcementapi"
+import * as api from "../announcementapi";
 import AnnouncementTable from "../AnnouncementTable";
 
 import StateAnnouncement from "../StateAnnouncement";
 import AnnouncementForm from "../AnnouncementForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const AnnouncementsView = () => {
   const {
@@ -24,51 +25,46 @@ const AnnouncementsView = () => {
     setFormData,
     recDelete,
     setRecDelete,
-    
+
     announcements,
     setAnnouncements,
     company,
-    
+
     department,
-    
+
     location,
-   
+
     formVisible,
     setFormVisible,
     toggle,
     setToggle,
   } = StateAnnouncement();
 
-
-
-
   useEffect(() => {
     loadAnnouncements();
-  },[]);
+  }, []);
 
   const loadAnnouncements = async () => {
-    const result = await api.loadAnnouncements()
+    const result = await api.loadAnnouncements();
     setAnnouncements(result);
   };
- 
-
 
   console.log("dept", department);
   console.log("loc", location);
   console.log("comp", company);
-  console.log("data",announcements);
-  console.log(formData)
+  console.log("data", announcements);
+  console.log(formData);
   const handleDelete = async () => {
-    await api.deleteAnnouncement(recDelete)
+    await api.deleteAnnouncement(recDelete);
     loadAnnouncements();
   };
 
   useEffect(() => {
     if (recDelete !== "") {
-      handleDelete()
-      setRecDelete("")
+      handleDelete();
+      setRecDelete("");
     }
-  })
+  });
 
   const handleButtonClick = () => {
     setFormVisible((prev) => !prev);
@@ -76,7 +72,10 @@ const AnnouncementsView = () => {
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -111,23 +110,25 @@ const AnnouncementsView = () => {
             </div>
 
             <Collapse in={formVisible}>
-              <Card
-                variant="outlined"
-              >
+              <Card variant="outlined">
                 <div>
-                  <h3
-                    className="form-header"
-                  >
-                    Add Announcement
-                  </h3>
+                  <h3 className="form-header">Add Announcement</h3>
                   <DialogContent>
-                    <AnnouncementForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
+                    <AnnouncementForm
+                      formData={formData}
+                      setFormData={setFormData}
+                      setFormVisible={setFormVisible}
+                      setToggle={setToggle}
+                    />
                   </DialogContent>
                 </div>
               </Card>
             </Collapse>
             <br />
-            <AnnouncementTable  announcements={announcements} setRecDelete={setRecDelete}/>
+            <AnnouncementTable
+              announcements={announcements}
+              setRecDelete={setRecDelete}
+            />
           </section>
         </div>
       </div>

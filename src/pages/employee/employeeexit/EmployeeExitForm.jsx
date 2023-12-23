@@ -7,7 +7,7 @@ import * as api from "./api";
 import { useNavigate } from "react-router-dom";
 import StateEmployeeExit from "./StateEmployeeExit";
 
-const EmployeeExitForm = ({formData,setFormData}) => {
+const EmployeeExitForm = ({formData,setFormData,setOpen}) => {
   const navigate = useNavigate();
 
   const {
@@ -22,7 +22,6 @@ const EmployeeExitForm = ({formData,setFormData}) => {
     search,
     setSearch,
     open,
-    setOpen,
     recDelete,
     setRecDelete,
     dateError,
@@ -157,6 +156,26 @@ const EmployeeExitForm = ({formData,setFormData}) => {
     },
   ];
 
+  const cancelButton = ()=>
+  {
+    setOpen(false);
+    setFormData({
+      employeeToExit: "",
+      exitDate: "",
+      typeOfExit: "",
+      exitInterview: "",
+      inactivateEmployeeAccount: "",
+      description: "",
+      });
+    };
+    
+    let buttonClick = formData.employeeToExit.length>0 &&
+    formData.exitDate.length>0 &&
+    formData.typeOfExit.length>0 &&
+    formData.exitInterview.length>0 &&
+    formData.inactivateEmployeeAccount.length>0 &&
+    formData.description.length>0;
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
@@ -290,16 +309,17 @@ const EmployeeExitForm = ({formData,setFormData}) => {
       <div className="data-buttons">
         <DialogActions className="dialog">
           <Button
-            id="input-btn"
+            id="input-btn-submit-popup"
             type="submit"
             onClick={saveEmployeeExit}
             variant="outlined"
+            disabled={buttonClick? false : true}
           >
             Submit
           </Button>
           <Button
-            id="input-btn"
-            onClick={() => handleClose()}
+            id="input-btn-cancel-popup"
+            onClick={cancelButton}
             variant="outlined"
           >
             Cancel

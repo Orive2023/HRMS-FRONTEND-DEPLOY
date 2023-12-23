@@ -13,6 +13,7 @@ import { MdAdd } from "react-icons/md";
 
 import SideBar from "../../../../components/SideBar";
 import Header from "../../../../components/Header";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 import * as api from "../api"
@@ -102,10 +103,13 @@ const WarningView = () => {
   return (
 
     <div>
-      <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
       <div className="dashboard-container">
         <SideBar />
-        <div className="head-foot-part" style={{ padding: "0" }}>
+        <div className="head-foot-part" >
         <section>
       
       <div
@@ -119,7 +123,7 @@ const WarningView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -141,15 +145,11 @@ const WarningView = () => {
       <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                     className="form-header"
             >
       
           <h3>WARNING FORM</h3>

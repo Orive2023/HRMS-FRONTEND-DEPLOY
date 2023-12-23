@@ -194,15 +194,17 @@ const WarningForm = ({formData,setFormData, setFormVisible, setToggle}) => {
               />
               <div className="data-buttons">
               
-              <Button id="input-btn"
-                  type="submit"
+              <Button id="input-btn-submit"
+          className="submit"
                   onClick={saveWarning}
                   disabled={buttonClick? false: true}
                   variant="outlined"
                 >
                   Submit
                 </Button>
-                <Button id="input-btn"
+                <Button 
+                 id="input-btn-cancel"
+          className="cancel"
                 variant="outlined"
                 onClick={cancelButton}  
                 >

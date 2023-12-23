@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 // import DialogTitle from '@mui/material/DialogTitle';
 import { BiSolidHide } from "react-icons/bi";
 
-
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 import { MdAdd } from "react-icons/md";
 
 import SideBar from "../../../../components/SideBar";
@@ -57,7 +57,10 @@ const ComplaintView = () => {
   });
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -78,7 +81,7 @@ const ComplaintView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px",margin:"10px 0" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -88,7 +91,7 @@ const ComplaintView = () => {
                   ) : (
                     <div>
                       <MdAdd />
-                      ADD EMPLOYEE
+                      ADD COMPLAINTS
                     </div>
                   )}
                 </Button>
@@ -99,15 +102,11 @@ const ComplaintView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+               
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                     className="form-header"
                   >
                     <h3>COMPLAINT FORM</h3>
                   </h3>

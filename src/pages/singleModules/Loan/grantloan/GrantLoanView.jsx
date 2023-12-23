@@ -20,6 +20,7 @@ import GrantLoanForm from "../GrantLoanForm";
 
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 const GrantLoanView = () => {
@@ -58,10 +59,13 @@ const GrantLoanView = () => {
   return (
 
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
-        <div className="head-foot-part" style={{ padding: "0" }}>
+        <div className="head-foot-part" >
         <section>
       <div
         className="above-table"

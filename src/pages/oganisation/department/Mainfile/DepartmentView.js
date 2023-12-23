@@ -16,6 +16,7 @@ import * as api from "../DepartmentApi"
 import StateDepartment from "../StateDepartment";
 import DepartmentTable from "../DepartmentTable";
 import DepartmentForm from "../DepartmentForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const DepartmentView = () => {
 
@@ -58,7 +59,10 @@ console.log(formData)
 
   return (
     <div>
-    <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
     <div className="dashboard-container">
       <SideBar />
       <div className="head-foot-part">

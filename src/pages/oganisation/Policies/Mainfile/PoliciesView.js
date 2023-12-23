@@ -11,6 +11,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 
 import { MdAdd } from "react-icons/md";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 import StatePolicies from "../StatePolicies";
@@ -68,7 +69,10 @@ const PoliciesView = () => {
 
   return (
     <div>
-    <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
     <div className="dashboard-container">
       <SideBar />
       <div className="head-foot-part">
