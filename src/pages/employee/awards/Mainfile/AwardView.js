@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 
 import DialogContent from "@mui/material/DialogContent";
-// import DialogTitle from '@mui/material/DialogTitle';
+import DialogTitle from "@mui/material/DialogTitle";
 
 import { MdAdd } from "react-icons/md";
 
@@ -16,7 +16,7 @@ import * as api from "../api"
 import StateAward from "../StateAward";
 import AwardTable from "../AwardTable";
 import AwardForm from "../AwardForm";
-
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const AwardsView = () => {
 
@@ -58,10 +58,13 @@ const AwardsView = () => {
 
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
-        <div className="head-foot-part" style={{ padding: "0" }}>
+        <div className="head-foot-part" >
         <section>
             <div
               className="above-table"
@@ -71,9 +74,10 @@ const AwardsView = () => {
                 <Button
                   variant="outlined"
                   onClick={handleOpen}
-                  style={{ height: "35px" }}
+                  
+                  id="add-btn"
                 >
-                  <MdAdd style={{ fontSize: "14px", marginRight: "3px" }} />
+                  <MdAdd  />
                   ADD AWARDS
                 </Button>
               </div>
@@ -81,9 +85,9 @@ const AwardsView = () => {
             <AwardTable award={award} setRecDelete={setRecDelete}/>
             <div>
               <Dialog open={open} onClose={handleClose}>
-                <h3 style={{ textAlign: "center", marginTop: "30px" }}>
+              <DialogTitle id="form-header-popup">
                   AWARD FORM
-                </h3>
+                  </DialogTitle>
                 <DialogContent>
                  <AwardForm formData={formData} setFormData={setFormData} setOpen={setOpen}/>
                 </DialogContent>

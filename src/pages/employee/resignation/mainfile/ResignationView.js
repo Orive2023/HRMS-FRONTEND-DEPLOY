@@ -9,7 +9,7 @@ import { MdAdd } from "react-icons/md";
 import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
-
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 import * as api from "../api"
@@ -58,7 +58,10 @@ const ResignationView = () => {
 
   return (
     <div>
-      <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -74,7 +77,7 @@ const ResignationView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -94,15 +97,11 @@ const ResignationView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                    className="form-header"
                   >
                     <h3> RESIGNATION FORM</h3>
                   </h3>

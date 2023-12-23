@@ -9,7 +9,7 @@ const ExpensesTable = ({expenses,setRecDelete}) => {
     }
 
   return (
-    <table className="table table-bordered table-hover shadow">
+    <table id='table' className="table table-bordered table-hover shadow">
     <thead>
       <tr className="text-center">
         <th>SL.</th>
@@ -19,7 +19,8 @@ const ExpensesTable = ({expenses,setRecDelete}) => {
         <th>Total Amount</th>
         <th>Purchased By</th>
         <th>Description</th>
-        <th>Status</th>
+        <th colSpan="3">Actions</th>
+       
       </tr>
     </thead>
 
@@ -36,7 +37,7 @@ const ExpensesTable = ({expenses,setRecDelete}) => {
             <td>{expenses.totalAmount}</td>
             <td>{expense.purchaseBy}</td>
             <td>{expense.description}</td>
-            <td>{expense.status}</td>
+           
             <td className="mx-2">
               <Link
                 to={`/expenses-profile/${expense.expenceId}`}

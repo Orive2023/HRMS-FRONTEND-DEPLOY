@@ -19,6 +19,7 @@ import * as api from "../AppraisalApi";
 import AppraisalForm from "../AppraisalForm";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const PerformancesAppraisalView = () => {
   const {
@@ -69,10 +70,13 @@ const PerformancesAppraisalView = () => {
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
-        <div className="head-foot-part" style={{ padding: "0" }}>
+        <div className="head-foot-part" >
         <section>
       <div
         className="above-table"
@@ -85,7 +89,7 @@ const PerformancesAppraisalView = () => {
               setToggle(!toggle);
               handleButtonClick();
             }}
-            style={{ height: "35px" , margin:"10px 0"}}
+          id='add-btn'
           >
             {toggle ? (
               <div>
@@ -102,16 +106,12 @@ const PerformancesAppraisalView = () => {
         </div>
       </div>
       <Collapse in={formVisible}>
-        <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+        <Card variant="outlined">
           <div style={{ marginTop: "20px" }}>
             <h3
-              style={{
-                textAlign: "center",
-                marginTop: "25px",
-                fontWeight: "600",
-              }}
+              className="form-header"
             >
-              PERFORMANCES APPRAISAL ID
+              Performance Appraisal ID
             </h3>
             <DialogContent>
               <AppraisalForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>

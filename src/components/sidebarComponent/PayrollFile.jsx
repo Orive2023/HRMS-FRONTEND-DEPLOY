@@ -23,12 +23,9 @@ const PayrollFile = () => {
         </p>
     </div>
         <div className={payDropdown}>
-          <p onClick={() => navigation("/payroll/sakaryTemplate")}>Payroll Templates</p>
-          {/* <p onClick={() => navigation("/payroll/hourly-wages")}>Hourly Wages</p> */}
+          <p onClick={() => navigation("/payroll/salary-template")}>Payroll Templates</p>
           <p onClick={() => navigation("/payroll/manage-salary")}>Manage Salary</p>
-          <p onClick={() => navigation("/payroll/advanceSalary")}>Advance Salary</p>
-          {/* <p onClick={() => navigation("/payroll/generate-payslip")}>Generate Payslip</p> */}
-          {/* <p onClick={() => navigation("/payroll/payment-history")}>Payment History</p> */}
+          <p onClick={() => navigation("/payroll/advance-Salary")}>Advance Salary</p>
         </div>
     </div>
   )

@@ -10,6 +10,7 @@ import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
 
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 import * as api from "../api"
@@ -53,7 +54,10 @@ const TicketView = () => {
 
   return (
     <div>
+    <div id="header-container" className="header-container">
+      <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">

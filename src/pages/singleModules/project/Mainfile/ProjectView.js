@@ -15,6 +15,7 @@ import * as api from "../api"
 import StateProject from "../StateProject";
 import ProjectTable from "../ProjectTable";
 import ProjectForm from "../ProjectForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const ProjectView = () => {
 
@@ -52,10 +53,13 @@ const ProjectView = () => {
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
       <div className="dashboard-container">
         <SideBar />
-        <div className="head-foot-part" style={{ padding: "0" }}>
+        <div className="head-foot-part" >
 
           <section>
             <div

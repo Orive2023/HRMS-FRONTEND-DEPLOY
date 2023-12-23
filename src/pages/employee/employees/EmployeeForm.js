@@ -810,8 +810,67 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
   let buttonCheckLoginInfo =
     formData.userEmailOrName.length > 0 &&
-    formData.password.length > 0 &&
-    formData.uploadDocument;
+    formData.password.length > 0;
+    // formData.uploadDocument;
+
+  let buttonFinalChecck=
+  formData.employeeRole.length > 0 &&
+    formData.employeeName.length > 0 &&
+    formData.email.length > 0 &&
+    formData.attendanceTime.length > 0 &&
+    formData.employeeType.length > 0 &&
+    formData.createdDate.length > 0 &&
+    formData.designationName.length > 0 &&
+    formData.country.length > 0 &&
+    formData.city.length > 0 &&
+    formData.zipCode.length > 0 &&
+    formData.phone.length > 0 &&
+    formData.alternativePhone.length > 0 &&
+    formData.branchName.length > 0 &&
+    formData.bankName.length > 0 &&
+    formData.ifscNumber.length > 0 &&
+    formData.accountNumber.length > 0 &&
+    formData.basicSalary.length > 0 &&
+    formData.hraAllowances.length > 0 &&
+    formData.otherAllowances.length > 0 &&
+    formData.tinNumber.length > 0 &&
+    formData.medicalAllowances.length > 0 &&
+    formData.transportAllowance.length > 0 &&
+    // formData.grossSalary.length > 0 &&
+    formData.pfAllowances.length > 0 &&
+    formData.otherInsurance.length > 0 &&
+    formData.tax.length > 0 &&
+    formData.daAllowances.length > 0 &&
+    formData.subDepartment.length > 0 &&
+    formData.position.length > 0 &&
+    formData.dutyType.length > 0 &&
+    formData.hireDate.length > 0 &&
+    formData.joiningDate.length > 0 &&
+    formData.rateType.length > 0 &&
+    formData.rateNumber.length > 0 &&
+    formData.monthlyWorkHours.length > 0 &&
+    formData.payFrequency.length > 0 &&
+    formData.medical.length > 0 &&
+    formData.family.length > 0 &&
+    formData.transportation.length > 0 &&
+    formData.others.length > 0 &&
+    formData.reportingTo.length > 0 && formData.teamLeaderName.length > 0 &&
+    formData.dateOfBirth.length > 0 &&
+    formData.gender.length > 0 &&
+    formData.maritalStatus.length > 0 &&
+    formData.workInCity.length > 0 &&
+    formData.cityOfResidence.length > 0 &&
+    formData.workPermit.length > 0 &&
+    formData.uploadPhoto &&
+    formData.businessEmail.length > 0 &&
+    formData.homePhone.length > 0 &&
+    formData.cellPhone.length > 0 &&
+    formData.userEmailOrName.length > 0 &&
+    formData.password.length > 0;
+
+
+
+    
 
   return (
     <div>
@@ -2132,7 +2191,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                         id="input-btn-submit"
                         className="cancel"
                         onClick={saveEmployee}
-                        disabled={buttonCheckLoginInfo ? false : true}
+                        disabled={buttonFinalChecck ? false : true}
                         variant="outlined"
                       >
                         SUBMIT

@@ -14,6 +14,7 @@ import * as api from "../api"
 import StateTermination from "../StateTermination";
 import TerminationTable from "../TerminationTable";
 import TerminationForm from "../TerminationForm";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 
 const TerminationView = () => {
@@ -54,7 +55,10 @@ useEffect(() => {
 
 return (
   <div>
-    <Header />
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
+      <Header />
+    </div>
     <div className="dashboard-container">
       <SideBar />
       <div className="head-foot-part">
@@ -70,7 +74,7 @@ return (
                   setToggle(!toggle);
                   handleButtonClick();
                 }}
-                style={{ height: "35px", marginBottom: "10px" }}
+                id="add-btn"
               >
                 {toggle ? (
                   <div className="hide">
@@ -90,15 +94,11 @@ return (
           <Collapse in={formVisible}>
             <Card
               variant="outlined"
-              style={{ boxShadow: " 1px 1px 10px black" }}
+             
             >
               <div style={{ marginTop: "20px" }}>
                 <h3
-                  style={{
-                    textAlign: "center",
-                    marginTop: "25px",
-                    fontWeight: "600",
-                  }}
+                  className="form-header"
                 >
                   <h3> TERMINATION FORM</h3>
                 </h3>

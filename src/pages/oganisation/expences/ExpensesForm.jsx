@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import '../../../../src/styles.css';
 
 import {
   Table,
@@ -576,7 +577,10 @@ const ExpensesForm = ({formData,setFormData}) => {
 
                   {/* purchasedby */}
                   <TableCell
-                    className="table-data"
+                     style={{
+                      border: "1px solid #ddd",
+                      padding: "8px",
+                    }}
                   >
                     <TextField
 
@@ -596,13 +600,17 @@ const ExpensesForm = ({formData,setFormData}) => {
                         handlePurchaseChange(e);
                       }}
 
-                      style={{ width: "180px" }}
+                      style={{ width: "100%" }}
                     />
                   </TableCell>
+                  
 
                   {/* Amount */}
                   <TableCell
-                    className="table-data"
+                     style={{
+                      border: "1px solid #ddd",
+                      padding: "8px",
+                    }}
                   >
                     <TextField
                       type="number"
@@ -616,7 +624,7 @@ const ExpensesForm = ({formData,setFormData}) => {
                         );
                         handleInputChange(e)}
                       }
-                      style={{ width: "100px" }}
+                      style={{ width: "100%" }}
                     />
                   </TableCell>
 
@@ -714,7 +722,7 @@ const ExpensesForm = ({formData,setFormData}) => {
 
         <div className="data-buttons">
           <Button
-            id="input-btn"
+            id="input-btn-submit"
             className="submit"
             type="submit"
             onClick={saveExpenses}
@@ -723,7 +731,7 @@ const ExpensesForm = ({formData,setFormData}) => {
             Submit
           </Button>
           <Button
-            id="input-btn"
+            id="input-btn-cancel"
             className="cancel"
             onClick={() => setFormVisible(false)}
             variant="outlined"

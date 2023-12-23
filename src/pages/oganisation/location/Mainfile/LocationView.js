@@ -13,6 +13,7 @@ import { BiSolidHide } from "react-icons/bi";
 import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
 import Collapse from "@mui/material/Collapse";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 import { Card } from "@mui/material";
 
@@ -52,7 +53,10 @@ const LocationView = () => {
 
   return (
     <div>
-      <Header />
+    <div id="header-container" className="header-container">
+ <CompanyLogoFile />
+   <Header />
+ </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">

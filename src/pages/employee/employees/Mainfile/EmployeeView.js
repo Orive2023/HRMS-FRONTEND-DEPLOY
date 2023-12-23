@@ -9,7 +9,7 @@ import { styled } from "@mui/material/styles";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 import * as api from "../api"; 
-
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 import StateEmployee from "../StateEmployee";
 import EmployeeForm from "../EmployeeForm";
 import EmployeeTable from "../EmployeeTable";
@@ -23,7 +23,8 @@ const EmployeeView = () => {
     setEmployeeData,
     employee,
     setemployees,
-    formData,recDelete,setRecDelete
+    formData,recDelete,setRecDelete,
+    setFormData
     
   } = StateEmployee();
 
@@ -59,18 +60,14 @@ const EmployeeView = () => {
 
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
           <section>
-            <p>
-              <IoMdHome style={{ fontSize: "25px", marginTop: "-8px" }} />{" "}
-              <span style={{ fontWeight: "600", fontSize: "18px" }}>
-                /Employees/
-              </span>
-              <span style={{ fontSize: "18px" }}>Employee</span>
-            </p>
             <div
               className="above-table"
               style={{ display: "flex", justifyContent: "space-between" }}
@@ -83,7 +80,7 @@ const EmployeeView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px" }}
+                  id='add-btn'
                 >
                   {toggle ? (
                     <div className="hide">
@@ -91,7 +88,7 @@ const EmployeeView = () => {
                       HIDE
                     </div>
                   ) : (
-                    <div>
+                    <div className="add">
                       <MdAdd />
                       ADD EMPLOYEE
                     </div>
@@ -100,7 +97,7 @@ const EmployeeView = () => {
               </div>
             </div>
             <Collapse in={formVisible}>
-              <EmployeeForm />
+              <EmployeeForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
             </Collapse>
             <br />
 

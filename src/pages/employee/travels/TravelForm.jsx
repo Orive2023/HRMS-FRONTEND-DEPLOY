@@ -445,7 +445,8 @@ const TravelForm = ({formData,setFormData, setFormVisible, setToggle}) => {
       />
       <div className="data-buttons">
         <Button
-          id="input-btn"
+         id="input-btn-submit"
+          className="submit" 
           type="submit"
           onClick={saveTravel}
           disabled={buttonClick? false: true}
@@ -455,7 +456,8 @@ const TravelForm = ({formData,setFormData, setFormVisible, setToggle}) => {
           Submit
         </Button>
         <Button
-          id="input-btn"
+         id="input-btn-cancel"
+          className="cancel"
           variant="outlined"
           onClick={cancelButton}  
         >

@@ -20,6 +20,7 @@ import BankState from "../BankState";
 import BankTable from "../BankTable";
 import BankForm from "../BankForm";
 import * as bankapi from "../bankapi";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const AddBankView = () => {
   const {
@@ -67,81 +68,80 @@ const AddBankView = () => {
   };
 
   const handleDelete = async () => {
-    await bankapi.deleteBank(recDelete)
+    await bankapi.deleteBank(recDelete);
     loadAddbank();
   };
 
   useEffect(() => {
     if (recDelete !== "") {
-      handleDelete()
-      setRecDelete("")
+      handleDelete();
+      setRecDelete("");
     }
-  })
+  });
   console.log(bankNameError);
 
   return (
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
-      <div
-        className="head-foot-part"
-        style={{ padding: "0", marginTop: "10px" }}
-      >
-        <section>
-          <div
-            className="above-table"
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <div>
-              <Button
-                variant="outlined"
-                onClick={() => {
-                  setToggle(!toggle);
-                  handleButtonClick();
-                }}
-                id="add-btn"                 >
-                {toggle ? (
-                  <div className="hide">
-                    <BiSolidHide />
-                    HIDE
-                  </div>
-                ) : (
-                  <div className="add">
-                    <MdAdd />
-                    ADD BANK
-                  </div>
-                )}
-              </Button>
-            </div>
-          </div>
-
-          <Collapse in={formVisible}>
-            <Card
-              variant="outlined"
-              
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header />
+      </div>
+      <div className="dashboard-container">
+        <SideBar />
+        <div
+          className="head-foot-part"
+          // style={{ padding: "0", marginTop: "10px" }}
+        >
+          <section>
+            <div
+              className="above-table"
+              style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <div style={{ marginTop: "20px" }}>
-                <h3
-                className="form-header"
->
-                  ADD BANK FORM
-                </h3>
-                <DialogContent>
-                  <BankForm  formData={formData}
+              <div>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    setToggle(!toggle);
+                    handleButtonClick();
+                  }}
+                  id="add-btn"
+                >
+                  {toggle ? (
+                    <div className="hide">
+                      <BiSolidHide />
+                      HIDE
+                    </div>
+                  ) : (
+                    <div className="add">
+                      <MdAdd />
+                      ADD BANK
+                    </div>
+                  )}
+                </Button>
+              </div>
+            </div>
+
+            <Collapse in={formVisible}>
+              <Card variant="outlined">
+                <div style={{ marginTop: "20px" }}>
+                  <h3 className="form-header">ADD BANK FORM</h3>
+                  <DialogContent>
+                    <BankForm
+                      formData={formData}
                       setFormData={setFormData}
                       setFormVisible={setFormVisible}
-                      setToggle={setToggle}/>
-                </DialogContent>
-              </div>
-            </Card>
-          </Collapse>
-          <BankTable addbank={addbank} setRecDelete={setRecDelete} />
-          <br />
-        </section>
+                      setToggle={setToggle}
+                    />
+                  </DialogContent>
+                </div>
+              </Card>
+            </Collapse>
+            <BankTable addbank={addbank} setRecDelete={setRecDelete} />
+            <br />
+          </section>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 

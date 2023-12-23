@@ -202,7 +202,8 @@ const TerminationForm = ({formData,
 
       <div className="data-buttons">
         <Button
-          id="input-btn"
+           id="input-btn-submit"
+          className="submit"
           variant="outlined"
           type="submit"
           onClick={saveTermination}
@@ -211,7 +212,8 @@ const TerminationForm = ({formData,
           Submit
         </Button>
         <Button onClick={cancelButton}
-          id="input-btn"
+          id="input-btn-cancel"
+          className="cancel"
           variant="outlined">
           Cancel
         </Button>
