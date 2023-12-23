@@ -15,11 +15,14 @@ import Accountfile from "./sidebarComponent/Accountfile";
 import ProcurementFile from "./sidebarComponent/ProcurementFile";
 import Recuitmentfile from "./sidebarComponent/Recuitmentfile";
 import Trainingfile from "./sidebarComponent/Trainingfile";
+import { useNavigate } from "react-router-dom/dist";
 
 const SideBar = () => {
+  const navigation = useNavigate()
   return (
     <>
-      <div className="sidebar-container">
+    <div className="sidebar-btn-container">
+    <div className="sidebar-container">
         <DashboardFile />
         <Organisationfile />
         <EmployeesFile />
@@ -36,6 +39,11 @@ const SideBar = () => {
         <Recuitmentfile />
         <Trainingfile />
       </div>
+    {/* <div id="logout-hrms-btn" className="logout-hrms-btn"> */}
+          <button id="logout-hrms-btn" onClick={() => navigation("/")}>Logout<i class='bx bx-log-out'></i></button>
+         {/* </div> */}
+    </div>
+    
     </>
   );
 };

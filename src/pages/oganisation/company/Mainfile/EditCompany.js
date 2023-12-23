@@ -1,6 +1,3 @@
-// 
-
-
 import React, {
 	useEffect,
 	useState,
@@ -22,15 +19,12 @@ import {
 
 const EditCompany = () => {
 	let navigation = useNavigate();
-
 	const { id } = useParams();
-
 
 	const {
 		company,setCompany
 	} = StateCompany()
 		
-
 	const {
 		companyName,
 		contactNumber,
@@ -62,7 +56,7 @@ const EditCompany = () => {
 	
 	const updateCompany = async (e) => {
 		e.preventDefault();
-		await axios.put(`http://13.200.246.216:5000/company/update/${id}`,
+		await axios.patch(`http://13.200.246.216:5000/company/update/${id}`,
 		company);
 		navigation("/organisation/company");
 	  };

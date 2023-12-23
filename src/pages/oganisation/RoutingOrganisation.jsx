@@ -26,9 +26,9 @@ import LoginSignup from "../../components/LoginSignup"
 import Landingfile from "../../components/Landingfile"
 
 const routesData = [
-  { path: "/", element: <Dashboard /> },
+  { path: "/HRMS", element: <Dashboard /> },
   // { path: "/HRMS", element: <Dashboard /> },
-  // { path: "/login", element: <LoginSignup /> },
+  { path: "/", element: <LoginSignup /> },
   { path: "/organisation/company", element: <CompanyView /> },
   { path: "/organisation/company-profile/:id", element: <CompanyPofile /> },
   { path: "/organisation/edit-company/:id", element: <EditCompany /> },

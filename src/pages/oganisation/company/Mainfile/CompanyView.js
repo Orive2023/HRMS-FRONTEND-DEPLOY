@@ -48,6 +48,7 @@ const CompanyView = () => {
   }, []);
 
   const handleDelete = async () => {
+    console.log(recDelete)
     await api.deleteCompany(recDelete);
     loadCompany();
   };

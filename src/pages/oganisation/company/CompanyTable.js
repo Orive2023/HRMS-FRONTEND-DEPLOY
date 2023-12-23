@@ -4,10 +4,11 @@ import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
 
 const CompanyTable = ({ company, setRecDelete }) => {
   const handleDelete = (id) => {
-    setRecDelete(id);
+  setRecDelete(id);
+  console.log(id)
   };
-
   console.log(company);
+  
   return (
     <div>
       <table className="table table-bordered table-hover shadow">
