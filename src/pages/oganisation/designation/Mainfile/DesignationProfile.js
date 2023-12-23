@@ -23,7 +23,7 @@ import React, {
   
     const loadDesignation= async () => {
       const result = await axios.get(
-        `http://localhost:8081/designation/get/${id}`
+        `http://13.200.246.216:5000/designation/get/${id}`
       );
       setDesignation(result.data);
     };

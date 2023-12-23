@@ -33,7 +33,7 @@ const EditExpenses = () => {
   }, []);
 
   const loadExpenses = async () => {
-    const result = await axios.get(`http://localhost:8081/expence/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/expence/get/${id}`);
     setExpenses(result.data);
   };
 
@@ -46,7 +46,7 @@ const EditExpenses = () => {
 
   const updateExpenses = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8081/expence/update/${id}`, expenses);
+    await axios.put(`http://13.200.246.216:5000/expence/update/${id}`, expenses);
     navigate("/expenses");
   };
 

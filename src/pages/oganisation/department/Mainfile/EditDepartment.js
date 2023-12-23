@@ -35,7 +35,7 @@ const EditDepartment = () => {
 
   const loadDepartment = async () => {
     const result = await axios.get(
-      `http://localhost:8081/department/get/${id}`
+      `http://13.200.246.216:5000/department/get/${id}`
     );
     setDepartment(result.data);
   };
@@ -49,7 +49,7 @@ const EditDepartment = () => {
   const updateDepartment = async (e) => {
     e.preventDefault();
     await axios.put(
-      `http://localhost:8081/department/update/${id}`,
+      `http://13.200.246.216:5000/department/update/${id}`,
       department
     );
     navigate("/organisation/department");

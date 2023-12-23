@@ -24,7 +24,7 @@ const PoliciesProfile = () => {
 
   const loadExpenses = async () => {
     const result = await axios.get(
-      `http://localhost:8081/policies/get/${id}`
+      `http://13.200.246.216:5000/policies/get/${id}`
     );
     setExpenses(result.data);
   };

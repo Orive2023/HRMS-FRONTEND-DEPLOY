@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8081"
+const url = "http://13.200.246.216:5000"
 
 export const savePolicies = async (formData) => {
     try{

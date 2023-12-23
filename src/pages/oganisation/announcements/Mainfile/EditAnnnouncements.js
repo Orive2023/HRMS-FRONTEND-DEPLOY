@@ -23,7 +23,7 @@ const EditAnnnouncements = () => {
 
   const loadAnnouncement = async () => {
     const result = await axios.get(
-      `http://localhost:8081/announcement/get/${id}`
+      `http://13.200.246.216:5000/announcement/get/${id}`
     );
     setAnnouncement(result.data);
   };
@@ -38,7 +38,7 @@ const EditAnnnouncements = () => {
   const updateAnnouncement = async (e) => {
     e.preventDefault();
     await axios.put(
-      `http://localhost:8081/announcement/update/${id}`,
+      `http://13.200.246.216:5000/announcement/update/${id}`,
       announcement 
     );
     navigate("/organisation/announcements");

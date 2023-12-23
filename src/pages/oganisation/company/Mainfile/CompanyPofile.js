@@ -21,7 +21,7 @@ const CompanyPofile = () => {
   }, []);
 
   const loadCompany = async () => {
-    const result = await axios.get(`http://localhost:8081/company/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/company/get/${id}`);
     setCompany(result.data);
   };
 

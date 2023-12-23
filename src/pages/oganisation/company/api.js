@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveCompany = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8081/company/create/company",
+            "http://13.200.246.216:5000/company/create/company",
             formData,{headers: {
                 'Content-Type': 'multipart/form-data'
               }}
@@ -16,7 +16,7 @@ export const saveCompany = async (formData) => {
 
 export const deleteCompany = async (id) => {
     try{
-        await axios.delete(`http://localhost:8081/company/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/company/delete/${id}`)
     } catch(error) {
         console.error("Error deleting company",error)
     }
@@ -25,7 +25,7 @@ export const deleteCompany = async (id) => {
 export const loadCompanyById = async (id) => {
     try{
         const result = await axios.get(
-            `http://localhost:8081/company/get/${id}`,
+            `http://13.200.246.216:5000/company/get/${id}`,
             {
                 validateStatus: () => {
                     return true;
@@ -42,7 +42,7 @@ export const loadCompanyById = async (id) => {
 export const loadCompany = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8081/company/get/company",
+            "http://13.200.246.216:5000/company/get/company",
             {
               validateStatus: () => {
                 return true;
@@ -74,7 +74,7 @@ export const loadCompany = async () => {
 export const updateCompany = async (formData, id) => {
   try {
     const result = await axios.patch(
-      `http://localhost:8081/company/update/${id}`,
+      `http://13.200.246.216:5000/company/update/${id}`,
       formData
     );
 

@@ -62,7 +62,7 @@ const EditCompany = () => {
 	
 	const updateCompany = async (e) => {
 		e.preventDefault();
-		await axios.put(`http://localhost:8081/company/update/${id}`,
+		await axios.put(`http://13.200.246.216:5000/company/update/${id}`,
 		company);
 		navigation("/organisation/company");
 	  };

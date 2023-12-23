@@ -35,7 +35,7 @@ const EditLocation = () => {
 
   const loadLocation = async () => {
     const result = await axios.get(
-      `http://localhost:8081/location/get/${id}`
+      `http://13.200.246.216:5000/location/get/${id}`
     );
     setLocation(result.data);
   };
@@ -49,7 +49,7 @@ const EditLocation = () => {
   const updateLocation = async (e) => {
     e.preventDefault()
     await axios.put(
-      `http://localhost:8081/location/update/${id}`,
+      `http://13.200.246.216:5000/location/update/${id}`,
       location
     );
     navigate("/organisation/location");

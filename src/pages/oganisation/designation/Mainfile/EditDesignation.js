@@ -20,7 +20,7 @@ const EditDesignation = () => {
   }, []);
 
   const loadDesignation = async () => {
-    const result = await axios.get(`http://localhost:8081/designation/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/designation/get/${id}`);
     setDesignation(result.data);
   };
 
@@ -33,7 +33,7 @@ const EditDesignation = () => {
 
   const updateDesignation = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8081/designation/update/${id}`, designation);
+    await axios.put(`http://13.200.246.216:5000/designation/update/${id}`, designation);
     navigate("/organisation/designation");
   };
 
