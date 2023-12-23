@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
 // import DialogTitle from '@mui/material/DialogTitle';
+import { BiSolidHide } from "react-icons/bi";
+
 
 import { MdAdd } from "react-icons/md";
 
@@ -26,6 +28,7 @@ const ComplaintView = () => {
     toggle,
     setToggle,
     setFormVisible,
+    formData,setFormData
    
   } = StateComplaint();
   const handleButtonClick = () => {
@@ -67,19 +70,29 @@ const ComplaintView = () => {
                 className="above-table"
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                {/* Search search={search} setSearch={setSearch} /> */}
+                
+                  <div>
                 <Button
                   variant="outlined"
                   onClick={() => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  v
-                  style={{ height: "35px" }}
+                  style={{ height: "35px",margin:"10px 0" }}
                 >
-                  <MdAdd style={{ fontSize: "14px", marginRight: "3px" }} />
-                  Add COMPLAINT
+                  {toggle ? (
+                    <div className="hide">
+                      <BiSolidHide />
+                      HIDE
+                    </div>
+                  ) : (
+                    <div>
+                      <MdAdd />
+                      ADD EMPLOYEE
+                    </div>
+                  )}
                 </Button>
+              </div>
               </div>
             </div>
 
@@ -99,7 +112,7 @@ const ComplaintView = () => {
                     <h3>COMPLAINT FORM</h3>
                   </h3>
                   <DialogContent>
-                    <ComplaintForm />
+                    <ComplaintForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

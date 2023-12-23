@@ -7,14 +7,11 @@ const StateTermination = () => {
     const [formErrors, setFormerrors] = useState({});
     const [formControl, setFormControl] = useState(false);
     const [termination, setTermination] = useState([]);
-    const [search, setSearch] = useState("");
     const [description,setDescription] = useState([]);
     const [dateError,setDateError] = useState([]);
     const [employeeName,setEmployeeName] =useState([]);
     const [open, setOpen] = useState(false);
     const [recDelete, setRecDelete] = useState("");
-
-
 
     const [formData, setFormData] = useState({
         employeeName: "",

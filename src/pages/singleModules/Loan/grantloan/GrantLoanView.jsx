@@ -74,8 +74,7 @@ const GrantLoanView = () => {
               setToggle(!toggle);
               handleButtonClick();
             }}
-            style={{ height: "35px", margin:"10px 0" }}
-          >
+            id="add-btn"          >
             {toggle ? (
               <div>
                 <BiSolidHide style={{ fontSize: "14px", marginRight: "3px" }} />
@@ -91,14 +90,11 @@ const GrantLoanView = () => {
         </div>
       </div>
       <Collapse in={formVisible}>
-        <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+        <Card variant="outlined" >
           <div style={{ marginTop: "20px" }}>
             <h3
-              style={{
-                textAlign: "center",
-                marginTop: "25px",
-                fontWeight: "600",
-              }}
+                                  className="form-header"
+
             >
               GRANT LOAN FORM
             </h3>

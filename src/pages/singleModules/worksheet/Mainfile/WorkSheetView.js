@@ -67,7 +67,7 @@ const WorksheetView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                 id='add-btn'
                 >
                   {toggle ? (
                     <div className="hide">
@@ -86,19 +86,9 @@ const WorksheetView = () => {
             </div>
             <Collapse in={formVisible}>
               <Card
-                variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
-              >
+                variant="outlined"          >
                 <div style={{ marginTop: "20px" }}>
-                  <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    <h3> WORKSHEET FORM</h3>
-                  </h3>
+                    <h3 className="form-header">Add Worksheet</h3>
                   <DialogContent>
                   
                     <WorkSheetForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>

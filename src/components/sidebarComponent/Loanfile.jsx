@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoanLogo from "../../asset/24px/Loan.png"
+
 const Loanfile = () => {
   const [loanDropdown, setLoanDropdown] = useState("org-dropdown");
   const handleLoanclick = () => {
@@ -13,9 +15,13 @@ const Loanfile = () => {
 
   return (
     <div>
-      <p id="dropdown" onClick={handleLoanclick}>
-        Loan<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handleLoanclick}>
+    <span></span>
+      <img src={LoanLogo} alt="Loan"/>
+      <p id="dropdown">
+        Loan<i class='bx bx-chevron-down'></i>
       </p>
+    </div>
       <div className={loanDropdown}>
         <p onClick={() => navigation("/loan/grant-loan")}>Grant Loan</p>
       </div>

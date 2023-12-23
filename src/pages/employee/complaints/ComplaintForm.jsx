@@ -1,18 +1,18 @@
 import React, { useState,useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+// import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 import * as api from "./api"
 import { useNavigate} from 'react-router-dom';
 import StateComplaint from './StateComplaint';
 
 
-const ComplaintForm = () => {
+const ComplaintForm = ({formData,setFormData, setFormVisible, setToggle}) => {
   const navigate = useNavigate()
 
     const {
-      setComplaint,formData,formVisible,toggle, setToggle, setFormVisible,setFormData,projectTitle, setProjectTitle,clientName, setClientName,projectManager, setProjectManager,description, setDescription,summary, setSummary,company,setLocation,setDateError,setCompany, setFormErrors
+      setComplaint,formVisible,toggle, projectTitle, setProjectTitle,clientName, setClientName,projectManager, setProjectManager,description, setDescription,summary, setSummary,company,setLocation,setDateError,setCompany, setFormErrors
 
    } = StateComplaint();
     const loadComplaint = async () => {
@@ -96,6 +96,20 @@ const ComplaintForm = () => {
         loadComplaint();
       }
 
+      const cancelButton =() => {
+        setFormVisible(false)
+        setToggle(false)
+        setFormData({complaintId: "",
+        complaintFrom: "",
+        complaintTitle: "",
+        complaintDate: "",
+        complaintAgainst: "",
+        description: "",})
+      }
+
+      let buttonClick = formData.complaintId.length>0 && 
+                        formData.complaintFrom.length>0 && formData.complaintTitle.length>0 && 
+                        formData.complaintDate.length>0 && formData.complaintAgainst.length>0 && formData.description.length>0
    
    
   return (
@@ -193,13 +207,14 @@ const ComplaintForm = () => {
         variant="outlined"
         type="submit"
         onClick={saveComplaint}
+        disabled={buttonClick? false: true}
 
       >
         Submit
       </Button>
       <Button id="input-btn"
         variant="outlined"
-        onClick={() => setFormVisible(false)}
+        onClick={cancelButton}
 
       >
         Cancel

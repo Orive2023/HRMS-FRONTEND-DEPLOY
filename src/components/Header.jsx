@@ -1,12 +1,14 @@
 import React from "react";
+import Notificationlogo from "../asset/24px/Notification.png"
+import MessageLogo from "../asset/24px/message.png"
+import UserLogo from "../asset/24px/User.png"
 
 const Header = () => {
   return (
     <>
-      <div>
-        <div id="page_top" className="section-body top_dark">
-          <div className="container-fluid">
-            <div className="page-header">
+        <div id="header-part" className="section-body top_dark">
+          <div className="container-fluid" id="container-fluid">
+            <div id="page-header" className="page-header">
               <div className="left">
                 <h1 className="page-title">ORIVE Dashboard</h1>
                 <div className="input-group xs-hide">
@@ -25,7 +27,8 @@ const Header = () => {
                       className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1"
                       data-toggle="dropdown"
                     >
-                      <i className="fa fa-envelope" />
+                      {/* <i className="fa fa-envelope" /> */}
+                      <img src={Notificationlogo} />
                       <span className="badge badge-success nav-unread" />
                     </a>
                   </div>
@@ -35,7 +38,7 @@ const Header = () => {
                       className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1"
                       data-toggle="dropdown"
                     >
-                      <i className="fa fa-bell" />
+                      <img src={MessageLogo} />
                       <span className="badge badge-primary nav-unread" />
                     </a>
                   </div>
@@ -45,7 +48,7 @@ const Header = () => {
                       className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1"
                       data-toggle="dropdown"
                     >
-                      <i className="fa fa-user" />
+                      <img src={UserLogo} />
                     </a>
                   </div>
                 </div>
@@ -53,7 +56,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

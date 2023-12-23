@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PayrollLogo from "../../asset/24px/Payroll.png"
 
 const PayrollFile = () => {
     const [payDropdown, setPayDropdown] = useState("org-dropdown");
@@ -14,9 +15,13 @@ const PayrollFile = () => {
       const navigation = useNavigate()
   return (
     <div>
-        <p id="dropdown" onClick={handlePayclick}>
-          Payroll<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handlePayclick}>
+    <span></span>
+        <img src={PayrollLogo} alt="Payroll"/>
+        <p id="dropdown">
+          Payroll<i class='bx bx-chevron-down'></i>
         </p>
+    </div>
         <div className={payDropdown}>
           <p onClick={() => navigation("/payroll/sakaryTemplate")}>Payroll Templates</p>
           {/* <p onClick={() => navigation("/payroll/hourly-wages")}>Hourly Wages</p> */}

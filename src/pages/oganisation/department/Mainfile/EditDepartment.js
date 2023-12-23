@@ -81,22 +81,7 @@ const EditDepartment = () => {
           />
         </div>
 
-        <div className="input-group mb-5">
-          <label
-            className="input-group-text"
-            htmlFor="departmentType">
-            Company
-          </label>
-          <input
-            className="form-control col-sm-6"
-            type="text"
-            name="companyName"
-            id="companyName"
-            required
-            value={companyName}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </div>
+        
 
         <div className="input-group mb-5">
           <label
@@ -115,22 +100,7 @@ const EditDepartment = () => {
           />
         </div>
 
-        <div className="input-group mb-5">
-          <label
-            className="input-group-text"
-          >
-            Department Head
-          </label>
-          <input
-            className="form-control col-sm-6"
-            type="text"
-            name="departmentHead"
-            id="departmentHead"
-            required
-            value={departmentHead}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </div>
+        
 
         <div className="row mb-5">
           <div className="col-sm-2">

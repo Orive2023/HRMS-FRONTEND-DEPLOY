@@ -69,8 +69,8 @@ const TicketView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
-                >
+                  id="add-btn"                >
+            
                   {toggle ? (
                     <div className="hide">
                       <BiSolidHide
@@ -89,15 +89,12 @@ const TicketView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                  className="form-header"
+
                   >
                     <h3> TICKET FORM</h3>
                   </h3>

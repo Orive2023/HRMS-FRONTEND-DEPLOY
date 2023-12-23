@@ -5,7 +5,6 @@ import LeaveView from "./Mainfile/LeaveView";
 import LeaveEdit from "./Mainfile/LeaveEdit";
 
 const routesData = [
-  { path: "/", element: <Dashboard /> },
   { path: "/timesheets/leaves", element: <LeaveView /> },
   { path: "/timesheets/edit-Leave/:id", element: <LeaveEdit /> },
 ];

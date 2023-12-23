@@ -6,12 +6,11 @@ import * as bankapi from "./bankapi";
 import { useNavigate } from "react-router-dom";
 import BankState from "./BankState";
 
-const BankForm = ({ setFormVisible,setToggle }) => {
+const BankForm = ({ formData,setFormData, setFormVisible,setToggle }) => {
   const navigate = useNavigate();
 
   const {
-    formData,
-    setFormData,
+    
     formVisible,
     toggle,
     addbank,
@@ -170,7 +169,8 @@ const BankForm = ({ setFormVisible,setToggle }) => {
     loadAddbank();
   };
 
-  let buttonCheck = (formData.bankName.length > 0) && (formData.accountName.length > 0) && (formData.accountNumber.length > 0) && (formData.accountType.length > 0) && (formData.branchName.length > 0)
+  let buttonCheck = formData.bankName.length > 0
+   && formData.accountName.length > 0 && formData.accountNumber.length > 0 && (formData.accountType.length > 0) && (formData.branchName.length > 0)
 
 
   const cancelButton = () => {
@@ -186,110 +186,110 @@ const BankForm = ({ setFormVisible,setToggle }) => {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <div className="data-input-fields">
-        <TextField
-          margin="dense"
-          label="Bank Name"
-          type="text"
-          fullWidth
-          name="bankName"
-          id="bankName"
-          value={formData.bankName}
-          onChange={(e) => handleInputChange(e)}
-          required
-          helperText={bankNameError}
-          error={Boolean(bankNameError === "" ? false : true)}
-        />
-        <TextField
-          margin="dense"
-          label="Account Name"
-          type="text"
-          fullWidth
-          name="accountName"
-          id="accountName"
-          value={formData.accountName}
-          onChange={(e) => handleInputChange(e)}
-          required
-          helperText={accountNameError}
-          error={Boolean(accountNameError)}
-        />
-      </div>
-      <div className="data-input-fields">
-        <TextField
-          margin="dense"
-          label="Account Number"
-          type="number"
-          fullWidth
-          name="accountNumber"
-          id="accountNumber"
-          value={formData.accountNumber}
-          onChange={(e) => handleInputChange(e)}
-          required
-          helperText={accountNumberError}
-          error={Boolean(accountNumberError)}
-        />
-        <TextField
-          margin="dense"
-          label="Branch Name"
-          type="text"
-          fullWidth
-          name="branchName"
-          id="branchName"
-          value={formData.branchName}
-          onChange={(e) => handleInputChange(e)}
-          required
-          helperText={branchNameError}
-          error={Boolean(branchNameError)}
-        />
-        <TextField
-          id="accountType"
-          margin="dense"
-          select
-          label="Account Type"
-          fullWidth
-          defaultValue="Choose"
-          SelectProps={{
-            native: true,
-          }}
-          InputLabelProps={{
-            shrink: true,
-            htmlFor: "accountType", // Add the 'htmlFor' property with the ID of the input field
-          }}
-          value={formData.accountType}
-          onChange={(e) => handleInputChange(e)}
-          name="accountType"
-          required
-        >
-          <option disabled value="">
-            Choose Account Type
+    <div className="data-input-fields">
+      <TextField
+        margin="dense"
+        label="Bank Name"
+        type="text"
+        fullWidth
+        name="bankName"
+        id="bankName"
+        value={formData.bankName}
+        onChange={(e) => handleInputChange(e)}
+        required
+        helperText={bankNameError}
+        error={Boolean(bankNameError === "" ? false : true)}
+      />
+      <TextField
+        margin="dense"
+        label="Account Name"
+        type="text"
+        fullWidth
+        name="accountName"
+        id="accountName"
+        value={formData.accountName}
+        onChange={(e) => handleInputChange(e)}
+        required
+        helperText={accountNameError}
+        error={Boolean(accountNameError)}
+      />
+    </div>
+    <div className="data-input-fields">
+      <TextField
+        margin="dense"
+        label="Account Number"
+        type="number"
+        fullWidth
+        name="accountNumber"
+        id="accountNumber"
+        value={formData.accountNumber}
+        onChange={(e) => handleInputChange(e)}
+        required
+        helperText={accountNumberError}
+        error={Boolean(accountNumberError)}
+      />
+      <TextField
+        margin="dense"
+        label="Branch Name"
+        type="text"
+        fullWidth
+        name="branchName"
+        id="branchName"
+        value={formData.branchName}
+        onChange={(e) => handleInputChange(e)}
+        required
+        helperText={branchNameError}
+        error={Boolean(branchNameError)}
+      />
+      <TextField
+        id="accountType"
+        margin="dense"
+        select
+        label="Account Type"
+        fullWidth
+        defaultValue="Choose"
+        SelectProps={{
+          native: true,
+        }}
+        InputLabelProps={{
+          shrink: true,
+          htmlFor: "accountType", // Add the 'htmlFor' property with the ID of the input field
+        }}
+        value={formData.accountType}
+        onChange={(e) => handleInputChange(e)}
+        name="accountType"
+        required
+      >
+        <option disabled value="">
+          Choose Account Type
+        </option>
+        {accountTypeList.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
-          {accountTypeList.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-      </div>
+        ))}
+      </TextField>
+    </div>
 
-      <div className="data-buttons">
-        <Button
-          id="input-btn"
-          variant="outlined"
-          type="submit"
-          onClick={saveAddbank}
-          disabled={buttonCheck ? false : true}
-        >
-          Submit
-        </Button>
-        <Button
-          id="input-btn"
-          variant="outlined"
-          onClick={cancelButton}
-        >
-          Cancel
-        </Button>
-      </div>
-    </form>
+    <div className="data-buttons">
+      <Button
+        id="input-btn-submit"
+        variant="outlined"
+        type="submit"
+        onClick={saveAddbank}
+        disabled={buttonCheck ? false : true}
+      >
+        Submit
+      </Button>
+      <Button
+        id="input-btn-cancel"
+        variant="outlined"
+        onClick={cancelButton}
+      >
+        Cancel
+      </Button>
+    </div>
+  </form>
   );
 };
 

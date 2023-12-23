@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TimesheetLogo from "../../asset/24px/Timesheets.png"
 
 const TimesheetsFile = () => {
     const [timeDropdown, setTimeDropdown] = useState("org-dropdown");
@@ -15,9 +16,13 @@ const TimesheetsFile = () => {
       const navigation = useNavigate()
   return (
     <div>
-         <p id="dropdown" onClick={handleTimeclick}>
-          Timesheets<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handleTimeclick}>
+    <span></span>
+         <img src={TimesheetLogo} alt="Timesheet"/>
+         <p id="dropdown">
+          Timesheets<i class='bx bx-chevron-down'></i>
         </p>
+    </div>
         <div className={timeDropdown}>
           <p onClick={() => navigation("/Attendance/attendanceView")}>Attendance</p>
           <p onClick={() => navigation("/timesheets/day-wise-attendance")}>Date Wise Attendance</p>

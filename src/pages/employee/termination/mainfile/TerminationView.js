@@ -19,7 +19,7 @@ import TerminationForm from "../TerminationForm";
 const TerminationView = () => {
  
   const {
-    formData, setFormData,employeeName,setEmployeeName,dateError,setDateError,description,setDescription, formVisible,setFormVisible, formErrors, setFormerrors, open, setOpen,  toggle, setToggle, termination, setTermination, formControl, setFormControl, recDelete, setRecDelete
+    formData, setFormData,formVisible,setFormVisible, toggle, setToggle, termination, setTermination, recDelete, setRecDelete
   } =StateTermination();
  
 
@@ -103,8 +103,7 @@ return (
                   <h3> TERMINATION FORM</h3>
                 </h3>
                 <DialogContent>
-                
-                  <TerminationForm/>
+                  <TerminationForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                 </DialogContent>
               </div>
             </Card>

@@ -6,7 +6,8 @@ import DialogActions from "@mui/material/DialogActions";
 import { useNavigate} from 'react-router-dom';
 import * as api from "./announcementapi"
 import StateAnnouncement from './StateAnnouncement';
-const AnnouncementForm = ({formData,setFormData}) => {
+import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
+const AnnouncementForm = ({formData,setFormData,setFormVisible, setToggle }) => {
     let navigation = useNavigate();
     const {
         summaryError,
@@ -25,7 +26,7 @@ const AnnouncementForm = ({formData,setFormData}) => {
         setLocation,
         
        
-        setFormVisible,
+       
        
       } = StateAnnouncement();
 
@@ -142,207 +143,208 @@ const AnnouncementForm = ({formData,setFormData}) => {
 
       const handleSubmit = (e) => {
         
+        
       };
+
+
+
+      const cancelButton = () => {
+        setFormVisible(false);
+        setToggle(false);
+        setFormData({
+          title: "",
+          startDate: "",
+          endDate: "",
+          companyName: "",
+          locationName: "",
+          departmentName: "",
+          summary: "",
+          description: "",
+          createdDate: "",
+        });
+      };
+    
+      let buttonCheck =
+        formData.title.length > 0 &&
+       formData.endDate.length>0 &&       
+        formData.summary.length > 0 &&
+        formData.createdDate.length > 0 &&
+        formData.description.length > 0;
   return (
     <form onSubmit={handleSubmit}>
-      <div className="data-input-fields">
-        <TextField
-          margin="dense"
-          label="Title"
-          type="text"
-          fullWidth
-          name="title"
-          id="title"
-          value={formData.title}
-          onChange={(e) => handleInputChange(e)}
-          required
-          // error={titleError}
-          // helperText={titleError && "Title must be between 2 and 50 characters"}
-        />
-        <TextField
-          margin="dense"
-          label="Start-Date"
-          type="date"
-          fullWidth
-          name="startDate"
-          id="startDate"
-          value={formData.startDate}
-          onChange={(e) => handleInputChange(e)}
-          required
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField
-          margin="dense"
-          label="End-date"
-          type="date"
-          fullWidth
-          name="endDate"
-          id="endDate"
-          value={formData.endDate}
-          onChange={(e) => handleInputChange(e)}
-          required
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField
-          margin="dense"
-          label="Created Date"
-          type="date"
-          fullWidth
-          name="createdDate"
-          id="createdDate"
-          value={formData.createdDate}
-          onChange={(e) => handleInputChange(e)}
-          required
-          InputLabelProps={{
-            shrink: true,
-          }}
-          // error={dateError}
-          // helperText={dateError ? "Please select the current date" : ""}
-        />
-      </div>
-      <div className="data-input-fields">
-        <TextField
-          id="departmentName"
-          margin="dense"
-          select
-          label="Department Name"
-          fullWidth
-          defaultValue="Choose"
-          SelectProps={{
-            native: true,
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={formData.departmentName}
-          onChange={(e) => handleInputChange(e)}
-          name="departmentName"
-        >
-          {Type.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
+    <div className="data-input-fields">
+      <TextField
+        margin="dense"
+        label="Title"
+        type="text"
+        fullWidth
+        name="title"
+        id="title"
+        value={formData.title}
+        onChange={(e) => handleInputChange(e)}
+        required
+        // error={titleError}
+        // helperText={titleError && "Title must be between 2 and 50 characters"}
+      />
+      <TextField
+        margin="dense"
+        label="Start-Date"
+        type="date"
+        fullWidth
+        name="startDate"
+        id="startDate"
+        value={formData.startDate}
+        onChange={(e) => handleInputChange(e)}
+        required
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        margin="dense"
+        label="End-date"
+        type="date"
+        fullWidth
+        name="endDate"
+        id="endDate"
+        value={formData.endDate}
+        onChange={(e) => handleInputChange(e)}
+        required
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        margin="dense"
+        label="Created Date"
+        type="date"
+        fullWidth
+        name="createdDate"
+        id="createdDate"
+        value={formData.createdDate}
+        onChange={(e) => handleInputChange(e)}
+        required
+        InputLabelProps={{
+          shrink: true,
+        }}
+        // error={dateError}
+        // helperText={dateError ? "Please select the current date" : ""}
+      />
+    </div>
+    <div className="data-input-fields">
+      <TextField
+        id="departmentName"
+        margin="dense"
+        select
+        label="Department Name"
+        fullWidth
+        defaultValue="Choose"
+        SelectProps={{
+          native: true,
+        }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        value={formData.departmentName}
+        onChange={(e) => handleInputChange(e)}
+        name="departmentName"
+      >
+        {Type.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </TextField>
 
-        <TextField
+      <FormControl fullWidth>
+        <InputLabel id="demo-location-select-label">Location Name</InputLabel>
+        <Select
+          labelId="demo-location-select-label"
           id="locationName"
-          margin="dense"
-          select
+          value={formData.locationName}
+          name="locationName"
           label="Location Name"
-          fullWidth
-          defaultValue="Choose"
-          SelectProps={{
-            native: true,
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={formData.departmentName}
           onChange={(e) => handleInputChange(e)}
-          name="dlocationName"
         >
-          {location.map((item, index) => {
+          {location && location .map((item, index) => {
             return (
-              <option key={index} value={item.locationName}>
-                {item.locationName}
-              </option>
+              <MenuItem key={index} value={item.locationName }>
+                {item.locationName }
+              </MenuItem>
             );
           })}
-        </TextField>
+        </Select>
+      </FormControl>
 
-        <TextField
-          id="companyName"
-          margin="dense"
-          select
-          label="Company Name"
-          fullWidth
-          defaultValue="Choose"
-          SelectProps={{
-            native: true,
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
+      <FormControl fullWidth>
+        <InputLabel id="demo-company-select-label">Company Name</InputLabel>
+        <Select
+          labelId="demo-company-select-label"
+          id="selectedEmployee"
           value={formData.companyName}
-          onChange={(e) => handleInputChange(e)}
           name="companyName"
+          label="Company Name"
+          onChange={(e) => handleInputChange(e)}
         >
-          {company.map((option, index) => (
-            <option key={index} value={option.companyName}>
-              {option.companyName}
-            </option>
-          ))}
-        </TextField>
-      </div>
+          {company && company.map((item, index) => {
+            return (
+              <MenuItem key={index} value={item.companyName}>
+                {item.companyName}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+    </div>
 
-      <div className="data-input-fields">
-        <TextField
-          margin="dense"
-          label="Summary"
-          type="text"
-          fullWidth
-          name="summary"
-          id="summary"
-          value={formData.summary}
-          onChange={(e) => handleInputChange(e)}
-          required
-          // error={summaryError}
-          // helperText={
-          //   summaryError
-          //     ? "Summary must be between 2 and 200 characters and should not contain numbers"
-          //     : ""
-          // }
-        />
-        <TextField
-          margin="dense"
-          label="Description"
-          type="text"
-          fullWidth
-          name="description"
-          id="description"
-          value={formData.description}
-          onChange={(e) => handleInputChange(e)}
-          required
-        />
-      </div>
-
-      <DialogActions>
+    <div className="data-input-fields">
+      <TextField
+        margin="dense"
+        label="Summary"
+        type="text"
+        fullWidth
+        name="summary"
+        id="summary"
+        value={formData.summary}
+        onChange={(e) => handleInputChange(e)}
+        required
+        // error={summaryError}
+        // helperText={
+        //   summaryError
+        //     ? "Summary must be between 2 and 200 characters and should not contain numbers"
+        //     : ""
+        // }
+      />
+      <TextField
+        margin="dense"
+        label="Description"
+        type="text"
+        fullWidth
+        name="description"
+        id="description"
+        value={formData.description}
+        onChange={(e) => handleInputChange(e)}
+        required
+      />
+    </div>
+    
+      <div
+        className="data-buttons"
+      >
         <Button
           variant="outlined"
           type="submit"
           onClick={saveAnnouncements}
-          style={{
-            display: "flex",
-            height: "40px",
-            width: "49%",
-            margin: "0 5px",
-            color: "white",
-            background: "linear-gradient(to right, #1cb5e0, #000046)",
-          }}
+          disabled={buttonCheck ? false : true}
+          id="input-btn-submit"
         >
           Submit
         </Button>
-        <Button
-          variant="outlined"
-          onClick={() => setFormVisible(false)}
-          style={{
-            display: "flex",
-            height: "40px",
-            width: "49%",
-            margin: "0 5px",
-            color: "white",
-            background: "linear-gradient(to left, #1cb5e0, #000046)",
-          }}
-        >
+        <Button variant="outlined" id="input-btn-cancel" onClick={cancelButton}>
           Cancel
         </Button>
-      </DialogActions>
-    </form>
+      </div>
+  </form>
   );
 };
 

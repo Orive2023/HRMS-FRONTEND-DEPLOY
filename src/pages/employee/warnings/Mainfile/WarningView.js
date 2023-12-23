@@ -156,7 +156,7 @@ const WarningView = () => {
           </h3>
           
             <DialogContent>
-              <WarningForm/>
+              <WarningForm  formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
             </DialogContent>
          
        

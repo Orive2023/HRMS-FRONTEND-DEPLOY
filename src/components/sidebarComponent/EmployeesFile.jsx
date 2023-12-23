@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EmployeeLogo from "../../asset/24px/Employees.png"
 
 const EmployeesFile = () => {
 
@@ -15,9 +16,13 @@ const EmployeesFile = () => {
   const navigation = useNavigate()
   return (
     <div>
-        <p id="dropdown" onClick={handleEmpclick}>
-          Employees<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handleEmpclick}>
+    <span></span>
+        <img src={EmployeeLogo} alt="Employee"/>
+        <p id="dropdown">
+          Employees<i class='bx bx-chevron-down'></i>
         </p>
+    </div>
         <div className={empDropdown}>
          
             <p onClick={() => navigation('/employee/employee')}>Employees</p>

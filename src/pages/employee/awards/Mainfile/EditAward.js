@@ -9,68 +9,69 @@ import {
 	useNavigate,
 	useParams,
 } from "react-router-dom";
+import Header from "../../../../components/Header";
+import SideBar from "../../../../components/SideBar";
 
-const Editaward = () => {
+const EditAward = () => {
 	let navigate = useNavigate();
 
 	const { id } = useParams();
 
-	const [award, setaward] = useState({
-		awardName: "",
-		awardType: "",
-		email: "",
-		website: "",
+	const [award, setAward] = useState({
+		employeeName: "",
+		awardBy: "",
+		
 	});
-	const {
-		awardName,
-		awardType,
-		email,
-		website,
-	} = award;
+	
 
 	useEffect(() => {
-		loadaward();
+		loadAward();
 	}, []);
 
-	const loadaward = async () => {
+	const loadAward = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/award/get/${id}`
+			`http://localhost:8082/awards/get/${id}`
 		);
-		setaward(result.data);
+		setAward(result.data);
 	};
 
 	const handleInputChange = (e) => {
-		setaward({
+		setAward({
 			...award,
 			[e.target.name]: e.target.value,
 		});
 	};
-	const updateaward = async (e) => {
+	const updateAward = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/award/update/${id}`,
+			`http://localhost:8082/awards/update/${id}`,
 			award
 		);
-		navigate("/view-award");
+		navigate("/employee/awards");
 	};
 
 	return (
-		<div className="col-sm-8 py-2 px-5 offset-2 shadow">
-			<h2 className="mt-5"> Edit award</h2>
-			<form onSubmit={(e) => updateaward(e)}>
+		<div>
+		<Header />
+		<div className="dashboard-container">
+		  <SideBar />
+		  <div className="head-foot-part" style={{ padding: "0" }}>
+		  <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+			<h2 className="mt-5"> Edit Award</h2>
+			<form onSubmit={(e) => updateAward(e)}>
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="awardName">
-						award Name
+						htmlFor="employeeName">
+						Employee Name
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="awardName"
-						id="awardName"
+						name="employeeName"
+						id="employeeName"
 						required
-						value={awardName}
+						value={award.employeeName}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -78,50 +79,16 @@ const Editaward = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="awardType">
-						award Type
+						htmlFor="awardBy">
+						Award By
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="awardType"
-						id="awardType"
+						name="awardBy"
+						id="awardBy"
 						required
-						value={awardType}	
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="email">
-						Your Email
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="email"
-						name="email"
-						id="email"
-						required
-						value={email}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="website">
-						Website
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="text"
-						name="website"
-						id="website"
-						required
-						value={website}
+						value={award.awardBy}	
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -131,22 +98,26 @@ const Editaward = () => {
 						<button
 							type="submit"
 							className="btn btn-outline-success btn-lg">
-							Save
+							Update
 						</button>
 					</div>
 
 					<div className="col-sm-2">
 						<Link
-							to={"/view-award"}
+							to={"/employee/awards"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
-							Cancel
+							Back
 						</Link>
 					</div>
 				</div>
 			</form>
 		</div>
+		</div>
+		</div>
+	  </div>
+	
 	);
 };
 
-export default Editaward;
+export default EditAward;

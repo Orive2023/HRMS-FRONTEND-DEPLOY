@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react'
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { FormControl, MenuItem, Select,InputLabel } from "@mui/material";
 
 import * as api from "./api"
-import { useNavigate,useState } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import StateResignation from './StateResignation';
 
 
-const ResignationForm = () => {
+const ResignationForm = ({setFormVisible,setToggle,formData,setFormData}) => {
 
     const navigate = useNavigate()
 
 
-    const {formData,setFormData,formVisible,formErrors,setFormerrors,open, setOpen,setFormVisible,toggle,setToggle,resignation, setResignation, formControl,setFormControl,recDelete,setRecDelete
-
+    const {setOpen, setResignation
     } = StateResignation()
+
     const loadResignation = async () => {
         const result = await api.loadResignation()
         setResignation(result);
@@ -48,8 +47,6 @@ const ResignationForm = () => {
         setOpen(false);
       };
     
-      
-      
       const handleInputChange = (e) => {
         const { name, value } = e.target; // Destructure name and value from the event target
         setFormData({
@@ -57,6 +54,7 @@ const ResignationForm = () => {
           [name]: value,
         });
       };
+
       const handleSubmit = (e) => {
         // Handle form submission logic here
         console.log("Form submitted:", formData);
@@ -65,7 +63,22 @@ const ResignationForm = () => {
     
         // Add your validation logic here
       
-    
+        const cancelButton = ()=>
+        {
+          setFormVisible(false);
+          setToggle(false);
+          setFormData({
+           employeeName: "",
+           resignationDate: "",
+           noticeDate: "",
+           resignationReason: "",
+            });
+          };
+          let buttonClick = formData.employeeName.length>0 &&
+          formData.resignationDate.length>0 &&
+          formData.noticeDate.length>0 &&
+          formData.resignationReason.length>0;
+      
     
       
   
@@ -73,6 +86,7 @@ const ResignationForm = () => {
     
   return (
     <form onSubmit={handleSubmit}>
+      <div style={{ display: "flex" }}>
     <TextField
       margin="dense"
       label="employee name"
@@ -85,7 +99,6 @@ const ResignationForm = () => {
       required
     />
 
-    <div style={{ display: "flex" }}>
       <TextField
         margin="dense"
         label="Notice Date"
@@ -101,7 +114,8 @@ const ResignationForm = () => {
           shrink: true,
         }}
       />
-
+      </div>
+ <div style={{ display: "flex" }}>
       <TextField
         margin="dense"
         label="Resignation Date"
@@ -117,8 +131,7 @@ const ResignationForm = () => {
           shrink: true,
         }}
       />
-    </div>
-    <TextField
+      <TextField
       margin="dense"
       label="Resignation reason"
       type="text"
@@ -130,35 +143,26 @@ const ResignationForm = () => {
       required
       style={{ marginBottom: "8px" }}
     />
-   
-      <Button
-        type="submit"
-        onClick={saveResignation}
-        style={{
-          background: "linear-gradient(to right, #1cb5e0, #000046)",
-          height: "35px",
-          width: "49%",
-          color: "white",
-          margin: "0 5px",
-        }}
-        variant="outlined"
-      >
-        Submit
-      </Button>
-      <Button
-        onClick={handleClose}
-        style={{
-          background: "linear-gradient(to left, #1cb5e0, #000046)",
-          height: "35px",
-          width: "49%",
-          color: "white",
-          margin: "0 5px",
-        }}
-        variant="outlined"
-      >
-        Cancel
-      </Button>
+    </div>
     
+   <div className="data-buttons">
+        <Button
+          id="input-btn"
+          variant="outlined"
+          type="submit"
+          onClick={saveResignation}
+          disabled={buttonClick? false : true}
+        >
+          Submit
+        </Button>
+        <Button
+          id="input-btn"
+          variant="outlined"
+          onClick={cancelButton}
+        >
+          Cancel
+        </Button>
+      </div>
   </form>
                     
   )

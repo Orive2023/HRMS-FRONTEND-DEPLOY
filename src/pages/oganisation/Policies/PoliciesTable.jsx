@@ -14,7 +14,8 @@ const PoliciesTable = ({policies,setRecDelete}) => {
                   <th>Company name</th>
                   <th>Title</th>
                   <th>Description</th>
-                  <th>Status</th>
+                  <th colSpan="3">Actions</th>
+
                 </tr>
               </thead>
 
@@ -27,7 +28,7 @@ const PoliciesTable = ({policies,setRecDelete}) => {
                     <td>{policies.companyName}</td>
                     <td>{policies.title}</td>
                     <td>{policies.description}</td>
-                    <td>{policies.status}</td>
+                   
                     <td className="mx-2">
                       <Link
                         to={`/organisation/policies-profile/${policies.policiesId}`}

@@ -9,14 +9,13 @@ import { useNavigate } from "react-router-dom";
 import StateCompany from "./StateCompany";
 
 
-const CompanyForm = ({ formData, setFormData }) => {
+const CompanyForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
   const navigate = useNavigate();
 
   const {
     file,
     setFile,
-    dateError,
-    setFormVisible,
+    dateError,   
     errorMsg,
     isValidCIN,
     addressError,
@@ -262,6 +261,47 @@ const CompanyForm = ({ formData, setFormData }) => {
   });
   };
 
+  let buttonCheck =
+  formData.companyName.length > 0 &&
+  formData.companyType.length > 0 &&
+  formData.legalOrTradingName.length > 0 &&
+  formData.address.length > 0 &&
+  formData.registrationNumber.length > 0 &&
+  formData.contactNumber.length > 0 &&
+  formData.email.length > 0 &&
+  formData.website.length > 0 &&
+  formData.city.length > 0 &&
+  formData.state.length > 0 &&
+  formData.zipCode.length > 0 &&
+  formData.country.length > 0 &&
+  formData.cin.length > 0 &&
+  formData.gst.length > 0 &&
+  formData.uan.length > 0 &&
+  formData.createdDate.length > 0;
+
+  const cancelButton = () => {
+    setFormVisible(false);
+    setToggle(false);
+    setFormData({
+      companyName: "",
+      companyType: "",
+      legalOrTradingName: "",
+      address: "",
+      registrationNumber: "",
+      contactNumber: " ",
+      email: "",
+      website: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      country: "",
+      cin: "",
+      gst: "",
+      uan: "",
+      createdDate: "",
+    });
+  };  
+
   const handleSubmit = (e) => {
   loadCompany()
     console.log("Form submitted:", formData);
@@ -335,8 +375,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.address}
           onChange={(e) => handleInputChange(e)}
           required
-          error={addressError !== ""}
-          helperText={addressError}
+          // error={addressError !== ""}
+          // helperText={addressError}
         />
         <TextField
           margin="dense"
@@ -360,8 +400,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.cin}
           onChange={(e) => handleInputChange(e)}
           required
-          error={!isValidCIN}
-          helperText={!isValidCIN && "Please enter a valid CIN number."}
+          // error={!isValidCIN}
+          // helperText={!isValidCIN && "Please enter a valid CIN number."}
         />
       </div>
 
@@ -376,10 +416,10 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.email}
           onChange={(e) => handleInputChange(e)}
           required
-          error={!isEmailValid}
-          helperText={
-            !isEmailValid ? "Please enter a valid email address." : ""
-          }
+          // error={!isEmailValid}
+          // helperText={
+          //   !isEmailValid ? "Please enter a valid email address." : ""
+          // }
         />
         <TextField
           margin="dense"
@@ -391,8 +431,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.contactNumber}
           onChange={(e) => handleInputChange(e)}
           required
-          error={phoneError}
-          helperText={phoneError ? "Invalid phone number" : ""}
+          // error={phoneError}
+          // helperText={phoneError ? "Invalid phone number" : ""}
         />
         <TextField
           margin="dense"
@@ -404,8 +444,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.website}
           onChange={(e) => handleInputChange(e)}
           required
-          error={websiteError}
-          helperText={websiteError && "Please enter a valid website URL."}
+          // error={websiteError}
+          // helperText={websiteError && "Please enter a valid website URL."}
         />
       </div>
       <div className="data-input-fields">
@@ -419,8 +459,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.gst}
           onChange={(e) => handleInputChange(e)}
           required
-          error={!isValidGSTNumber}
-          helperText={!isValidGSTNumber && "Please enter a valid GST number."}
+          // error={!isValidGSTNumber}
+          // helperText={!isValidGSTNumber && "Please enter a valid GST number."}
         />
 
         <TextField
@@ -433,8 +473,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.uan}
           onChange={(e) => handleInputChange(e)}
           required
-          error={!isValidUANNumber}
-          helperText={!isValidUANNumber && "Please enter a valid UAN number."}
+          // error={!isValidUANNumber}
+          // helperText={!isValidUANNumber && "Please enter a valid UAN number."}
         />
       </div>
 
@@ -483,8 +523,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.zipCode}
           onChange={(e) => handleInputChange(e)}
           required
-          error={errorCode !== ""}
-          helperText={errorCode}
+          // error={errorCode !== ""}
+          // helperText={errorCode}
         />
       </div>
 
@@ -499,8 +539,8 @@ const CompanyForm = ({ formData, setFormData }) => {
           value={formData.createdDate}
           onChange={(e) => handleInputChange(e)}
           required
-          error={dateError}
-          helperText={dateError && "Please select the current date"}
+          // error={dateError}
+          // helperText={dateError && "Please select the current date"}
           InputLabelProps={{
             shrink: true,
           }}
@@ -522,18 +562,19 @@ const CompanyForm = ({ formData, setFormData }) => {
       </div>
       <div className="data-buttons">
         <Button
-          id="input-btn"
+          id="input-btn-submit"
           className="submit"
           type="submit"
           onClick={(e) => saveCompany(e)}
           variant="outlined"
+          disabled={buttonCheck?false:true}
         >
           Submit
         </Button>
         <Button
-          id="input-btn"
+          id="input-btn-cancel"
           className="cancel"
-          onClick={() => setFormVisible(false)}
+          onClick={cancelButton}
           variant="outlined"
         >
           Cancel

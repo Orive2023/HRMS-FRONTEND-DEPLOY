@@ -16,17 +16,10 @@ const EditWarning = () => {
 	const { id } = useParams();
 
 	const [warning, setwarning] = useState({
-		warningName: "",
-		warningType: "",
-		email: "",
-		website: "",
+		warningToEmployee: "",
+		warningByEmployee: "",
+		
 	});
-	const {
-		warningName,
-		warningType,
-		email,
-		website,
-	} = warning;
 
 	useEffect(() => {
 		loadwarning();
@@ -34,7 +27,7 @@ const EditWarning = () => {
 
 	const loadwarning = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/warning/get/${id}`
+			`http://localhost:8082/warnings/get/${id}`
 		);
 		setwarning(result.data);
 	};
@@ -48,10 +41,10 @@ const EditWarning = () => {
 	const updatewarning = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/warning/update/${id}`,
+			`http://localhost:8082/warnings/update/${id}`,
 			warning
 		);
-		navigate("/view-warning");
+		navigate("/employee/warning");
 	};
 
 	return (
@@ -61,16 +54,16 @@ const EditWarning = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="warningName">
-						warning Name
+						htmlFor="warningToEmployee">
+						warning To Employee
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="warningName"
-						id="warningName"
+						name="warningToEmployee"
+						id="warningToEmployee"
 						required
-						value={warningName}
+						value={warning.warningToEmployee}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -78,54 +71,19 @@ const EditWarning = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="warningType">
-						warning Type
+						htmlFor="warningByEmployee">
+						Warning By Employee
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="warningType"
-						id="warningType"
+						name="warningByEmployee"
+						id="warningByEmployee"
 						required
-						value={warningType}	
+						value={warning.warningByEmployee}	
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="email">
-						Your Email
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="email"
-						name="email"
-						id="email"
-						required
-						value={email}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="website">
-						Website
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="text"
-						name="website"
-						id="website"
-						required
-						value={website}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
 				<div className="row mb-5">
 					<div className="col-sm-2">
 						<button
@@ -137,7 +95,7 @@ const EditWarning = () => {
 
 					<div className="col-sm-2">
 						<Link
-							to={"/view-warning"}
+							to={"/employee/warning"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
 							Cancel

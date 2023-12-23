@@ -18,7 +18,7 @@ const AnnouncementTable = ({announcements,setRecDelete}) => {
                   <th>Department Name</th>
                   <th>Company Name</th>
                   <th>Date</th>
-                  <th>Status</th>
+                  <th>Description</th>
                   <th colSpan="3">Actions</th>
                 </tr>
               </thead>
@@ -35,6 +35,7 @@ const AnnouncementTable = ({announcements,setRecDelete}) => {
                     <td>{announcements.departmentName}</td>
                     <td>{announcements.companyName}</td>
                     <td>{announcements.createdDate}</td>
+                    <td>{announcements.description}</td>
                     <td>{}</td>
 
                     <td className="mx-2">

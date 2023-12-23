@@ -28,7 +28,7 @@ const WarningTable = ({warning,setRecDelete}) => {
         </thead>
 
         <tbody className="text-center">
-        {warning.map((warning, index) => (
+        {warning.map((warning,index) => (
                       <tr key={warning.id}>
                         <td>{warning.warningsId}</td>
                         <td>{warning.warningToEmployee}</td>
@@ -39,7 +39,7 @@ const WarningTable = ({warning,setRecDelete}) => {
                         <td>{warning.description}</td>
                         <td className="mx-2">
                           <Link
-                            to={`/organisation/company-profile/${warning.warningsId}`}
+                            to={`/employee/warning-profile/${warning.warningsId}`}
                             className="btn btn-info"
                           >
                             <FaEye />
@@ -47,7 +47,7 @@ const WarningTable = ({warning,setRecDelete}) => {
                         </td>
                         <td className="mx-2">
                           <Link
-                            to={`/organisation/edit-company/${warning.warningsId}`}
+                            to={`/employee/edit-warning/${warning.warningsId}`}
                             className="btn btn-warning"
                           >
                             <FaEdit />

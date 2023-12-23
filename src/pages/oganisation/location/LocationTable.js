@@ -21,7 +21,7 @@ const LocationTable = ({location,setRecDelete}) => {
                   <th>Address</th>
                   <th>Fax Number</th>
                   <th>Phone Number</th>
-                  <th>Status</th>
+                  
 
                   <th colSpan="3">Action</th>
                 </tr>
@@ -40,7 +40,7 @@ const LocationTable = ({location,setRecDelete}) => {
                     <td>{item.address}</td>
                     <td>{item.faxNumber}</td>
                     <td>{item.phone}</td>
-                    <td>{item.status}</td>
+                   
 
                     <td className="mx-2">
                       <Link

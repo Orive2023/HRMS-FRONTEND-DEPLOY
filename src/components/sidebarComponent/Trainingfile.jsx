@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TrainingLogo from "../../asset/24px/Training.png";
 
 const Trainingfile = () => {
   const [trainDropdown, setTrainDropdown] = useState("org-dropdown");
@@ -14,13 +15,15 @@ const Trainingfile = () => {
   const navigation = useNavigate();
   return (
     <div>
-      <p id="dropdown" onClick={handleTrainclick}>
-        Training<i className="fa-solid fa-caret-down"></i>
-      </p>
-      <div className={trainDropdown}>
-        <p onClick={() => navigation("/trainer")}>
-          Trainer List
+      <div className="logo-text-p" onClick={handleTrainclick}>
+      <span></span>
+        <img src={TrainingLogo} alt="Training" />
+        <p id="dropdown">
+          Training<i class='bx bx-chevron-down'></i>
         </p>
+      </div>
+      <div className={trainDropdown}>
+        <p onClick={() => navigation("/trainer")}>Trainer List</p>
       </div>
     </div>
   );

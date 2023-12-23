@@ -16,17 +16,12 @@ const EditTravel = () => {
 	const { id } = useParams();
 
 	const [travel, settravel] = useState({
-		travelName: "",
-		travelType: "",
-		email: "",
-		website: "",
+		employeeName: "",
+		startDate: "",
+		endDate: "",
+		placeOfVisit: "",
 	});
-	const {
-		travelName,
-		travelType,
-		email,
-		website,
-	} = travel;
+
 
 	useEffect(() => {
 		loadtravel();
@@ -34,7 +29,7 @@ const EditTravel = () => {
 
 	const loadtravel = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/travel/get/${id}`
+			`http://localhost:8082/travels/get/${id}`
 		);
 		settravel(result.data);
 	};
@@ -48,7 +43,7 @@ const EditTravel = () => {
 	const updatetravel = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/travel/update/${id}`,
+			`http://localhost:8082/travels/update/${id}`,
 			travel
 		);
 		navigate("/view-travel");
@@ -61,16 +56,16 @@ const EditTravel = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="travelName">
-						travel Name
+						htmlFor="employeeName">
+						Employee Name
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="travelName"
-						id="travelName"
+						name="employeeName"
+						id="employeeName"
 						required
-						value={travelName}
+						value={travel.employeeName}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -78,16 +73,16 @@ const EditTravel = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="travelType">
-						travel Type
+						htmlFor="startDate">
+						Start Date
 					</label>
 					<input
 						className="form-control col-sm-6"
-						type="text"
-						name="travelType"
-						id="travelType"
+						type="data"
+						name="startDate"
+						id="startDate"
 						required
-						value={travelType}	
+						value={travel.startDate}	
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -95,16 +90,16 @@ const EditTravel = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="email">
-						Your Email
+						htmlFor="endDate">
+						End Date
 					</label>
 					<input
 						className="form-control col-sm-6"
-						type="email"
-						name="email"
-						id="email"
+						type="endDate"
+						name="endDate"
+						id="endDate"
 						required
-						value={email}
+						value={travel.endDate}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -112,16 +107,16 @@ const EditTravel = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="website">
-						Website
+						htmlFor="placeOfVisit">
+						Place Of Visit
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="website"
-						id="website"
+						name="placeOfVisit"
+						id="placeOfVisit"
 						required
-						value={website}
+						value={travel.placeOfVisit}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -137,7 +132,7 @@ const EditTravel = () => {
 
 					<div className="col-sm-2">
 						<Link
-							to={"/view-travel"}
+							to={"/employee/travel"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
 							Cancel

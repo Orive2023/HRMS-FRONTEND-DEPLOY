@@ -27,22 +27,21 @@ const TransferTable= ({transfer,setRecDelete}) => {
         <tbody className="text-center">
           {transfer && transfer.map((transfer, index) => (
               <tr key={index}>
-               
                 <td>{transfer.employeeName}</td>
                 <td>{transfer.transferDate}</td>
                 <td>{transfer.departmentName}</td>
                 <td>{transfer.locationName}</td>
-                <td className="mx-2">
+                {/* <td className="mx-2">
                   <Link
                     to={`/transfer-profile/${transfer.transferId}`}
                     className="btn btn-info"
                   >
                     <FaEye />
                   </Link>
-                </td>
+                </td> */}
                 <td className="mx-2">
                   <Link
-                    to={`/edit-transfer/${transfer.transferId}`}
+                    to={`/employee/edit-transfer/${transfer.transferId}`}
                     className="btn btn-warning"
                   >
                     <FaEdit />

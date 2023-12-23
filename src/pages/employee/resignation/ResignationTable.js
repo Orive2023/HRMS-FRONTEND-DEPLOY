@@ -41,17 +41,17 @@ const  ResignationTable= ({resignation,setRecDelete}) => {
             <td>{resignation.resignationReason}</td>
             <td>{resignation.status}</td>
 
-            <td className="mx-2">
+            {/* <td className="mx-2">
               <Link
                 to={`/resignation-profile/${resignation.resignationId}`}
                 className="btn btn-info"
               >
                 <FaEye />
               </Link>
-            </td>
+            </td> */}
             <td className="mx-2">
               <Link
-                to={`/edit-resignation/${resignation.resignationId}`}
+                to={`/employee/edit-resignation/${resignation.resignationId}`}
                 className="btn btn-warning"
               >
                 <FaEdit />

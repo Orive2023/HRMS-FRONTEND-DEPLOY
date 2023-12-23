@@ -12,6 +12,7 @@ const StateTrainer = () => {
     const [open, setOpen] = useState(false);
     const [recDelete,setRecDelete]=useState("");
     const [errorMsg,setErrorMsg] = useState("")
+    const [ errorMsgClient,setErrorMsgClient] = useState("")
     const [emailError, setEmailError] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -34,7 +35,7 @@ const StateTrainer = () => {
     
       });
     return {
-        phoneNumber, setPhoneNumber, phoneNumberError, setPhoneNumberError, email, setEmail,emailError, setEmailError, errorMsg,setErrorMsg,formVisible, setFormVisible, toggle, setToggle,overallTrainerRating, setOverallTrainerRating,uploadCertificate, setUploadCertificate,formControl,setFormControl,formData,setFormData,trainer, setTrainer,search, setSearch,open, setOpen,recDelete,setRecDelete
+        phoneNumber, setPhoneNumber, phoneNumberError, errorMsgClient,setErrorMsgClient,setPhoneNumberError, email, setEmail,emailError, setEmailError, errorMsg,setErrorMsg,formVisible, setFormVisible, toggle, setToggle,overallTrainerRating, setOverallTrainerRating,uploadCertificate, setUploadCertificate,formControl,setFormControl,formData,setFormData,trainer, setTrainer,search, setSearch,open, setOpen,recDelete,setRecDelete
  
     }
 }

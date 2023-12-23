@@ -20,7 +20,7 @@ const ProjectView = () => {
 
   const handleButtonClick = () => {
     setFormVisible((prev) => !prev);
-  };
+  }; 
 
   useEffect(() => {
     loadProject();
@@ -70,8 +70,7 @@ const ProjectView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", margin: "10px 0" }}
-                >
+                  id="add-btn"                 >
                   {toggle ? (
                     <div companyName="hide">
                       <BiSolidHide style={{ fontSize: "14px", marginRight: "3px" }} />
@@ -90,16 +89,15 @@ const ProjectView = () => {
               <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                  className="form-header"
                   >
                     PROJECT FORM
                   </h3>
                   <DialogContent>
-                    <ProjectForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
+                    <ProjectForm   formData={formData}
+                      setFormData={setFormData}
+                      setFormVisible={setFormVisible}
+                      setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

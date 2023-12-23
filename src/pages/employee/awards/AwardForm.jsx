@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-
 import * as api from "./api";
 import { useNavigate } from "react-router-dom";
 import StateAward from "./StateAward";
 
-const AwardForm = ({ formData, setFormData }) => {
+const AwardForm = ({ formData, setFormData, setOpen }) => {
   const navigate = useNavigate();
 
   const {
@@ -16,13 +14,11 @@ const AwardForm = ({ formData, setFormData }) => {
     setErrorGiftName,
     setAwardName,
     setEmployeeName,
-    
     setAward,
-   
     setDateError,
     setLocation,
     setCompany,
-    setFormVisible,
+   
     
     setClientName,
     setProjectManager,
@@ -73,7 +69,9 @@ const AwardForm = ({ formData, setFormData }) => {
       [name]: value,
     });
   };
-
+  const handleClose =() =>{
+    setOpen(false);
+  };
   const handleGiftChange = (e) => {
     const valueGift = e.target.value;
     if (valueGift.length < 2 || valueGift.length > 50) {
@@ -152,8 +150,10 @@ const AwardForm = ({ formData, setFormData }) => {
     setAwardName(e.target.value);
   };
 
+  
   const handleSubmit = (e) => {
-    loadAward();
+    
+    handleClose();
   };
 
   const fetchCompany = async () => {
@@ -165,6 +165,7 @@ const AwardForm = ({ formData, setFormData }) => {
     const locationData = await api.fetchLocations();
     setLocation(locationData);
   };
+
 
   const handleProjChange = (e) => {
     setProjectManager(e.target.value);
@@ -181,6 +182,27 @@ const AwardForm = ({ formData, setFormData }) => {
   const handleSumChange = (e) => {
     setSummary(e.target.value);
   };
+  const cancelButton = ()=>
+  {
+    setOpen(false);
+    setFormData({
+      awardName: "",
+      awardDescription: "",
+      giftItem: "",
+      date: "",
+      employeeName: "",
+      awardBy: "",
+      });
+    };
+    
+    let buttonClick = formData.awardName.length>0 &&
+    formData.awardDescription.length>0 &&
+    formData.giftItem.length>0 &&
+    formData.date.length>0 &&
+    formData.employeeName.length>0 &&
+    formData.awardBy.length>0;
+
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
@@ -301,13 +323,14 @@ const AwardForm = ({ formData, setFormData }) => {
           variant="outlined"
           type="submit"
           onClick={saveAward}
+          disabled={buttonClick? false : true}
         >
           Submit
         </Button>
         <Button
           id="input-btn"
           variant="outlined"
-          onClick={() => setFormVisible(false)}
+          onClick={cancelButton}
         >
           Cancel
         </Button>

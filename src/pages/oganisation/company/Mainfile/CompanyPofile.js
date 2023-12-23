@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const CompanyPofile = () => {
   const { id } = useParams();
@@ -26,7 +27,10 @@ const CompanyPofile = () => {
 
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part" style={{ padding: "0" }}>

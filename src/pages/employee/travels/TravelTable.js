@@ -44,7 +44,7 @@ const TravelTable = ({travel,setRecDelete}) => {
                 </td>
                 <td className="mx-2">
                   <Link
-                    to={`/edit-travel/${travel.travelId}`}
+                    to={`/employee/edit-travel/${travel.travelId}`}
                     className="btn btn-warning"
                   >
                     <FaEdit />

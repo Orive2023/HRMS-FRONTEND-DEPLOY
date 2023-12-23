@@ -5,6 +5,8 @@ import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+
 
 import DialogContent from "@mui/material/DialogContent";
 
@@ -66,41 +68,41 @@ const PoliciesView = () => {
 
   return (
     <div>
-      <Header />
-      <div className="dashboard-container">
-        <SideBar />
-        <div className="head-foot-part">
-          <section>
-            <div
-              className="above-table"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <div>
-                <Button
-                  variant="outlined"
-                  onClick={handleOpen}
-                  style={{ height: "35px" }}
-                >
-                  <MdAdd style={{ fontSize: "14px", marginRight: "3px" }} />
-                  ADD POLICIES
-                </Button>
-              </div>
-            </div>
-            <PoliciesTable policies={policies} setRecDelete={setRecDelete}/>
+    <Header />
+    <div className="dashboard-container">
+      <SideBar />
+      <div className="head-foot-part">
+        <section>
+          <div
+            className="above-table"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <div>
-              <Dialog open={open} onClose={handleClose}>
-                <h3 style={{ textAlign: "center", marginTop: "30px" }}>
-                  POLICIES FORM
-                </h3>
-                <DialogContent>
-                 <Policiesform formData={formData} setFormData={setFormData}/>
-                </DialogContent>
-              </Dialog>
+              <Button
+                variant="outlined"
+                onClick={handleOpen}
+                id="add-btn"
+              >
+                <MdAdd/>
+                ADD POLICIES
+              </Button>
             </div>
-          </section>
-        </div>
+          </div>
+          <PoliciesTable policies={policies} setRecDelete={setRecDelete}/>
+          <div>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle id="form-header-popup">
+                Add Policies
+              </DialogTitle>
+              <DialogContent>
+               <Policiesform formData={formData} setFormData={setFormData} setOpen={setOpen}/>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </section>
       </div>
     </div>
+  </div>
   );
 };
 

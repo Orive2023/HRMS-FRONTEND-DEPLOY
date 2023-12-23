@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+
 //import Search from "../../common/Search";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
+
 import DialogContent from "@mui/material/DialogContent";
 // import DialogTitle from '@mui/material/DialogTitle';
-import TextField from "@mui/material/TextField";
+
 import { MdAdd } from "react-icons/md";
-import { IoMdHome } from "react-icons/io";
+
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 
@@ -21,28 +19,9 @@ import AwardForm from "../AwardForm";
 
 
 const AwardsView = () => {
-  // const [formVisible, setFormVisible] = useState(false);
-  // const [award, setAward] = useState([]);
-  // const [search, setSearch] = useState("");
-  // const [open, setOpen] = useState(false);
-  // let navigate = useNavigate();
-  // const [formData, setFormData] = useState({
-  //   employeeName: "",
-  //   awardName: "",
-  //   giftName: "",
-  //   cashPrice: "",
-  //   awardDate: "",
-  //   awardBy:"",
-  // });
 
-  const handleButtonClick = () => {
-    setFormVisible((prev) => !prev);
-  };
-
-  const { setRecDelete,recDelete,setFormVisible,award,setAward,open,setOpen,formData,setFormData } = StateAward();
-  // name: '',
-  // email: '',
-  // message: '',
+  const { setRecDelete,recDelete,award,setAward,open,setOpen,formData,setFormData } = StateAward();
+ 
 
   const handleOpen = () => {
     setOpen(true);
@@ -83,45 +62,33 @@ const AwardsView = () => {
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part" style={{ padding: "0" }}>
-          <section>
-            <p>
-              <IoMdHome style={{ fontSize: "25px", marginTop: "-8px" }} />{" "}
-              <span style={{ fontWeight: "600", fontSize: "18px" }}>/Employees/</span>
-              <span style={{ fontSize: "18px" }}>Award</span>
-            </p>
+        <section>
             <div
               className="above-table"
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              {/* <Search search={search} setSearch={setSearch} /> */}
-              <Button
-                variant="outlined"
-                onClick={handleOpen}
-                style={{ height: "35px" }}
-              >
-                <MdAdd style={{ fontSize: "14px", marginRight: "3px" }} />
-                Add awards
-              </Button>
+              <div>
+                <Button
+                  variant="outlined"
+                  onClick={handleOpen}
+                  style={{ height: "35px" }}
+                >
+                  <MdAdd style={{ fontSize: "14px", marginRight: "3px" }} />
+                  ADD AWARDS
+                </Button>
+              </div>
             </div>
-           
+            <AwardTable award={award} setRecDelete={setRecDelete}/>
             <div>
               <Dialog open={open} onClose={handleClose}>
-                {/* <DialogTitle>POLICY FORM</DialogTitle> */}
-                <h3
-                  style={{
-                    textAlign: "center",
-                    marginTop: "25px",
-                    fontWeight: "600",
-                  }}
-                >
-                  Awards
+                <h3 style={{ textAlign: "center", marginTop: "30px" }}>
+                  AWARD FORM
                 </h3>
                 <DialogContent>
-                  <AwardForm formData={formData} setFormData={setFormData}/>
+                 <AwardForm formData={formData} setFormData={setFormData} setOpen={setOpen}/>
                 </DialogContent>
               </Dialog>
             </div>
-            <AwardTable award={award} setRecDelete={setRecDelete}/>
           </section>
         </div>
       </div>

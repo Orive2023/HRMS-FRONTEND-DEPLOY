@@ -1,6 +1,16 @@
 import { useState } from 'react';
 
 const GrantLoanState = () => {
+
+  const [recDelete, setRecDelete] = useState(false);
+  const [formVisible, setFormVisible] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [loan, setLoan] = useState([]);
+  const [permittedByError, setPermittedByError] = useState('');
+  const [loanDetailsByError, setLoanDetailsByError] = useState('');
+  const [pay, setPay] = useState(0);
+  const [emiPay, setEmiPay] = useState(0);
+  const [emiClear, setEmiClear] = useState(0);
   const [formData, setFormData] = useState({
     employeeName: "",
     permittedBy: "",
@@ -14,15 +24,6 @@ const GrantLoanState = () => {
     installmentCleared: "",
   });
 
-  const [recDelete, setRecDelete] = useState(false);
-  const [formVisible, setFormVisible] = useState(false);
-  const [toggle, setToggle] = useState(false);
-  const [loan, setLoan] = useState([]);
-  const [permittedByError, setPermittedByError] = useState('');
-  const [loanDetailsByError, setLoanDetailsByError] = useState('');
-  const [pay, setPay] = useState(0);
-  const [emiPay, setEmiPay] = useState(0);
-  const [emiClear, setEmiClear] = useState(0);
 
   return {
     formData,

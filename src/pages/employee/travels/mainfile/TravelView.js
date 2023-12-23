@@ -255,7 +255,7 @@ const TravelView = () => {
 
 
                     </form> */}
-                    <TravelForm/>
+                    <TravelForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

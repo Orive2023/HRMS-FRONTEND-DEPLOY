@@ -1,10 +1,16 @@
+// 
+
+
 import React, {
 	useEffect,
 	useState,
 } from "react";
+import axios from "axios";
 
 import Header from "../../../../components/Header"
 import SideBar from "../../../../components/SideBar"
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 
 import * as api from "../api";
 import StateCompany from "../StateCompany";
@@ -53,21 +59,26 @@ const EditCompany = () => {
 			});
 		}
 	};
-	const updateCompany = async (e) => {
-		delete company["file"]
 	
-		await api.updateCompany(company,id)
-			navigation("/organisation/company")
-	};
+	const updateCompany = async (e) => {
+		e.preventDefault();
+		await axios.put(`http://localhost:8081/company/update/${id}`,
+		company);
+		navigation("/organisation/company");
+	  };
 
 	const handleSubmit = () => {
 		loadCompanyById()
 	}
 
 
+
 	return (
 		<div>
-		<Header />
+		 <div id="header-container" className="header-container">
+    <CompanyLogoFile />
+      <Header />
+    </div>
 		<div className="dashboard-container">
 		  <SideBar />
 		  <div className="head-foot-part" style={{ padding: "0" }}>

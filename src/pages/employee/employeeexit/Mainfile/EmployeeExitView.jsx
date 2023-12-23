@@ -15,22 +15,12 @@ import EmployeeExitForm from "../EmployeeExitForm";
 
 const EmployeeExitView = () => {
   const {
-    descriptionError,
-    setDescriptionError,
-    employee,
-    setEmployee,
-    formVisible,
-    setFormVisible,
     employeeExit,
     setEmployeeExit,
-    search,
-    setSearch,
     open,
     setOpen,
     recDelete,
     setRecDelete,
-    dateError,
-    setDateError,
     formData,
     setFormData,
   } = StateEmployeeExit();
@@ -64,8 +54,8 @@ const EmployeeExitView = () => {
     }
   });
 
-  console.log(employeeExit)
-  console.log(formData)
+  console.log(employeeExit);
+  console.log(formData);
 
   return (
     <div>
@@ -91,7 +81,10 @@ const EmployeeExitView = () => {
                 EMPLOYEE EXIT
               </h3>
               <DialogContent>
-                <EmployeeExitForm formData={formData} setFormData={setFormData}/>
+                <EmployeeExitForm
+                  formData={formData}
+                  setFormData={setFormData}
+                />
               </DialogContent>
             </Dialog>
             <EmployeeExitTable

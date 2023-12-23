@@ -4,6 +4,7 @@ import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
 
 const EmployeeExitTable = ({ employeeExit, setRecDelete }) => {
   const handleDelete = (id) => {
+    console.log(id)
     setRecDelete(id);
   };
 
@@ -19,7 +20,7 @@ const EmployeeExitTable = ({ employeeExit, setRecDelete }) => {
             <th>Exit date</th>
             <th>Type of Exit</th>
             <th>Exit interview</th>
-            <th>Inactivate Employee Amount</th>
+            <th>Inactivate Employee Account</th>
             <th>Description</th>
             <th colSpan="3">Actions</th>
           </tr>
@@ -38,17 +39,17 @@ const EmployeeExitTable = ({ employeeExit, setRecDelete }) => {
                 <td>{employeeExit.exitInterview}</td>
                 <td>{employeeExit.inactivateEmployeeAccount}</td>
                 <td>{employeeExit.description}</td>
-                <td className="mx-2">
+                {/* <td className="mx-2">
                   <Link
                     to={`/employeeExit-profile/${employeeExit.employeeExitId}`}
                     className="btn btn-info"
                   >
                     <FaEye />
                   </Link>
-                </td>
+                </td> */}
                 <td className="mx-2">
                   <Link
-                    to={`/edit-employeeExit/${employeeExit.employeeExitId}`}
+                    to={`/employee/edit-employee-exit/${employeeExit.employeeExitId}`}
                     className="btn btn-warning"
                   >
                     <FaEdit />

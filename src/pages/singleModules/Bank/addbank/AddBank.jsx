@@ -81,69 +81,67 @@ const AddBankView = () => {
 
   return (
     <div>
-      <Header />
-      <div className="dashboard-container">
-        <SideBar />
-        <div
-          className="head-foot-part"
-          style={{ padding: "0", marginTop: "10px" }}
-        >
-          <section>
-            <div
-              className="above-table"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <div>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    setToggle(!toggle);
-                    handleButtonClick();
-                  }}
-                  style={{ height: "35px", marginBottom: "10px" }}
-                >
-                  {toggle ? (
-                    <div className="hide">
-                      <BiSolidHide />
-                      HIDE
-                    </div>
-                  ) : (
-                    <div className="add">
-                      <MdAdd />
-                      ADD BANK
-                    </div>
-                  )}
-                </Button>
-              </div>
-            </div>
-
-            <Collapse in={formVisible}>
-              <Card
+    <Header />
+    <div className="dashboard-container">
+      <SideBar />
+      <div
+        className="head-foot-part"
+        style={{ padding: "0", marginTop: "10px" }}
+      >
+        <section>
+          <div
+            className="above-table"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <div>
+              <Button
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
-              >
-                <div style={{ marginTop: "20px" }}>
-                  <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    ADD BANK FORM
-                  </h3>
-                  <DialogContent>
-                    <BankForm setFormVisible={setFormVisible} setToggle={setToggle}/>
-                  </DialogContent>
-                </div>
-              </Card>
-            </Collapse>
-            <BankTable addbank={addbank} setRecDelete={setRecDelete} />
-            <br />
-          </section>
-        </div>
+                onClick={() => {
+                  setToggle(!toggle);
+                  handleButtonClick();
+                }}
+                id="add-btn"                 >
+                {toggle ? (
+                  <div className="hide">
+                    <BiSolidHide />
+                    HIDE
+                  </div>
+                ) : (
+                  <div className="add">
+                    <MdAdd />
+                    ADD BANK
+                  </div>
+                )}
+              </Button>
+            </div>
+          </div>
+
+          <Collapse in={formVisible}>
+            <Card
+              variant="outlined"
+              
+            >
+              <div style={{ marginTop: "20px" }}>
+                <h3
+                className="form-header"
+>
+                  ADD BANK FORM
+                </h3>
+                <DialogContent>
+                  <BankForm  formData={formData}
+                      setFormData={setFormData}
+                      setFormVisible={setFormVisible}
+                      setToggle={setToggle}/>
+                </DialogContent>
+              </div>
+            </Card>
+          </Collapse>
+          <BankTable addbank={addbank} setRecDelete={setRecDelete} />
+          <br />
+        </section>
       </div>
     </div>
+  </div>
   );
 };
 

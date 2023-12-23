@@ -7,11 +7,11 @@ import { useNavigate} from 'react-router-dom';
 import StateWarning from './StateWarning';
 
 
-const WarningForm = () => {
+const WarningForm = ({formData,setFormData, setFormVisible, setToggle}) => {
   const navigate = useNavigate()
 
     const {
-      setWarning,formData, setFormVisible,setFormData, setDateError, warningError, subjectError, descriptionError
+      setWarning,setDateError, warningError, subjectError, descriptionError
 
    } = StateWarning();
     const loadWarning = async () => {
@@ -67,7 +67,21 @@ const WarningForm = () => {
      
         api.loadWarning();
       }
+      const cancelButton =() => {
+        setFormVisible(false)
+        setToggle(false)
+        setFormData({warningId: "",
+        warningToEmployee: "",
+        warningType: "",
+        subject: "",
+        warningByEmployee: "",
+        warningDate: "",
+        description: "",})
+      }
 
+      let buttonClick = formData.warningId.length>0 && 
+                        formData.warningToEmployee.length>0 && formData.warningType.length>0 && 
+                        formData.subject.length>0 && formData.warningByEmployee.length>0 && formData.warningDate.length>0 && formData.description.length>0
   return (
     <form onSubmit={handleSubmit}>
               <div className="data-input-fields">
@@ -183,14 +197,14 @@ const WarningForm = () => {
               <Button id="input-btn"
                   type="submit"
                   onClick={saveWarning}
-                 
+                  disabled={buttonClick? false: true}
                   variant="outlined"
                 >
                   Submit
                 </Button>
                 <Button id="input-btn"
-                   onClick={() => setFormVisible(false)}
-                  variant="outlined"
+                variant="outlined"
+                onClick={cancelButton}  
                 >
                   Cancel
                 </Button>

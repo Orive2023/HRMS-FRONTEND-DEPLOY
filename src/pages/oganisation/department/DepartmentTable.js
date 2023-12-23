@@ -23,7 +23,9 @@ const DepartmentTable = ({department,setRecDelete}) => {
                   <th>Company</th>
                   <th>Location</th>
                   <th>Department Head</th>
-                  <th>Status</th>
+                  <th colSpan="3">Actions</th>
+
+                 
                 </tr>
               </thead>
 
@@ -39,7 +41,6 @@ const DepartmentTable = ({department,setRecDelete}) => {
                       <td>{department.companyName}</td>
                       <td>{department.locationName}</td>
                       <td>{department.departmentHead}</td>
-                      <td>{department.status}</td>
                       <td className="mx-2">
                        
                           <FaEye onClick={() => handleProfile(department.departmentId)}/>

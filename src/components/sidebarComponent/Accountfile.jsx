@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AccountLogo from "../../asset/24px/Account.png"
 
 const Accountfile = () => {
 
@@ -16,9 +17,13 @@ const Accountfile = () => {
   const navigation = useNavigate()
   return (
     <div>
-         <p id="dropdown" onClick={handleAccountclick}>
-          Account<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handleAccountclick}>
+    <span></span>
+         <img src={AccountLogo} alt="Account"/>
+         <p id="dropdown">
+          Account<i class='bx bx-chevron-down'></i>
         </p>
+    </div>
         <div className={accountDropdown}>
           <p onClick={() => navigation("/account/account-balance")}>Account Balance</p>
           <p onClick={() => navigation("/account/account-list")}>Account List</p>

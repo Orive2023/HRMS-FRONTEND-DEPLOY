@@ -1,12 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import TicketLogo from "../../asset/24px/ticket.png";
 
 const TicketsFile = () => {
-    const navigation = useNavigate()
+  const navigation = useNavigate();
   return (
-    <div> <p onClick={() => navigation("/ticket")}>Tickets</p></div>
-  )
-}
+    <div>
+      <div className="logo-text-p" onClick={() => navigation("/ticket")}>
+      <span></span>
+        <img src={TicketLogo} alt="Ticket" />
+        <p>Tickets</p>
+      </div>
+    </div>
+  );
+};
 
-export default TicketsFile
+export default TicketsFile;

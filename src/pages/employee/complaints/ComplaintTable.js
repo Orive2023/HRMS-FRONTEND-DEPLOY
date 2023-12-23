@@ -16,10 +16,12 @@ const ComplaintTable = ({complaint,setRecDelete}) => {
        <table className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">
-            <th>Complaints ID</th>
-            <th>complaint title</th>
-            <th>complaint date</th>
-            <th>description</th>
+            <th>S No</th>
+            <th>Complaint Title</th>
+            <th>Complaint From</th>
+            <th>Complaint Date</th>
+            <th>Complaint Against</th>
+            <th>Description</th>
             <th colSpan="3">Actions</th>
           </tr>
         </thead>
@@ -33,12 +35,14 @@ const ComplaintTable = ({complaint,setRecDelete}) => {
                   {index + 1}
                 </th>
                 <td>{complaint.complaintTitle}</td>
+                <td>{complaint.complaintFrom}</td>
                 <td>{complaint.complaintDate}</td>
+                <td>{complaint.complaintAgainst}</td>
                 <td>{complaint.description}</td>
                
                 <td className="mx-2">
                   <Link
-                    to={`/edit-complaint/${complaint.complaintsId}`}
+                    to={`/employee/edit-complaint/${complaint.complaintsId}`}
                     className="btn btn-warning"
                   >
                     <FaEdit />

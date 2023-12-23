@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BankLogo from "../../asset/24px/Bank.png"
 
 const Bankfile = () => {
     const [bankDropdown, setBankDropdown] = useState("org-dropdown");
@@ -14,9 +15,13 @@ const Bankfile = () => {
       const navigation = useNavigate()
   return (
     <div>
-      <p id="dropdown" onClick={handleBankclick}>
-        Bank<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handleBankclick}>
+    <span></span>
+      <img src={BankLogo} alt="Bank"/>
+      <p id="dropdown">
+        Bank<i class='bx bx-chevron-down'></i>
       </p>
+    </div>
       <div className={bankDropdown}>
         <p onClick={() => navigation("/bank/add-bank")}>Add Banks</p>
       </div>

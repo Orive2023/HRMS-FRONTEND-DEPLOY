@@ -6,19 +6,11 @@ import * as api from "./api";
 import { useNavigate, useState } from "react-router-dom";
 import StateTravel from "./StateTravel";
 
-const TravelForm = () => {
-  const getCurrentDate = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = `${now.getMonth() + 1}`.padStart(2, "0");
-    const day = `${now.getDate()}`.padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
-
+const TravelForm = ({formData,setFormData, setFormVisible, setToggle}) => {
+  
   const navigate = useNavigate();
 
   const {
-    formData,
     description,
     setDescription,
     descriptionError,
@@ -26,15 +18,11 @@ const TravelForm = () => {
     setEmployee,
     employee,
     setEmployeeName,
-    setFormData,
     setErrorMsg,
     errorMsg,
     travel,
     setTravel,
-    formVisible,
-    setFormVisible,
     toggle,
-    setToggle,
     purposeOfVisit,
     setPurposeOfVisit,
     placeOfVisit,
@@ -126,6 +114,14 @@ const TravelForm = () => {
     loadTravel();
     fetchEmployee();
   }, []);
+  const getCurrentDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = `${now.getMonth() + 1}`.padStart(2, "0");
+    const day = `${now.getDate()}`.padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
 
   const saveTravel = async () => {
     await api.saveTravel(formData);
@@ -218,6 +214,29 @@ const TravelForm = () => {
       label: "Other Arrangement",
     },
   ];
+  const cancelButton =() => {
+    setFormVisible(false)
+    setToggle(false)
+    setFormData({
+     employeeName: "",
+      startDate: "",
+      endDate: "",
+      purposeOfVisit: "",
+      placeOfVisit: "",
+      travelMode: "",
+      arrangementType: "",
+      expectedTravelBudget: "",
+      actualTravelBudget: "",
+      description: "",
+      createdDate: getCurrentDate(),
+    })
+  }
+
+  let buttonClick = formData.employeeName.length>0 && 
+                    formData.startDate.length>0 && formData.endDate.length>0 && 
+                    formData.purposeOfVisit.length>0 && formData.placeOfVisit.length>0 && formData.warningDate.length>0 && formData.description.length>0 &&
+                    formData.travelMode.length>0 && formData.arrangementType.length>0 && formData.expectedTravelBudget.length>0 && formData.actualTravelBudget.length>0 &&
+                    formData.description.length>0 && formData.createdDate.length>0 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -429,14 +448,16 @@ const TravelForm = () => {
           id="input-btn"
           type="submit"
           onClick={saveTravel}
+          disabled={buttonClick? false: true}
+
           variant="outlined"
         >
           Submit
         </Button>
         <Button
           id="input-btn"
-          onClick={() => setFormVisible(false)}
           variant="outlined"
+          onClick={cancelButton}  
         >
           Cancel
         </Button>

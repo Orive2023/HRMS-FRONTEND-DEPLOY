@@ -3,8 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Poppins", sans-serif;
-}
+  font-family: 'Montserrat', sans-serif;}
 
 html,
 body {
@@ -23,6 +22,38 @@ html {
  transform: translate(-50%,-50%);
 }
 
+#header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+}
+
+#header-part {
+  width: 100%;
+  
+}
+
+#container-fluid {
+  padding: 0;
+}
+
+#logo-design-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  padding:  10px;
+  background: white;
+}
+
+#logo-design-container i {
+  color: #6f6f6f;
+  cursor: pointer;
+}
+
 .add,
 .hide {
   display: flex;
@@ -38,6 +69,21 @@ html {
   gap: 10px;
 }
 
+#card-header {
+  border-bottom: none;
+  background-color: transparent;
+  padding: 20px;
+}
+
+#card-header h3 {
+  font-weight: bold;
+}
+
+#progress {
+  height: 5px;
+}
+
+
 .data-buttons {
   display: flex;
   gap: 10px;
@@ -52,9 +98,12 @@ html {
 
 .sidebar-container {
   width: 20%;
-  padding: 18px 20px;
+  padding: 18px 10px 18px 0;
   background-color: white;
   color: rgb(41, 38, 38);
+  padding-top: 10vh;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .sidebar-container h3 {
@@ -63,31 +112,75 @@ html {
   margin-bottom: 10px;
 }
 
+.logo-text-p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.logo-text-p span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: transparent;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.5s all ease;
+}
+
+.logo-text-p:hover span {
+  background-color: #501a51;
+}
+
+.logo-text-p:hover p {
+  color: #501a51;
+  font-weight: bold;
+}
+
+.sidebar-container i {
+  font-size: 1.5rem;
+  color: #6f6f6f;
+}
+
 .sidebar-container p {
   width: 100%;
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: 10px 30px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  font-size: 1.2rem;
   color: #000;
   transition: 0.3s all ease-in-out;
   cursor: pointer;
-  background-color: transparent;
 }
+
 .sidebar-container p:last-child {
   margin-bottom: 0;
 }
 
-.sidebar-container p:hover {
-  background-color: #2b3035;
-  color: white;
+#table-responsive {
+  padding: 10px;
+}
+
+#table tr{
+  background: white;
+}
+
+#card {
+  border: none;
+  box-shadow: none;
 }
 
 .head-foot-part {
   width: 100%;
   padding: 20px;
   position: relative;
+  height: 100vh;
+  padding: 6vh 0 0 0;
+  overflow: scroll;
 }
 
 .nav-links {
@@ -152,6 +245,38 @@ html {
   background-color: #2b3035;
 }
 
+.right #orive-demo-login-btn {
+  padding: 10px 40px;
+  background-color: #501a51;
+  color: white;
+  border-radius: 3px;
+  margin: 0;
+  border: none;
+}
+
+
+#card:hover {
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.10);
+}
+
+#card .card-body a{
+  text-decoration: none;
+}
+
+#card .card-body span {
+  margin-top: 10px;
+}
+
+@media screen and (max-width:1950px) {
+  .head-foot-part {
+    padding: 9vh 0 0 0;
+  }
+
+  .sidebar-container {
+    padding-top: 13vh;
+  }
+}
+
 ::selection {
   color: #fff;
   background: #5a5278;
@@ -168,7 +293,7 @@ a,
 .text-warning,
 .mail-star.active,
 .page-title {
-  color: #cfcae3 !important;
+  color: white !important;
 }
 .badge-default {
   background: #3f3d56;
@@ -274,7 +399,7 @@ a,
 .bg-purple,
 .bg-red,
 .bg-orange {
-  background-color: #5a5278 !important;
+  background-color: #501a51 !important;
 }
 .bg-pink,
 .bg-yellow,
@@ -282,7 +407,7 @@ a,
 .bg-green,
 .bg-teal,
 .bg-cyan {
-  background-color: #e8769f !important;
+  background-color: #f76c24 !important;
 }
 .bg-light-blue,
 .bg-light-azure,
@@ -7376,6 +7501,7 @@ a:hover {
 .page-header .left {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 .page-header .left .custom-select {
   width: 120px;
@@ -7384,6 +7510,7 @@ a:hover {
 .page-header .right {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 .page-header .right .nav-pills .nav-item {
   padding: 0;
@@ -8125,9 +8252,9 @@ a:hover {
   background-color: #2b3035 !important;
 }
 .top_dark {
-  background: #0575E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #f76c24;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #501a51, #f76c24);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #501a51, #f76c24); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
   color: #fff;
 }
@@ -8135,13 +8262,12 @@ a:hover {
 .top_dark .dataTables_wrapper .dataTables_filter,
 .dataTables_wrapper .top_dark .dataTables_filter,
 .top_dark .custom-select {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: white;
   border: 0;
   color: #808488 !important;
+  border-radius: 3px;
 }
-.top_dark .page-header {
-  border-color: #2b3035;
-}
+
 .top_dark .page-header .right .nav-pills .nav-link {
   color: #babdbf;
 }
@@ -8639,6 +8765,7 @@ img {
   border-bottom-width: 1px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-weight: 500;
 }
 .table th {
   color: #9aa0ac;
@@ -10143,9 +10270,9 @@ a.chip:hover {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #6e7687;
-  font-weight: 400;
+  font-weight: 600;
   background-color: #d1d3d4;
   padding: 0 0.5rem;
   line-height: 2em;
@@ -10227,7 +10354,7 @@ a.tag-addon:hover {
   color: #fff;
 }
 .tag-orange {
-  background-color: #f2711c;
+  background-color: #501a51;
   color: #fff;
 }
 .tag-yellow {
@@ -10271,7 +10398,7 @@ a.tag-addon:hover {
   color: #fff;
 }
 .tag-success {
-  background-color: #21ba45;
+  background-color: #f76c24;
   color: #fff;
 }
 .tag-info {
@@ -14720,6 +14847,13 @@ svg {
 }
 .ribbon .ribbon-box.cyan::before {
   border-color: #17a2b8;
+  border-right-color: transparent;
+}
+.ribbon .ribbon-box.voilet {
+  background: #501a51;
+}
+.ribbon .ribbon-box.voilet::before {
+  border-color: #501a51;
   border-right-color: transparent;
 }
 .ribbon .ribbon-box.pink {

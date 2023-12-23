@@ -16,17 +16,10 @@ const EditPromotion = () => {
 	const { id } = useParams();
 
 	const [promotion, setpromotion] = useState({
-		promotionName: "",
-		promotionType: "",
-		email: "",
-		website: "",
+		promotionDate: "",
+		employeeName: "",
+		promotionTitle: "",
 	});
-	const {
-		promotionName,
-		promotionType,
-		email,
-		website,
-	} = promotion;
 
 	useEffect(() => {
 		loadpromotion();
@@ -34,7 +27,7 @@ const EditPromotion = () => {
 
 	const loadpromotion = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/promotion/get/${id}`
+			`http://localhost:8082/promotions/get/${id}`
 		);
 		setpromotion(result.data);
 	};
@@ -48,10 +41,10 @@ const EditPromotion = () => {
 	const updatepromotion = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/promotion/update/${id}`,
+			`http://localhost:8082/promotions/update/${id}`,
 			promotion
 		);
-		navigate("/view-promotion");
+		navigate("/employee/promotion");
 	};
 
 	return (
@@ -61,16 +54,16 @@ const EditPromotion = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="promotionName">
-						promotion Name
+						htmlFor="employeeName">
+						promotion For
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="promotionName"
-						id="promotionName"
+						name="employeeName"
+						id="employeeName"
 						required
-						value={promotionName}
+						value={promotion.employeeName}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -78,16 +71,16 @@ const EditPromotion = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="promotionType">
-						promotion Type
+						htmlFor="promotionDate">
+						promotion Date
 					</label>
 					<input
 						className="form-control col-sm-6"
-						type="text"
-						name="promotionType"
-						id="promotionType"
+						type="date"
+						name="promotionDate"
+						id="promotionDate"
 						required
-						value={promotionType}	
+						value={promotion.promotionDate}	
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -95,33 +88,16 @@ const EditPromotion = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="email">
-						Your Email
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="email"
-						name="email"
-						id="email"
-						required
-						value={email}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="website">
-						Website
+						htmlFor="promotionTitle">
+					Promotion Title
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="website"
-						id="website"
+						name="promotionTitle"
+						id="promotionTitle"
 						required
-						value={website}
+						value={promotion.promotionTitle}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -137,7 +113,7 @@ const EditPromotion = () => {
 
 					<div className="col-sm-2">
 						<Link
-							to={"/view-promotion"}
+							to={"employee/promotion"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
 							Cancel

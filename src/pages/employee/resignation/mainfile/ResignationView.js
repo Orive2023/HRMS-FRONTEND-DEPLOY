@@ -19,7 +19,7 @@ import StateResignation from "../StateResignation";
 
 const ResignationView = () => {
 
-  const {formData,setFormData, formVisible,formErrors,setFormerrors,open, setOpen,setFormVisible,toggle,setToggle,resignation, setResignation, formControl,setFormControl,recDelete,setRecDelete
+  const {formData,setFormData, formVisible,formErrors,setFormerrors,open, setOpen,setFormVisible,toggle,setToggle,resignation, setResignation,recDelete,setRecDelete
 
 } = StateResignation()
 
@@ -35,7 +35,7 @@ const ResignationView = () => {
   }, []);
 
   const  loadResignation = async () => {
-    const result = await api. loadResignation()
+    const result = await api.loadResignation()
     console.log("rec", result);
     setResignation(result);
   };
@@ -107,148 +107,7 @@ const ResignationView = () => {
                     <h3> RESIGNATION FORM</h3>
                   </h3>
                   <DialogContent>
-                    {/* <form onSubmit={handleSubmit}>
-                      <div className="data-input-fields">
-                        <TextField
-                          id="departmentName"
-                          margin="dense"
-                          select
-                          label="Department Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.departmentName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="departmentName"
-                        >
-                          {Type.map((option, index) => (
-                            <option key={index} value={option.label}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </TextField>
-
-                        <TextField
-                          id="companyName"
-                          margin="dense"
-                          select
-                          label="Company Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.companyName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="companyName"
-                        >
-                          {
-                            company.map((option, index) => (
-                              <option key={index} value={option.companyName}>
-                                {option.companyName}
-                              </option>
-                            ))}
-                        </TextField>
-                      </div>
-                      <div className="data-input-fields">
-                        <TextField
-                          id="departmentHead"
-                          margin="dense"
-                          select
-                          label="Department Head"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.departmentHead}
-                          onChange={(e) => handleInputChange(e)}
-                          name="departmentHead"
-                        >
-                          {Head.map((option, index) => (
-                            <option key={index} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </TextField>
-
-                        <TextField
-                          margin="dense"
-                          label="Create Date"
-                          type="date"
-                          fullWidth
-                          name="createdDate"
-                          id="createdDate"
-                          value={formData.createdDate}
-                          onChange={(e) => handleInputChange(e)}
-                          required
-                          error={dateError}
-                          helperText={dateError && "Please select the current date"}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                        />
-                        <TextField
-                          id="locationName"
-                          margin="dense"
-                          select
-                          label="Location Name"
-                          fullWidth
-                          defaultValue="Choose"
-                          SelectProps={{
-                            native: true,
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          value={formData.locationName}
-                          onChange={(e) => handleInputChange(e)}
-                          name="locationName"
-                        >
-                          {location.map((option, index) => (
-
-                            <option key={index} value={option.locationName}>
-                              {option.locationName}
-                            </option>
-                          ))}
-                        </TextField>
-
-
-                      </div>
-
-                      <div className="data-buttons">
-
-                        <Button id="input-btn"
-                          variant="outlined"
-                          type="submit"
-                          onClick={saveDepartment}
-
-                        >
-                          Submit
-                        </Button>
-                        <Button id="input-btn"
-                          variant="outlined"
-                          onClick={() => setFormVisible(false)}
-
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-
-
-                    </form> */}
-                    <ResignationForm/>
+                     <ResignationForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

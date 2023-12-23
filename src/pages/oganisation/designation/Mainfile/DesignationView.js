@@ -19,7 +19,7 @@ import Designationform from "../Designationform";
 
 const DesignationView = () => {
  
-  const {designation,setDesignation,open,setOpen,recDelete,setRecDelete} = StateDesignation()
+  const {designation,setDesignation,open,setOpen,recDelete,setRecDelete, formData, setFormData} = StateDesignation()
 
   
 
@@ -61,47 +61,47 @@ const DesignationView = () => {
 
   return (
     <div>
-      <Header />
-      <div className="dashboard-container">
-        <SideBar />
-        <div className="head-foot-part">
-          <section>
-            <div
-              className="above-table"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <div>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    // handleButtonClick();
-                    handleOpen();
-                  }}
-                  style={{ height: "35px", marginBottom: "10px" }}
-                >
-                  <div className="add">
-                    <MdAdd />
-                    ADD DESIGNATION
-                  </div>
-                </Button>
-              </div>
-            </div>
-           <DesignationTable designation={designation} setRecDelete={setRecDelete}/>
-
+    <Header />
+    <div className="dashboard-container">
+      <SideBar />
+      <div className="head-foot-part">
+        <section>
+          <div
+            className="above-table"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <div>
-              <Dialog open={open} onClose={handleClose}>
-                <DialogTitle style={{ textAlign: "center" }}>
-                  DESIGNATION FORM
-                </DialogTitle>
-                <DialogContent>
-                  <Designationform />
-                </DialogContent>
-              </Dialog>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  // handleButtonClick();
+                  handleOpen();
+                }}
+                id='add-btn'
+              >
+                <div className="add">
+                  <MdAdd />
+                  ADD DESIGNATION
+                </div>
+              </Button>
             </div>
-          </section>
-        </div>
+          </div>
+         <DesignationTable designation={designation} setRecDelete={setRecDelete}/>
+
+          <div>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle id="form-header-popup">
+                Add Designation
+              </DialogTitle>
+              <DialogContent>
+                <Designationform formData={formData} setFormData={setFormData} setOpen={setOpen}/>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </section>
       </div>
     </div>
+  </div>
   );
 };
 

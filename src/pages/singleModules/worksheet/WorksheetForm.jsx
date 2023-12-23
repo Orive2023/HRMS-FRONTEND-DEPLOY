@@ -79,7 +79,7 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
 
   const saveWorksheet = async () => {
     await api.saveWorksheet(formData);
-    navigate("/worksheet");
+    navigate("/worksheets");
     setFormData({
       workSheetTitle: "",
       startDate: "",
@@ -147,7 +147,7 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
     })
   }
 
-  let buttonCheck = formData.workSheetTitle.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.estimatedHour.length>0 && formData.project.length>0 && formData.employeeName.length>0 && formData.assignedTo.length>0 && formData.taskName.length>0 && formData.description.length>0 && formData.challengepart.length>0 && formData.workProgress.length>0 && formData.createdDate.length>0
+  let buttonCheck = formData.workSheetTitle.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.estimatedHour.length>0 && formData.project.length>0 && formData.assignedTo.length>0 && formData.taskName.length>0 && formData.description.length>0 && formData.challengepart.length>0 && formData.workProgress.length>0 && formData.createdDate.length>0
 
 
   return (
@@ -163,9 +163,9 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
             name="employeeName"
             label="employeeName"
             onChange={(e) => handleInputChange(e)}
-            required
+            
           >
-            {employeeName.map((item, index) => {
+            {employeeName && employeeName.map((item, index) => {
               return (
                 <MenuItem key={index} value={item.employeeName}>
                   {item.employeeName}
@@ -256,7 +256,7 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
             onChange={(e) => handleInputChange(e)}
             required
           >
-            {project.map((item, index) => {
+            {project && project.map((item, index) => {
               return (
                 <MenuItem key={index} value={item.projectTitle}>
                   {item.projectTitle}
@@ -360,7 +360,7 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
 
       <div className="data-buttons">
         <Button
-          id="input-btn"
+          id="input-btn-submit"
           variant="outlined"
           type="submit"
           onClick={saveWorksheet}
@@ -369,7 +369,7 @@ const WorksheetForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
           Submit
         </Button>
         <Button
-          id="input-btn"
+          id="input-btn-cancel"
           variant="outlined"
           onClick={cancelButton}
         >

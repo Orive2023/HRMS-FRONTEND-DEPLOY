@@ -21,12 +21,12 @@ const TerminationTable = ({termination,setRecDelete}) => {
                       <th>Reason For Terminate</th>
                       <th>Terminated By</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th colSpan={2}>Action</th>
                     </tr>
                   </thead>
     
                   <tbody className="text-center">
-                    {termination &&
+                    {termination && termination.map &&
                       
                       termination.map((termination, index) => (
                         <tr key={index}>
@@ -37,18 +37,18 @@ const TerminationTable = ({termination,setRecDelete}) => {
                           <td>{termination.terminateDate}</td>
                           <td>{termination.reasonForTermination}</td>
                           <td>{termination.terminatedBy}</td>
-                          
-                          <td className="mx-2">
+                          <td></td>
+                          {/* <td className="mx-2">
                             <Link
                               to={`/termination-profile/${termination.terminationId}`}
                               className="btn btn-info"
                             >
                               <FaEye />
                             </Link>
-                          </td>
+                          </td> */}
                           <td className="mx-2">
                             <Link
-                              to={`/edit-termination/${termination.terminationId}`}
+                              to={`/employee/edit-termination/${termination.terminationId}`}
                               className="btn btn-warning"
                             >
                               <FaEdit />

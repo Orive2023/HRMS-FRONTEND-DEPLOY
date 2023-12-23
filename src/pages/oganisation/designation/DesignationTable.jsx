@@ -15,7 +15,7 @@ const Design = ({designation,setRecDelete}) => {
         <th>Department Name</th>
         <th>Designation Type</th>
         <th>created Date</th> 
-        <th>Status</th>
+       
         <th colSpan="3">Actions</th>
       </tr>
     </thead>
@@ -30,9 +30,11 @@ const Design = ({designation,setRecDelete}) => {
             <td>{designation.departmentName}</td>
             <td>{designation.designationName}</td>
             <td>{designation.createdDate}</td>
-            <td>{designation.status}</td>
+           
            
             <td className="mx-2">
+
+            
               <Link
                 to={`/organisation/edit-designation/${designation.designationId}`}
                 className="btn btn-warning"

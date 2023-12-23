@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as api from "./api";
 import TextField from "@mui/material/TextField";
@@ -10,22 +10,16 @@ import DialogContent from "@mui/material/DialogContent";
 import StateEmployee from "./StateEmployee";
 import { useNavigate } from "react-router-dom";
 
-const EmployeeForm = () => {
-
-  const navigate = useNavigate()
+const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
+  let navigate = useNavigate();
   const {
-    formVisible,
-    setFormVisible,
     toggle,
-    setToggle,
     employeeData,
     setEmployeeData,
     photograph,
     setPhotograph,
     employee,
     setemployees,
-    formData,
-    setFormData,
     dateError,
     setDateError,
     handleStep,
@@ -99,15 +93,12 @@ const EmployeeForm = () => {
     //  }
   };
 
-  
-
   const handleBack = () => {
     setActiveStep((prevStep) => prevStep - 1);
   };
 
-
-  const [photo,setPhoto] = useState(null)
-  const [document,setDocument] = useState(null)
+  const [photo, setPhoto] = useState(null);
+  const [document, setDocument] = useState(null);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     const files = e.target;
@@ -119,23 +110,22 @@ const EmployeeForm = () => {
       setDateError(!isValidDate);
     }
 
-    if(name === "uploadDocument") {
-      setDocument(e.target.files[0])
+    if (name === "uploadDocument") {
+      setDocument(e.target.files[0]);
     }
 
     if (name === "uploadPhoto") {
-      setPhoto(e.target.files[0])
+      setPhoto(e.target.files[0]);
     }
 
-    
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-        grossSalary: sal,
-        uploadPhoto:photo,
-        uploadDocument:document
-      });
-    
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+      grossSalary: sal,
+      uploadPhoto: photo,
+      uploadDocument: document,
+    });
+
     calculateGross();
   };
 
@@ -392,15 +382,20 @@ const EmployeeForm = () => {
     },
 
     {
+      value: "Married",
+      label: "Married",
+    },
+
+    {
       value: "Widowed",
       label: "Widowed",
     },
+
     {
       value: "Other",
       label: "Other",
     },
   ];
-
 
   const bankNameType = [
     {
@@ -599,26 +594,95 @@ const EmployeeForm = () => {
     setAlternativePhone(e.target.value);
   };
 
- 
-
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log("Form submitted:", formData);
     handleNext();
     handleBack();
-   
   };
 
   const saveEmployee = async (e) => {
- e.preventDefault()
-    await api.saveEmployees(formData)
+    e.preventDefault();
+    await api.saveEmployees(formData);
     navigate("/employee/employee");
     loademployees();
     setFormData({
       country: "",
       city: "",
       employeeRole: "",
-      employeeName:"",
+      employeeName: "",
+      email: "",
+      businessEmail: "",
+      branchName: "",
+      attendanceTime: "",
+      employeeType: "",
+      createdDate: "",
+      designationName: "",
+      bankName: "",
+      ifscNumber: "",
+      basicSalary: "",
+      hraAllowances: "",
+      otherAllowances: "",
+      medicalAllowances: "",
+      transportAllowance: "",
+      pfAllowances: "",
+      daAllowances: "",
+      subDepartment: "",
+      position: "",
+      dutyType: "",
+      hireDate: "",
+      joiningDate: "",
+      rateType: "",
+      rateNumber: "",
+      monthlyWorkHours: "",
+      payFrequency: "",
+      reportingTo: "",
+      medical: "",
+      family: "",
+      transportation: "",
+      others: "",
+      otherInsurance: "",
+      tax: "",
+      dateOfBirth: "",
+      gender: "",
+      maritalStatus: "",
+      workInCity: "",
+      cityOfResidence: "",
+      workPermit: "",
+      userEmailOrName: "",
+      password: "",
+      grossSalary: "",
+      basicSalary: "",
+      transportAllowance: "",
+      houseRentAllowance: "",
+      hraAllowances: "",
+      otherAllowances: "",
+      zipCode: "",
+      phone: "",
+      alternativePhone: "",
+      uploadDocument: "",
+      uploadPhoto: "",
+      createdDate: getCurrentDate(),
+      homePhone: "",
+      cellPhone: "",
+    });
+    setPhoto(null);
+    setDocument(null);
+  };
+
+  const loademployees = async () => {
+    const result = await api.loademployees();
+    setemployees(result);
+  };
+
+  const cancelButton = () => {
+    setFormVisible(false);
+    setToggle(false);
+    setFormData({
+      country: "",
+      city: "",
+      employeeRole: "",
+      employeeName: "",
       email: "",
       branchName: "",
       attendanceTime: "",
@@ -658,53 +722,153 @@ const EmployeeForm = () => {
       workPermit: "",
       userEmailOrName: "",
       password: "",
-      grossSalary: '',
-      basicSalary: '',
-      transportAllowance: '',
-      houseRentAllowance: '',
-      hraAllowances: '',
-      otherAllowances: '',
+      grossSalary: "",
+      basicSalary: "",
+      transportAllowance: "",
+      houseRentAllowance: "",
+      hraAllowances: "",
+      otherAllowances: "",
       createdDate: getCurrentDate(),
-
-
-    })
-    setPhoto(null)
-    setDocument(null)
+      phone: "",
+      zipCode: "",
+      alternativePhone: "",
+      businessEmail: "",
+      uploadDocument: "",
+      uploadPhoto: "",
+      businessEmail: "",
+      homePhone: "",
+      cellPhone: "",
+    });
   };
 
-  const loademployees = async () => {
-    const result = await api.loademployees()
-    setemployees(result);
-  };
+  let buttonCheckBasicInfo =
+    formData.employeeRole.length > 0 &&
+    formData.employeeName.length > 0 &&
+    formData.email.length > 0 &&
+    formData.attendanceTime.length > 0 &&
+    formData.employeeType.length > 0 &&
+    formData.createdDate.length > 0 &&
+    formData.designationName.length > 0 &&
+    formData.country.length > 0 &&
+    formData.city.length > 0 &&
+    formData.zipCode.length > 0 &&
+    formData.phone.length > 0 &&
+    formData.alternativePhone.length > 0;
+
+  let buttonCheckBankDetails =
+    formData.branchName.length > 0 &&
+    formData.bankName.length > 0 &&
+    formData.ifscNumber.length > 0 &&
+    formData.accountNumber.length > 0;
+
+  let buttonCheckSalaryDetails =
+    formData.basicSalary.length > 0 &&
+    formData.hraAllowances.length > 0 &&
+    formData.otherAllowances.length > 0 &&
+    formData.tinNumber.length > 0 &&
+    formData.medicalAllowances.length > 0 &&
+    formData.transportAllowance.length > 0 &&
+    // formData.grossSalary.length > 0 &&
+    formData.pfAllowances.length > 0 &&
+    formData.otherInsurance.length > 0 &&
+    formData.tax.length > 0 &&
+    formData.daAllowances.length > 0;
+
+  let buttonCheckPersonalInfo =
+    formData.subDepartment.length > 0 &&
+    formData.position.length > 0 &&
+    formData.dutyType.length > 0 &&
+    formData.hireDate.length > 0 &&
+    formData.joiningDate.length > 0 &&
+    formData.rateType.length > 0 &&
+    formData.rateNumber.length > 0 &&
+    formData.monthlyWorkHours.length > 0 &&
+    formData.payFrequency.length > 0;
+
+  let buttonCheckBenefit =
+    formData.medical.length > 0 &&
+    formData.family.length > 0 &&
+    formData.transportation.length > 0 &&
+    formData.others.length > 0;
+
+  let buttonCheckSupervisor =
+    formData.reportingTo.length > 0 && formData.teamLeaderName.length > 0;
+
+  let buttonCheckBiographicalInfo =
+    formData.dateOfBirth.length > 0 &&
+    formData.gender.length > 0 &&
+    formData.maritalStatus.length > 0 &&
+    formData.workInCity.length > 0 &&
+    formData.cityOfResidence.length > 0 &&
+    formData.workPermit.length > 0 &&
+    formData.uploadPhoto;
+
+  let buttonCheckAdditionalAddress =
+    formData.businessEmail.length > 0 &&
+    formData.homePhone.length > 0 &&
+    formData.cellPhone.length > 0;
+
+  let buttonCheckLoginInfo =
+    formData.userEmailOrName.length > 0 &&
+    formData.password.length > 0 &&
+    formData.uploadDocument;
 
   return (
     <div>
       <Stepper activeStep={activeStep}>
-        <Step onClick={() => setActiveStep(0)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(0)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Basic Info</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(1)} style={{ cursor: "pointer" }}>
+
+        <Step
+          // onClick={() => setActiveStep(1)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Bank Details</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(2)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(2)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Salary Details</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(3)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(3)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Personal Info</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(4)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(4)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Benefit</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(5)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(5)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Supervisor</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(6)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(6)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Biographical Info</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(7)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(7)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Additional Address</StepLabel>
         </Step>
-        <Step onClick={() => setActiveStep(8)} style={{ cursor: "pointer" }}>
+        <Step
+          // onClick={() => setActiveStep(8)}
+          style={{ cursor: "pointer" }}
+        >
           <StepLabel>Login Info</StepLabel>
         </Step>
       </Stepper>
@@ -713,15 +877,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "15px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                BASIC INFO
-              </h3>
+              <h3 className="form-header">Basic Info</h3>
               <DialogContent>
                 <form onSubmit={handleSubmit}>
                   <div className="data-input-fields">
@@ -773,6 +929,9 @@ const EmployeeForm = () => {
                       required
                       error={phoneError}
                       helperText={phoneError ? "Invalid phone number" : ""}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </div>
 
@@ -791,6 +950,9 @@ const EmployeeForm = () => {
                         phoneError ? "Invalid alternative phone number" : ""
                       }
                       required
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                     <TextField
                       margin="dense"
@@ -833,6 +995,9 @@ const EmployeeForm = () => {
                       onInput={(e) => {
                         e.target.value = enforceMaxLength(e.target.value, 10);
                         handleCodeChange(e);
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
                       }}
                     />
                     <TextField
@@ -935,7 +1100,7 @@ const EmployeeForm = () => {
                       onChange={(e) => handleInputChange(e)}
                       name="companyType"
                     >
-                      {Type.map((option,index) => (
+                      {Type.map((option, index) => (
                         <option key={index} value={option.label}>
                           {option.label}
                         </option>
@@ -961,16 +1126,17 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
-                        onClick={handleBack}
+                        id="input-btn-cancel"
+                        onClick={cancelButton}
                         variant="outlined"
                       >
                         Back
                       </Button>
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         type="submit"
                         onClick={handleNext}
+                        disabled={buttonCheckBasicInfo ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -988,15 +1154,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                BANK DETAILS
-              </h3>
+              <h3 className="form-header">Bank Details</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1091,7 +1249,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1100,8 +1258,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckBankDetails ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1119,15 +1278,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                SALARY DETAILS
-              </h3>
+              <h3 className="form-header">Salary Details</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1273,7 +1424,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1282,8 +1433,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckSalaryDetails ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1301,15 +1453,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                PERSONAL INFO
-              </h3>
+              <h3 className="form-header">Personal Info</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1451,40 +1595,23 @@ const EmployeeForm = () => {
                     />
                   </div>
 
-                  <DialogActions className="dialog">
-                    <Button
-                      id="input-btn"
-                      type="submit"
-                      onClick={handleBack}
-                      style={{
-                        background:
-                          "linear-gradient(to right, #1cb5e0, #000046)",
-                        height: "35px",
-                        width: "49%",
-                        color: "white",
-                        margin: "0 5px",
-                      }}
-                      variant="outlined"
-                    >
-                      Previous
-                    </Button>
+                  <Button
+                    id="input-btn-cancel"
+                    type="submit"
+                    onClick={handleBack}
+                    variant="outlined"
+                  >
+                    Previous
+                  </Button>
 
-                    <Button
-                      id="input-btn"
-                      onClick={handleNext}
-                      style={{
-                        background:
-                          "linear-gradient(to left, #1cb5e0, #000046)",
-                        height: "35px",
-                        width: "49%",
-                        color: "white",
-                        margin: "0 5px",
-                      }}
-                      variant="outlined"
-                    >
-                      {activeStep === steps.length - 1 ? "Submit" : "Next"}
-                    </Button>
-                  </DialogActions>
+                  <Button
+                    id="input-btn-submit"
+                    onClick={handleNext}
+                    disabled={buttonCheckPersonalInfo ? false : true}
+                    variant="outlined"
+                  >
+                    {activeStep === steps.length - 1 ? "Submit" : "Next"}
+                  </Button>
                 </form>
               </DialogContent>
             </div>
@@ -1496,15 +1623,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                BENEFIT
-              </h3>
+              <h3 className="form-header">Benefit</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1607,7 +1726,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1616,8 +1735,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckBenefit ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1635,15 +1755,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                SUPERVISOR
-              </h3>
+              <h3 className="form-header">Supervisor</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1691,7 +1803,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1700,8 +1812,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckSupervisor ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1719,15 +1832,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                BIOGRAPHIHCAL INFO
-              </h3>
+              <h3 className="form-header">Biographical Info</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1859,7 +1964,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1868,8 +1973,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckBiographicalInfo ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1887,15 +1993,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                ADDITIONAL ADDRESS
-              </h3>
+              <h3 className="form-header">Additional Address</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -1909,12 +2007,12 @@ const EmployeeForm = () => {
                       value={formData.businessEmail}
                       onChange={(e) => handleInputChange(e)}
                       required
-                      error={emailBusinessError}
-                      helperText={
-                        emailBusinessError
-                          ? "Please enter a valid email address."
-                          : ""
-                      }
+                      // error={emailBusinessError}
+                      // helperText={
+                      //   emailBusinessError
+                      //     ? "Please enter a valid email address."
+                      //     : ""
+                      // }
                     />
 
                     <TextField
@@ -1948,7 +2046,7 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
                         onClick={handleBack}
                         variant="outlined"
@@ -1957,8 +2055,9 @@ const EmployeeForm = () => {
                       </Button>
 
                       <Button
-                        id="input-btn"
+                        id="input-btn-submit"
                         onClick={handleNext}
+                        disabled={buttonCheckAdditionalAddress ? false : true}
                         variant="outlined"
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
@@ -1976,15 +2075,7 @@ const EmployeeForm = () => {
         <div style={{ marginTop: "30px" }}>
           <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
             <div style={{ marginTop: "20px" }}>
-              <h3
-                style={{
-                  textAlign: "center",
-                  marginTop: "25px",
-                  fontWeight: "600",
-                }}
-              >
-                LOGIN INFO
-              </h3>
+              <h3 className="form-header">Login Info</h3>
               <DialogContent>
                 <form onSubmit={{ handleSubmit }}>
                   <div className="data-input-fields">
@@ -2030,20 +2121,21 @@ const EmployeeForm = () => {
                   <div className="data-buttons">
                     <DialogActions className="dialog">
                       <Button
-                        id="input-btn"
+                        id="input-btn-cancel"
                         type="submit"
+                        onClick={handleBack}
+                        variant="outlined"
+                      >
+                        PREVIOUS
+                      </Button>
+                      <Button
+                        id="input-btn-submit"
+                        className="cancel"
                         onClick={saveEmployee}
+                        disabled={buttonCheckLoginInfo ? false : true}
                         variant="outlined"
                       >
                         SUBMIT
-                      </Button>
-                      <Button
-                        id="input-btn"
-                        className="cancel"
-                        onClick={() => setFormVisible(false)}
-                        variant="outlined"
-                      >
-                        CANCEL
                       </Button>
                     </DialogActions>
                   </div>

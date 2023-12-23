@@ -21,7 +21,7 @@ const PromotionPofile = () => {
 
 	const loadpromotion = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/promotion/get/${id}`
+			`http://localhost:8082/promotion/get/${id}`
 		);
 		setpromotion(result.data);
 	};

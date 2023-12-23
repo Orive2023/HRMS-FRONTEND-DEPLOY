@@ -7,11 +7,10 @@ import * as api from "./api";
 import { useNavigate } from "react-router-dom";
 import StatePromotion from "./StatePromotion";
 
-const PromotionForm = () => {
+const PromotionForm = ({formData,setFormData, setFormVisible, setToggle}) => {
   const navigate = useNavigate();
 
   const {
-    formData,
     setPromotion,
     formVisible,
     toggle,
@@ -21,11 +20,8 @@ const PromotionForm = () => {
     setTitleError,
     setEmployee,
     employee,
-    setToggle,
     descriptionError,
     setDescriptionError,
-    setFormVisible,
-    setFormData,
     description,
     setDescription,
     company,
@@ -161,6 +157,19 @@ const PromotionForm = () => {
   const enforceMaxLength = (value, maxLength) => {
     return value.length <= maxLength ? value : value.slice(0, maxLength);
   };
+  const cancelButton =() => {
+    setFormVisible(false)
+    setToggle(false)
+    setFormData({
+    employeeName: "",
+    promotionTitle: "",
+    promotionDate: "",
+    description: "",})
+  }
+
+  let buttonClick = formData.employeeName.length>0 && 
+                    formData.promotionTitle.length>0 && formData.promotionDate.length>0 && 
+                    formData. promotionDate.length>0 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -248,14 +257,16 @@ const PromotionForm = () => {
           variant="outlined"
           type="submit"
           onClick={savePromotion}
+          disabled={buttonClick? false: true}
+
         >
           Submit
         </Button>
         <Button
           id="input-btn"
           variant="outlined"
-          onClick={() => setFormVisible(false)}
-        >
+          onClick={cancelButton}
+          >
           Cancel
         </Button>
       </div>

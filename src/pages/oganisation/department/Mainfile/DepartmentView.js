@@ -58,65 +58,61 @@ console.log(formData)
 
   return (
     <div>
-      <Header />
-      <div className="dashboard-container">
-        <SideBar />
-        <div className="head-foot-part">
-          <section>
-            <div
-              className="above-table"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <div>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    setToggle(!toggle);
-                    handleButtonClick();
-                  }}
-                  style={{ height: "35px", marginBottom: "10px" }}
-                >
-                  {toggle ? (
-                    <div className="hide">
-                      <BiSolidHide
-                      />
-                      HIDE
-                    </div>
-                  ) : (
-                    <div className="add">
-                      <MdAdd />
-                      ADD DEPARTMENT
-                    </div>
-                  )}
-                </Button>
-              </div>
-            </div>
-            <Collapse in={formVisible}>
-              <Card
+    <Header />
+    <div className="dashboard-container">
+      <SideBar />
+      <div className="head-foot-part">
+        <section>
+          <div
+            className="above-table"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <div>
+              <Button
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+                onClick={() => {
+                  setToggle(!toggle);
+                  handleButtonClick();
+                }}
+                id='add-btn'
               >
-                <div style={{ marginTop: "20px" }}>
-                  <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    <h3> DEPARTMENT FORM</h3>
-                  </h3>
-                  <DialogContent>
-                    <DepartmentForm formData={formData} setFormData={setFormData}/>
-                  </DialogContent>
-                </div>
-              </Card>
-            </Collapse>
-            <DepartmentTable department={department} setRecDelete={setRecDelete} />
-          </section>
-        </div>
+                {toggle ? (
+                  <div className="hide">
+                    <BiSolidHide
+                    />
+                    HIDE
+                  </div>
+                ) : (
+                  <div className="add">
+                    <MdAdd />
+                    ADD DEPARTMENT
+                  </div>
+                )}
+              </Button>
+            </div>
+          </div>
+          <Collapse in={formVisible}>
+            <Card
+              variant="outlined"
+        
+            >
+              <div style={{ marginTop: "20px" }}>
+                <h3
+                  className="form-header"
+                >
+                  <h3>Add Department</h3>
+                </h3>
+                <DialogContent>
+                  <DepartmentForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
+                </DialogContent>
+              </div>
+            </Card>
+          </Collapse>
+          <DepartmentTable department={department} setRecDelete={setRecDelete} />
+        </section>
       </div>
     </div>
+  </div>
   );
 };
 

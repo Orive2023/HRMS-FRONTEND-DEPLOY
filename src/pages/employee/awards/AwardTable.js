@@ -18,11 +18,12 @@ const AwardTable = ({award,setRecDelete}) => {
                 <tr className="text-center">
                 <th>SL</th>
                   <th>Employee Name</th>
-                  <th>awards Name</th>
-                  <th>awards By</th>
+                  <th>Awards Name</th>
+                  <th>Awards By</th>
                   <th>Gift</th>
-                  <th>awards Date</th>
+                  <th>Awards Date</th>
                   <th>Status</th>
+                  <th colSpan={2}>Action</th>
                 </tr>
               </thead>
 
@@ -36,14 +37,14 @@ const AwardTable = ({award,setRecDelete}) => {
                       </th>
                       <td>{award.employeeName}</td>
                       <td>{award.awardDescription}</td>
-                      <td>{award.awardBy}</td>
+                      <td>{award.awardBy}</td> 
                       <td>{award.giftItem}</td>
                       <td>{award.date}</td>
                       <td>{award.status}</td>
                      
                       <td className="mx-2">
                         <Link
-                          to={`/project-edit/${award.awardId}`}
+                          to={`/employee/edit-awards/${award.awardId}`}
                           className="btn btn-warning"
                         >
                           <FaEdit />

@@ -18,7 +18,7 @@ import { Card } from "@mui/material";
 
 const LocationView = () => {
 
- const {toggle,setToggle,formVisible,setFormVisible,location,setLocation,recDelete,setRecDelete} = StateLocation()
+ const {toggle,setToggle,formVisible,formData,setFormData,setFormVisible,location,setLocation,recDelete,setRecDelete} = StateLocation()
 
   const handleButtonClick = () => {
     setFormVisible((prev) => !prev);
@@ -68,7 +68,7 @@ const LocationView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px " }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -88,20 +88,15 @@ const LocationView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                    className="form-header"
                   >
-                    LOCATION FORM
+                    Add Location
                   </h3>
                   <DialogContent>
-                    <LocationForm/>
+                    <LocationForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

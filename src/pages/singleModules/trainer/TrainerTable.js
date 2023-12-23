@@ -16,14 +16,15 @@ const TrainerTable = ({trainer,setRecDelete}) => {
       <table className="table table-bordered table-hover shadow">
               <thead>
                 <tr className="text-center">
+                <th>S No</th>
                   <th>Trainers Full Name</th>
                   <th>Trainers Email Address</th>
                   <th>Trainers Technical Skills</th>
                   <th>Trainers PhoneNo</th>
                   <th>Trainers Soft Skills</th>
-                  <th>Certifications</th>
-                  <th></th>
-                  <th colSpan="3">Actions</th>
+                  <th>Previous Clients</th>
+                
+                  <th colSpan="2">Actions</th>
                 </tr>
               </thead>
 
@@ -40,18 +41,11 @@ const TrainerTable = ({trainer,setRecDelete}) => {
                       <td>{trainer.technicalSkills}</td>
                       <td>{trainer.phoneNo}</td>
                       <td>{trainer.softSkills}</td>
-                      <td>{trainer.certifications}</td>
+                      <td>{trainer.previousClients}</td>
+                      
                       <td className="mx-2">
                         <Link
-                          to={`/Trainer-profile/${trainer.trainersListId}`}
-                          className="btn btn-info"
-                        >
-                          <FaEye />
-                        </Link>
-                      </td>
-                      <td className="mx-2">
-                        <Link
-                          to={`/edit-Trainer/${trainer.trainersListId}`}
+                          to={`/edit-trainer/${trainer.trainersListId}`}
                           className="btn btn-warning"
                         >
                           <FaEdit />

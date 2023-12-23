@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PerformanceLogo from "../../asset/24px/Performance.png"
 const PerformanceFile = () => {
     const [perDropdown, setPerDropdown] = useState("org-dropdown");
     const handlePerclick = () => {
@@ -13,13 +14,14 @@ const PerformanceFile = () => {
       const navigation = useNavigate()
   return (
     <div>
-         <p id="dropdown" onClick={handlePerclick}>
-          Performance<i className="fa-solid fa-caret-down"></i>
+    <div className="logo-text-p" onClick={handlePerclick}>
+    <span></span>
+         <img src={PerformanceLogo} alt="Performance"/>
+         <p id="dropdown">
+          Performance<i class='bx bx-chevron-down'></i>
         </p>
+    </div>
         <div className={perDropdown}>
-        
-            {/* <p onClick={() => navigation("/performance/Performance-Indicator")}>Indicator</p> */}
-          
             <p onClick={() => navigation("/performance/Performance-Appraisal")}>Appraisal</p>
          
         </div>

@@ -40,7 +40,7 @@ const TicketForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
     });
   };
 
-  let buttoncheck = (formData.ticketsCode.length > 0) && (formData.subject.length > 0) && (formData.employeeName.length > 0) && (formData.priority.length > 0) && (formData.date.length > 0)
+  let buttonCheck = (formData.ticketsCode.length > 0) && (formData.subject.length > 0) && (formData.priority.length > 0) && (formData.date.length > 0)
 
   const handleSubmit = (e) => {
     console.log("FormData", formData);
@@ -149,8 +149,10 @@ const TicketForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
       priority: "",
       date: "",
     })
-  }
+  };
 
+
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
@@ -257,21 +259,24 @@ const TicketForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
         />
       </div>
 
-      <Button
-        type="submit"
-        onClick={saveTicket}
-        disabled={buttoncheck ? false : true}
-        variant="outlined"
-        style={{marginRight:"10px"}}
-      >
-        Submit
-      </Button>
-      <Button
-        onClick={cancelButton}
-        variant="outlined"
-      >
-        Cancel
-      </Button>
+      <div className="data-buttons">
+            <Button
+              id="input-btn-submit"
+              variant="outlined"
+              type="submit"
+              onClick={saveTicket}
+              disabled={buttonCheck ?false:true}
+            >
+              Submit
+            </Button>
+            <Button
+              id="input-btn-cancel"
+              variant="outlined"
+              onClick={cancelButton}
+            >
+              Cancel
+            </Button>
+          </div>
     </form>
   );
 };

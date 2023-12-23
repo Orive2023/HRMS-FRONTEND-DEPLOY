@@ -9,6 +9,8 @@ import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 
 import * as api from "../api";
 import StateCompany from "../StateCompany";
@@ -62,9 +64,11 @@ const CompanyView = () => {
 
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
-      {
-        company.length> 0 ?  <div className="dashboard-container">
+    </div>
+      <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
           <section>
@@ -79,7 +83,7 @@ const CompanyView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -98,22 +102,19 @@ const CompanyView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                    className="form-header"
                   >
-                    COMPANY
+                    Add Company
                   </h3>
                   <DialogContent>
                     <CompanyForm
                       formData={formData}
                       setFormData={setFormData}
+                      setFormVisible={setFormVisible}
+                      setToggle={setToggle}
                     />
                   </DialogContent>
                 </div>
@@ -123,8 +124,8 @@ const CompanyView = () => {
             <div></div>
           </section>
         </div>
-      </div> :<CircularProgress color="tertiary" variant="indeterminate" className="loader-code"/>
-      }
+      </div>
+      
      
     </div>
   );

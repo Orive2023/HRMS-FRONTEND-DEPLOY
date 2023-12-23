@@ -16,17 +16,10 @@ const EditComplaint = () => {
 	const { id } = useParams();
 
 	const [complaint, setcomplaint] = useState({
-		complaintName: "",
-		complaintType: "",
-		email: "",
-		website: "",
+		complaintFrom: "",
+        complaintTitle: "",
 	});
-	const {
-		complaintName,
-		complaintType,
-		email,
-		website,
-	} = complaint;
+	
 
 	useEffect(() => {
 		loadcomplaint();
@@ -34,7 +27,7 @@ const EditComplaint = () => {
 
 	const loadcomplaint = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/complaint/get/${id}`
+			`http://localhost:8082/complaints/get/${id}`
 		);
 		setcomplaint(result.data);
 	};
@@ -48,10 +41,10 @@ const EditComplaint = () => {
 	const updatecomplaint = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/complaint/update/${id}`,
+			`http://localhost:8082/complaints/update/${id}`,
 			complaint
 		);
-		navigate("/view-complaint");
+		navigate("/employee/complaints");
 	};
 
 	return (
@@ -61,16 +54,16 @@ const EditComplaint = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="complaintName">
-						complaint Name
+						htmlFor="complaintFrom">
+						Complaint From
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="complaintName"
-						id="complaintName"
+						name="complaintFrom"
+						id="complaintFrom"
 						required
-						value={complaintName}
+						value={complaint.complaintFrom}
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
@@ -78,53 +71,21 @@ const EditComplaint = () => {
 				<div className="input-group mb-5">
 					<label
 						className="input-group-text"
-						htmlFor="complaintType">
-						complaint Type
+						htmlFor="complaintAgainst">
+						Complaint Against
 					</label>
 					<input
 						className="form-control col-sm-6"
 						type="text"
-						name="complaintType"
-						id="complaintType"
+						name="complaintAgainst"
+						id="complaintAgainst"
 						required
-						value={complaintType}	
+						value={complaint.complaintAgainst}	
 						onChange={(e) => handleInputChange(e)}
 					/>
 				</div>
 
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="email">
-						Your Email
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="email"
-						name="email"
-						id="email"
-						required
-						value={email}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
-
-				<div className="input-group mb-5">
-					<label
-						className="input-group-text"
-						htmlFor="website">
-						Website
-					</label>
-					<input
-						className="form-control col-sm-6"
-						type="text"
-						name="website"
-						id="website"
-						required
-						value={website}
-						onChange={(e) => handleInputChange(e)}
-					/>
-				</div>
+				
 
 				<div className="row mb-5">
 					<div className="col-sm-2">
@@ -137,7 +98,7 @@ const EditComplaint = () => {
 
 					<div className="col-sm-2">
 						<Link
-							to={"/view-complaint"}
+							to={"/employee/complaints"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
 							Cancel

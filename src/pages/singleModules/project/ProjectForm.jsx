@@ -120,7 +120,7 @@ useEffect(() => {
       setSummary(e.target.value);
     };
 
-    let buttonCheck = (formData.projectTitle.length>0 && formData.clientName.length>0 && formData.companyName.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.projectManagers.length>0 && formData.priority.length>0 && formData.description.length>0 && formData.summary.length>0 && formData.budget.length>0)
+    let buttonCheck = (formData.projectTitle.length>0 && formData.clientName.length>0 && formData.companyName.length>0 && formData.startDate.length>0 && formData.endDate.length>0 && formData.projectManagers.length>0 && formData.priority.length>0 && formData.description.length>0 && formData.summary.length>0)
 
     const cancelButton = () => {
       setFormVisible(false)
@@ -210,11 +210,17 @@ useEffect(() => {
 
             <TextField
               margin="dense"
+              label="Start-Date"
               type="date"
-              label="Start Date"
               fullWidth
               name="startDate"
               id="startDate"
+              SelectProps={{
+            native: true,
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
               value={formData.startDate}
               onChange={(e) => handleInputChange(e)}
               required
@@ -222,23 +228,32 @@ useEffect(() => {
                 min: "2022-01-01", // set your minimum date here
                 max: "2023-12-31", // set your maximum date here
               }}
-              InputLabelProps={{shrink:true}}
             />
             <TextField
               margin="dense"
+              label="End-date"
               type="date"
-              label="End Date"
               fullWidth
               name="endDate"
               id="endDate"
               value={formData.endDate}
               onChange={(e) => handleInputChange(e)}
               required
+              SelectProps={{
+            native: true,
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
               InputProps={{
                 min: "2022-01-01", // set your minimum date here
                 max: "2023-12-31", // set your maximum date here
               }}
-              InputLabelProps={{shrink:true}}
+
+              // onInput={(e) => {
+              //   e.target.value = enforceMaxLength(e.target.value, 30);
+              //   handleEndChange(e);
+              // }}
             />
           </div>
 
@@ -261,19 +276,6 @@ useEffect(() => {
                 e.target.value = enforceMaxLength(e.target.value, 60);
                 handleProjChange(e);
               }}
-            />
-
-            <TextField
-              margin="dense"
-              label="Budget"
-              type="number"
-              fullWidth
-              name="budget"
-              id="budget"
-              value={formData.budget}
-              onChange={(e) => handleInputChange(e)}
-              required
-             
             />
             <TextField
               id="priority"
@@ -340,16 +342,17 @@ useEffect(() => {
 
           <div className="data-buttons">
             <Button
-              id="input-btn"
+              id="input-btn-submit"
               variant="outlined"
               type="submit"
               onClick={saveProject}
-              disabled={buttonCheck ? false : true}
+              disabled={buttonCheck?false:true}
+
             >
               Submit
             </Button>
             <Button
-              id="input-btn"
+              id="input-btn-cancel"
               variant="outlined"
               onClick={cancelButton}
             >

@@ -22,7 +22,7 @@ export const deleteTermination = async (id) => {
 export const loadTermination = async () => {
     try {
        const result =  await axios.get(
-        "http://localhost:8082/terminations/get/terminations",
+        "http://localhost:8082/terminations/get/terminationsId",
             {
               validateStatus: () => {
                 return true;

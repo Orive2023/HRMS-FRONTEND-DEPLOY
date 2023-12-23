@@ -25,7 +25,7 @@ const WorksheetTable = ({worksheet,setRecDelete}) => {
                   </thead>
     
                   <tbody className="text-center">
-                    {worksheet &&
+                    {worksheet && worksheet.map &&
                       
                       worksheet.map((worksheet, index) => (
                         <tr key={worksheet.workSheetId}>

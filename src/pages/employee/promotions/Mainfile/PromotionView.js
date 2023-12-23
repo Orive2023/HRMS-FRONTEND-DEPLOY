@@ -30,7 +30,7 @@ import PromotionForm from "../PromotionForm";
 const PromotionView = () => {
 
 
-  const { promotion, setPromotion, formVisible, setFormVisible, toggle, setToggle,recDelete, setRecDelete
+  const { promotion, setPromotion, formVisible, setFormVisible, toggle, setToggle,recDelete, setRecDelete,formData,setFormData
   } = StatePromotion()
  
   const handleButtonClick = () => {
@@ -111,7 +111,7 @@ const PromotionView = () => {
                   </h3>
                   <DialogContent>
                     
-                    <PromotionForm />
+                    <PromotionForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle} />
                   </DialogContent>
                 </div>
               </Card>

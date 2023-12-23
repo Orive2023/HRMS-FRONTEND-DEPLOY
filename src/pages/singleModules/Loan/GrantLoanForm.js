@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -6,7 +6,7 @@ import * as loanapi from "./loanapi";
 import { useNavigate } from "react-router-dom";
 import GrantLoanState from "./GrantLoanState";
 
-const GrantLoanForm = ({ formData, setFormData }) => {
+const GrantLoanForm = ({ formData, setFormData,setFormVisible,setToggle }) => {
   const {
     permittedByError,
     setPermittedByError,
@@ -14,8 +14,6 @@ const GrantLoanForm = ({ formData, setFormData }) => {
     setLoanDetailsByError,
     loan,
     setLoan,
-    formvisible,
-    setFormVisible,
     pay,
     setPay,
     emiPay,
@@ -182,216 +180,235 @@ const GrantLoanForm = ({ formData, setFormData }) => {
   ];
 
 
+  const cancelButton = () => {
+    setFormVisible(false)
+    setToggle(false)
+    setFormData({
+      employeeName: "",
+      permittedBy: "",
+      loanDetails: "",
+      approveDate: "",
+      repaymentForm: "",
+      amount: "",
+      interestPersentage: "",
+      installmentPeriod: "",
+      status: "",
+      installmentCleared: "",
+    })
+  }
+
+  let buttonClick = formData.employeeName.length > 0 && formData.permittedBy.length > 0 && formData.loanDetails.length > 0 && formData.approveDate.length > 0 && formData.repaymentForm.length > 0 && formData.amount.length > 0 && formData.interestPersentage.length > 0 && formData.installmentPeriod.length > 0 && formData.installmentCleared.length > 0;
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <TextField
+        margin="dense"
+        label="Employee Name"
+        type="text"
+        fullWidth
+        name="employeeName"
+        id="employeeName"
+        value={formData.employeeName}
+        onChange={(e) => handleInputChange(e)}
+        required
+        style={{ margin: "5px 3px" }}
+      />
+      <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
         <TextField
           margin="dense"
-          label="Employee Name"
+          label="Permitted By"
           type="text"
           fullWidth
-          name="employeeName"
-          id="employeeName"
-          value={formData.employeeName}
+          name="permittedBy"
+          id="permittedBy"
+          value={formData.permittedBy}
           onChange={(e) => handleInputChange(e)}
           required
-          style={{ margin: "5px 3px" }}
+          helperText={permittedByError}
+          error={Boolean(permittedByError)}
         />
-        <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
-          <TextField
-            margin="dense"
-            label="Permitted By"
-            type="text"
-            fullWidth
-            name="permittedBy"
-            id="permittedBy"
-            value={formData.permittedBy}
-            onChange={(e) => handleInputChange(e)}
-            required
-            helperText={permittedByError}
-            error={Boolean(permittedByError)}
-          />
-          <TextField
-            margin="dense"
-            label="Loan Details"
-            type="text"
-            fullWidth
-            name="loanDetails"
-            id="loanDetails"
-            value={formData.loanDetails}
-            onChange={(e) => handleInputChange(e)}
-            required
-            helperText={loanDetailsByError}
-            error={Boolean(loanDetailsByError)}
-          />
-        </div>
+        <TextField
+          margin="dense"
+          label="Loan Details"
+          type="text"
+          fullWidth
+          name="loanDetails"
+          id="loanDetails"
+          value={formData.loanDetails}
+          onChange={(e) => handleInputChange(e)}
+          required
+          helperText={loanDetailsByError}
+          error={Boolean(loanDetailsByError)}
+        />
+      </div>
 
-        <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
-          <TextField
-            margin="dense"
-            label="Approve Date"
-            type="date"
-            fullWidth
-            name="approveDate"
-            id="approveDate"
-            required
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={formData.approveDate}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <TextField
-            margin="dense"
-            label="Repayment Form"
-            type="date"
-            fullWidth
-            name="repaymentForm"
-            id="repaymentForm"
-            required
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={formData.repaymentForm}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <TextField
-            margin="dense"
-            label="Amount"
-            type="number"
-            fullWidth
-            name="amount"
-            id="amount"
-            value={formData.amount}
-            onChange={(e) => handleInputChange(e)}
-            required
-          />
-        </div>
+      <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
+        <TextField
+          margin="dense"
+          label="Approve Date"
+          type="date"
+          fullWidth
+          name="approveDate"
+          id="approveDate"
+          required
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={formData.approveDate}
+          onChange={(e) => handleInputChange(e)}
+        />
+        <TextField
+          margin="dense"
+          label="Repayment Form"
+          type="date"
+          fullWidth
+          name="repaymentForm"
+          id="repaymentForm"
+          required
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={formData.repaymentForm}
+          onChange={(e) => handleInputChange(e)}
+        />
+        <TextField
+          margin="dense"
+          label="Amount"
+          type="number"
+          fullWidth
+          name="amount"
+          id="amount"
+          value={formData.amount}
+          onChange={(e) => handleInputChange(e)}
+          required
+        />
+      </div>
 
-        <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
-          <TextField
-            margin="dense"
-            label="Interest Percentage"
-            type="number"
-            fullWidth
-            name="interestPersentage"
-            id="interestPersentage"
-            value={formData.interestPersentage}
-            onChange={(e) => handleInputChange(e)}
-            required
-          />
-          <TextField
-            margin="dense"
-            label="Installment Period"
-            type="number"
-            fullWidth
-            name="installmentPeriod"
-            id="installmentPeriod"
-            value={formData.installmentPeriod}
-            onChange={(e) => handleInputChange(e)}
-            required
-          />
-          <TextField
-            margin="dense"
-            label="Repayment Total"
-            type="number"
-            fullWidth
-            name="repaymentTotal"
-            id="repaymentTotal"
-            InputLabelProps={{ shrink: true }}
-            value={pay}
-            required
-            disabled
-          />
-        </div>
-        <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
-          <TextField
-            margin="dense"
-            label="Installment"
-            type="number"
-            fullWidth
-            name="installment"
-            id="installment"
-            value={emiPay}
-            InputLabelProps={{ shrink: true }}
-            required
-          />
-          <TextField
-            id="status"
-            margin="dense"
-            select
-            label="Account Type"
-            fullWidth
-            defaultValue="Choose"
-            SelectProps={{
-              native: true,
-            }}
-            InputLabelProps={{
-              shrink: true,
-              htmlFor: "accountType", // Add the 'htmlFor' property with the ID of the input field
-            }}
-            value={formData.status}
-            onChange={(e) => handleInputChange(e)}
-            name="status"
-            required
-          >
-            <option disabled value="">
-              Choose Account Type
+      <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
+        <TextField
+          margin="dense"
+          label="Interest Percentage"
+          type="number"
+          fullWidth
+          name="interestPersentage"
+          id="interestPersentage"
+          value={formData.interestPersentage}
+          onChange={(e) => handleInputChange(e)}
+          required
+        />
+        <TextField
+          margin="dense"
+          label="Installment Period"
+          type="number"
+          fullWidth
+          name="installmentPeriod"
+          id="installmentPeriod"
+          value={formData.installmentPeriod}
+          onChange={(e) => handleInputChange(e)}
+          required
+        />
+        <TextField
+          margin="dense"
+          label="Repayment Total"
+          type="number"
+          fullWidth
+          name="repaymentTotal"
+          id="repaymentTotal"
+          InputLabelProps={{ shrink: true }}
+          value={pay}
+          required
+          disabled
+        />
+      </div>
+      <div style={{ display: "flex", gap: "10px", margin: "5px 0" }}>
+        <TextField
+          margin="dense"
+          label="Installment"
+          type="number"
+          fullWidth
+          name="installment"
+          id="installment"
+          value={emiPay}
+          InputLabelProps={{ shrink: true }}
+          required
+        />
+        <TextField
+          id="status"
+          margin="dense"
+          select
+          label="Account Type"
+          fullWidth
+          defaultValue="Choose"
+          SelectProps={{
+            native: true,
+          }}
+          InputLabelProps={{
+            shrink: true,
+            htmlFor: "accountType", // Add the 'htmlFor' property with the ID of the input field
+          }}
+          value={formData.status}
+          onChange={(e) => handleInputChange(e)}
+          name="status"
+          required
+        >
+          <option disabled value="">
+            Choose Account Type
+          </option>
+          {LoanStatusList.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
-            {LoanStatusList.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </TextField>
+          ))}
+        </TextField>
 
-          <TextField
-            margin="dense"
-            label="Installment Cleared"
-            type="number"
-            fullWidth
-            name="installmentCleared"
-            id="installmentCleared"
-            value={formData.installmentCleared}
-            onChange={(e) => handleInputChange(e)}
-            required
-            error={formData.installmentCleared>formData.installmentPeriod }
-            helperText={formData.installmentCleared>formData.installmentPeriod ? `Exceeding installment limit of ${formData.installmentPeriod}` : ""}
-          />
+        <TextField
+          margin="dense"
+          label="Installment Cleared"
+          type="number"
+          fullWidth
+          name="installmentCleared"
+          id="installmentCleared"
+          value={formData.installmentCleared}
+          onChange={(e) => handleInputChange(e)}
+          required
+          error={formData.installmentCleared>formData.installmentPeriod }
+          helperText={formData.installmentCleared>formData.installmentPeriod ? `Exceeding installment limit of ${formData.installmentPeriod}` : ""}
+        />
 
-          <TextField
-            margin="dense"
-            label="Total Payment Cleared"
-            type="number"
-            fullWidth
-            name="totalPaymentCleared"
-            id="totalPaymentCleared"
-            value={emiClear}
-            InputLabelProps={{ shrink: true }}
-            required
-            disabled
-          />
-        </div>
-        <div className="data-buttons">
-          <Button
-            id="input-btn"
-            type="submit"
-            onClick={saveLoan}
-            variant="outlined"
-            disabled={formData.installmentCleared>formData.installmentPeriod ? true : false}
-          >
-            Submit
-          </Button>
-          <Button
-            id="input-btn"
-            onClick={() => setFormVisible(false)}
-            variant="outlined"
-          >
-            Cancel
-          </Button>
-        </div>
-      </form>
-    </div>
+        <TextField
+          margin="dense"
+          label="Total Payment Cleared"
+          type="number"
+          fullWidth
+          name="totalPaymentCleared"
+          id="totalPaymentCleared"
+          value={emiClear}
+          InputLabelProps={{ shrink: true }}
+          required
+          disabled
+        />
+      </div>
+      <div className="data-buttons">
+        <Button
+          id="input-btn-submit"
+          type="submit"
+          onClick={saveLoan}
+          variant="outlined"
+          disabled={formData.installmentCleared>formData.installmentPeriod ? true : false}
+        >
+          Submit
+        </Button>
+        <Button
+          id="input-btn-cancel"
+          onClick={() => setFormVisible(false)}
+          variant="outlined"
+        >
+          Cancel
+        </Button>
+      </div>
+    </form>
+  </div>
   );
 };
 

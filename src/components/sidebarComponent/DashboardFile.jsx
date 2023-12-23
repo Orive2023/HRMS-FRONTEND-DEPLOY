@@ -1,11 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import DashboardLogo from "../../asset/24px/Dashboard.png";
 
 const DashboardFile = () => {
   const navigation = useNavigate();
   return (
     <div>
-      <p onClick={() => navigation("/")}>Dashboard</p>
+      <div className="logo-text-p" onClick={() => navigation("/HRMS")}>
+      <span></span>
+        <img src={DashboardLogo} alt="Dashboard" />
+        <p> Dashboard</p>
+      </div>
     </div>
   );
 };

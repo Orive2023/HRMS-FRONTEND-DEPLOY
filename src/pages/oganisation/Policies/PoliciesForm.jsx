@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
-
+import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
 import * as api from "./PoliciesApi";
 import StatePolicies from "./StatePolicies";
 
-const Policiesform = ({formData,setFormData}) => {
+const Policiesform = ({formData,setFormData, setOpen,}) => {
   const {
     dateError,
     setDateError,
@@ -16,7 +16,7 @@ const Policiesform = ({formData,setFormData}) => {
     descriptionError,
     setDescriptionError,
    pdfFile,setPdfFile,
-    setOpen,
+   
     company,
   setCompany,
   } = StatePolicies();
@@ -96,15 +96,34 @@ useEffect(() => {
     
   };
 
-
-
   const handleSubmit = (e) => {
     handleClose();
   };
+
+  
+  const cancelButton = () => {
+    setOpen(false);
+    setFormData({
+      companyName: "",
+      title: "",
+      createdDate: "",
+      uploadPdf: ""
+    });
+  };
+
+  let buttonCheck =
+    formData.companyName.length > 0 &&
+    formData.title.length > 0 &&
+    formData.createdDate.length > 0 ;
+    //formData.uploadPdf;
+
+
+
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
-        <TextField
+        {/* <TextField
           id="companyName"
           margin="dense"
           select
@@ -126,7 +145,26 @@ useEffect(() => {
               {option.companyName}
             </option>
           ))}
-        </TextField>
+        </TextField> */}
+        <FormControl fullWidth>
+        <InputLabel id="demo-company-select-label">Company Name</InputLabel>
+        <Select
+          labelId="demo-company-select-label"
+          id="selectedEmployee"
+          value={formData.companyName}
+          name="companyName"
+          label="Company Name"
+          onChange={(e) => handleInputChange(e)}
+        >
+          {company && company.map((item, index) => {
+            return (
+              <MenuItem key={index} value={item.companyName}>
+                {item.companyName}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
 
         <TextField
           margin="dense"
@@ -138,8 +176,8 @@ useEffect(() => {
           value={formData.title}
           onChange={(e) => handleInputChange(e)}
           required
-          error={titleError}
-          helperText={titleError && "Title must be between 5 and 30 characters"}
+          // error={titleError}
+          // helperText={titleError && "Title must be between 5 and 30 characters"}
         />
       </div>
 
@@ -154,11 +192,11 @@ useEffect(() => {
           value={formData.description}
           onChange={(e) => handleInputChange(e)}
           required
-          error={descriptionError}
-          helperText={
-            descriptionError &&
-            "Please enter a description between 2 and 200 characters."
-          }
+          // error={descriptionError}
+          // helperText={
+          //   descriptionError &&
+          //   "Please enter a description between 2 and 200 characters."
+          // }
         />
 
         <TextField
@@ -171,8 +209,8 @@ useEffect(() => {
           value={formData.createdDate}
           onChange={(e) => handleInputChange(e)}
           required
-          error={dateError}
-          helperText={dateError && "Please select the current date"}
+          // error={dateError}
+          // helperText={dateError && "Please select the current date"}
           InputLabelProps={{
             shrink: true,
           }}
@@ -193,33 +231,23 @@ useEffect(() => {
         }}
       />
 
-      <DialogActions>
+      <div className="data-buttons-popup">
         <Button
           type="submit"
           onClick={savePolicies}
-          style={{
-            background: "linear-gradient(to right, #1cb5e0, #000046)",
-            height: "35px",
-            width: "100%",
-            color: "white",
-          }}
           variant="outlined"
+          disabled={buttonCheck?false:true}
+          id="input-btn-submit-popup"
         >
           Submit
         </Button>
         <Button
-          onClick={handleClose}
-          style={{
-            background: "linear-gradient(to left, #1cb5e0, #000046)",
-            height: "35px",
-            width: "100%",
-            color: "white",
-          }}
-          variant="outlined"
+          onClick={cancelButton}
+          id="input-btn-cancel-popup"
         >
           Cancel
         </Button>
-      </DialogActions>
+      </div>
     </form>
   );
 };

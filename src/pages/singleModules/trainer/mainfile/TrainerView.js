@@ -53,7 +53,6 @@ const TrainerView = () => {
     }
   });
 
-  console.log(formData)
   return (
     <div>
       <Header />
@@ -72,7 +71,7 @@ const TrainerView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id= "add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -91,20 +90,16 @@ const TrainerView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
+               
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
-                    style={{
-                      textAlign: "center",
-                      marginTop: "25px",
-                      fontWeight: "600",
-                    }}
+                   className="form-header"
                   >
                     <h3> TRAINER FORM</h3>
                   </h3>
                   <DialogContent>
-                    <TrainerForm formData={formData} setFormData={setFormData}/>
+                    <TrainerForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>

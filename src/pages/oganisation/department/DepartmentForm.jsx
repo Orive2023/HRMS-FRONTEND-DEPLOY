@@ -5,12 +5,13 @@ import Button from "@mui/material/Button";
 import * as api from "./DepartmentApi"
 import { useNavigate} from 'react-router-dom';
 import StateDepartment from './StateDepartment';
+import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
 
-const DepartmentForm = ({formData,setFormData}) => {
+const DepartmentForm = ({formData,setFormData,setFormVisible, setToggle}) => {
 
     const navigate = useNavigate()
 
-    const {setCompany, setLocation, dateError, setDateError,location,company,setFormVisible,setDepartment} = StateDepartment()
+    const {setCompany, setLocation, dateError, setDateError,location,company,setDepartment} = StateDepartment()
 
     const loadDepartment = async () => {
         const result = await api.loadDepartment()
@@ -147,7 +148,25 @@ const DepartmentForm = ({formData,setFormData}) => {
         },
       ];
 
-  
+      const cancelButton = () => {
+
+        setFormVisible(false);
+        setToggle(false);
+        setFormData({
+          departmentName: "",
+          companyName: "",
+          departmentHead: "",
+          createdDate: "",
+          locationName: "",
+        });
+      };
+    
+      let buttonCheck =
+        formData.departmentName.length > 0 &&
+        formData.companyName.length > 0 &&
+        formData.departmentHead.length > 0 &&
+        formData.createdDate.length > 0 &&
+        formData.locationName.length > 0;
     
     
   return (
@@ -177,30 +196,26 @@ const DepartmentForm = ({formData,setFormData}) => {
         ))}
       </TextField>
 
-      <TextField
-        id="companyName"
-        margin="dense"
-        select
-        label="Company Name"
-        fullWidth
-        defaultValue="Choose"
-        SelectProps={{
-          native: true,
-        }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        value={formData.companyName}
-        onChange={(e) => handleInputChange(e)}
-        name="companyName"
-      >
-        {
-          company.map((option, index) => (
-            <option key={index} value={option.companyName}>
-              {option.companyName}
-            </option>
-          ))}
-      </TextField>
+      
+      <FormControl fullWidth>
+        <InputLabel id="demo-company-select-label">Company Name</InputLabel>
+        <Select
+          labelId="demo-company-select-label"
+          id="selectedEmployee"
+          value={formData.companyName}
+          name="companyName"
+          label="Company Name"
+          onChange={(e) => handleInputChange(e)}
+        >
+          {company && company.map((item, index) => {
+            return (
+              <MenuItem key={index} value={item.companyName}>
+                {item.companyName}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
     </div>
     <div className="data-input-fields">
       <TextField
@@ -237,54 +252,49 @@ const DepartmentForm = ({formData,setFormData}) => {
         value={formData.createdDate}
         onChange={(e) => handleInputChange(e)}
         required
-        error={dateError}
-        helperText={dateError && "Please select the current date"}
-        InputLabelProps={{
-          shrink: true,
-        }}
+        InputLabelProps={{shrink:true}}
+        // error={dateError}
+        // helperText={dateError && "Please select the current date"}
+        // InputLabelProps={{
+        //   shrink: true,
+        // }}
       />
-      <TextField
-        id="locationName"
-        margin="dense"
-        select
-        label="Location Name"
-        fullWidth
-        defaultValue="Choose"
-        SelectProps={{
-          native: true,
-        }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        value={formData.locationName}
-        onChange={(e) => handleInputChange(e)}
-        name="locationName"
-      >
-        {location.map((option, index) => (
-
-          <option key={index} value={option.locationName}>
-            {option.locationName}
-          </option>
-        ))}
-      </TextField>
-
+      
+      <FormControl fullWidth>
+        <InputLabel id="demo-location-select-label">Location Name</InputLabel>
+        <Select
+          labelId="demo-location-select-label"
+          id="locationName"
+          value={formData.locationName}
+          name="locationName"
+          label="Location Name"
+          onChange={(e) => handleInputChange(e)}
+        >
+          {location && location .map((item, index) => {
+            return (
+              <MenuItem key={index} value={item.locationName }>
+                {item.locationName }
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
 
     </div>
 
     <div className="data-buttons">
 
-      <Button id="input-btn"
+      <Button id="input-btn-submit"
         variant="outlined"
         type="submit"
         onClick={saveDepartment}
-
+        disabled={buttonCheck?false:true}
       >
         Submit
       </Button>
-      <Button id="input-btn"
+      <Button id="input-btn-cancel"
         variant="outlined"
-        onClick={() => setFormVisible(false)}
-
+        onClick={cancelButton}
       >
         Cancel
       </Button>
