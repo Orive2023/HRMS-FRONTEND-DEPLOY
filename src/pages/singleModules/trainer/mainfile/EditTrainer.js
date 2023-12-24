@@ -25,7 +25,7 @@ const EditTrainer = () => {
   },[])
 
   const loadTrainer = async () => {
-    const result = await axios.get(`http://localhost:8090/trainerslist/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/trainerslist/get/${id}`);
     setTrainer(result.data);
   };
 
@@ -38,7 +38,7 @@ const EditTrainer = () => {
 
   const updateTrainer = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8090/trainerslist/update/${id}`, trainer);
+    await axios.put(`http://13.200.246.216:5000/trainerslist/update/${id}`, trainer);
     navigate("/trainer");
   };
 

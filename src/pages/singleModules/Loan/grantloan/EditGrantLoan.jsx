@@ -30,7 +30,7 @@ const EditLoan = () => {
 
   const loadLoan = async () => {
   const result = await axios.get(
-        `http://localhost:8091/grantloan/get/${id}`
+        `http://13.200.246.216:5000/grantloan/get/${id}`
   );
     setLoan(result.data);
 };
@@ -44,7 +44,7 @@ const EditLoan = () => {
 const updateLoan = async (e) => {
     e.preventDefault();
     await axios.put(
-        `http://localhost:8091/grantloan/update/${id}`,
+        `http://13.200.246.216:5000/grantloan/update/${id}`,
       loan
     );
     navigate("/loan/grant-loan");

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const savePromotion = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8082/promotions/create/promotions",
+            "http://13.200.246.216:5000/promotions/create/promotions",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const savePromotion = async (formData) => {
 
 export const deletePromotion = async (id) => {
     try{
-        await axios.delete(`http://localhost:8082/promotions/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/promotions/delete/${id}`)
     } catch(error) {
         console.error("Error deleting project",error)
     }
@@ -22,7 +22,7 @@ export const deletePromotion = async (id) => {
 export const loadPromotion = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8082/promotions/get/promotions",
+            "http://13.200.246.216:5000/promotions/get/promotions",
             {
               validateStatus: () => {
                 return true;
@@ -39,7 +39,7 @@ export const loadPromotion = async () => {
 export const fetchEmployee = async () => {
     try {
         const response = await axios.get(
-            "http://localhost:8082/employee/get/employee"
+            "http://13.200.246.216:5000/employee/get/employee"
           );
           return response.data
     } catch (error){

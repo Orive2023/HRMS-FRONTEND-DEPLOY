@@ -29,7 +29,7 @@ import React, {
   
     const loadTicket = async () => {
       const result = await axios.get(
-        `http://localhost:8088/tickets/get/${id}`
+        `http://13.200.246.216:5000/tickets/get/${id}`
       );
       setTicket(result.data);
     };
@@ -43,7 +43,7 @@ import React, {
     const updateTicket = async (e) => {
       e.preventDefault();
       await axios.put(
-        `http://localhost:8088/tickets/update/${id}`,
+        `http://13.200.246.216:5000/tickets/update/${id}`,
         ticket
       );
       navigate("/ticket");

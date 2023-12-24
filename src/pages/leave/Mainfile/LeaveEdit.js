@@ -31,7 +31,7 @@ import React, {
   
     const loadLeave = async () => {
       const result = await axios.get(
-        `http://localhost:8084/leave/get/${id}`
+        `http://13.200.246.216:5000/leave/get/${id}`
       );
       setLeave(result.data);
     };
@@ -45,7 +45,7 @@ import React, {
     const updateLeave = async (e) => {
       e.preventDefault();
       await axios.put(
-        `http://localhost:8084/leave/update/${id}`,
+        `http://13.200.246.216:5000/leave/update/${id}`,
         leave
       );
       navigate("/view-leave");

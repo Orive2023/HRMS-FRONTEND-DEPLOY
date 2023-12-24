@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveSalaryTemplate = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8085/salaryTemplate/create/salaryTemplate",
+            "http://13.200.246.216:5000/salaryTemplate/create/salaryTemplate",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveSalaryTemplate = async (formData) => {
 
 export const deleteSalaryTemplate = async (id) => {
     try{
-        await axios.delete(`http://localhost:8085/salaryTemplate/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/salaryTemplate/delete/${id}`)
         loadSalaryTemplate();
     } catch(error) {
         console.error("Error deleting Payroll",error)
@@ -23,7 +23,7 @@ export const deleteSalaryTemplate = async (id) => {
 export const loadSalaryTemplate = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8085/salaryTemplate/get/salaryTemplate",
+            "http://13.200.246.216:5000/salaryTemplate/get/salaryTemplate",
             {
               validateStatus: () => {
                 return true;

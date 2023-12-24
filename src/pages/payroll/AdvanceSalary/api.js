@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveAdvanceSalary = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8085/advancesalery/create/advancesalery",
+            "http://13.200.246.216:5000/advancesalery/create/advancesalery",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveAdvanceSalary = async (formData) => {
 
 export const deleteAdvanceSalary = async (id) => {
     try{
-        await axios.delete(`http://localhost:8085/advancesalery/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/advancesalery/delete/${id}`)
     } catch(error) {
         console.error("Error deleting Advance Salary",error)
     }
@@ -22,7 +22,7 @@ export const deleteAdvanceSalary = async (id) => {
 export const loadAdvanceSalary = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8085/advancesalery/get/advancesalery",
+            "http://13.200.246.216:5000/advancesalery/get/advancesalery",
             {
               validateStatus: () => {
                 return true;
@@ -39,7 +39,7 @@ export const loadAdvanceSalary = async () => {
 export const fetchCompanies = async () => {
     try {
         const response = await axios.get(
-            "http://localhost:8081/company/get/company"
+            "http://13.200.246.216:5000/company/get/company"
           );
           return response.data
     } catch (error){

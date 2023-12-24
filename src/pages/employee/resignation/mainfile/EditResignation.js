@@ -22,7 +22,7 @@ const EditResignation = () => {
 
   const loadResignation = async () => {
     const result = await axios.get(
-      `http://localhost:8082/resignations/get/${id}`
+      `http://13.200.246.216:5000/resignations/get/${id}`
     );
     setResignation(result.data);
   };
@@ -36,7 +36,7 @@ const EditResignation = () => {
   const updateResignation = async (e) => {
     e.preventDefault();
     await axios.put(
-      `http://localhost:8082/resignations/update/${id}`,
+      `http://13.200.246.216:5000/resignations/update/${id}`,
       resignation
     );
     navigate("/employee/resignation");

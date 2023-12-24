@@ -22,7 +22,7 @@ const GrantLoanProfile = () => {
   }, []);
 
   const loadLoan = async () => {
-    const result = await axios.get(`http://localhost:8091/grantloan/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/grantloan/get/${id}`);
     setLoan(result.data);
   };
 

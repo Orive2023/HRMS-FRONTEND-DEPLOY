@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveTicket = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8088/tickets/create/tickets",
+            "http://13.200.246.216:5000/tickets/create/tickets",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveTicket = async (formData) => {
 
 export const deleteTicket = async (id) => {
     try{
-        await axios.delete(`http://localhost:8088/tickets/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/tickets/delete/${id}`)
     } catch(error) {
         console.error("Error deleting department",error)
     }
@@ -22,7 +22,7 @@ export const deleteTicket = async (id) => {
 export const loadTicket = async () => {
     try {
        const result =  await axios.get(
-        "http://localhost:8088/tickets/get/tickets",
+        "http://13.200.246.216:5000/tickets/get/tickets",
             {
               validateStatus: () => {
                 return true;
@@ -39,7 +39,7 @@ export const loadTicket = async () => {
 export const fetchEmployee = async () => {
     try {
         const response = await axios.get(
-            "http://localhost:8082/employee/get/employee"
+            "http://13.200.246.216:5000/employee/get/employee"
           );
           return response.data
     } catch (error){

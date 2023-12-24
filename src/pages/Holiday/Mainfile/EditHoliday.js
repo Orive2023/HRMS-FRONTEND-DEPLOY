@@ -31,7 +31,7 @@ import React, {
   
     const loadHoliday = async () => {
       const result = await axios.get(
-        `http://localhost:8084/holidays/get/${id}`
+        `http://13.200.246.216:5000/holidays/get/${id}`
       );
       setHoliday(result.data);
     };
@@ -45,7 +45,7 @@ import React, {
     const updateHoliday = async (e) => {
       e.preventDefault();
       await axios.put(
-        `http://localhost:8084/holidays/update/${id}`,
+        `http://13.200.246.216:5000/holidays/update/${id}`,
         department
       );
       navigate("/view-holiday");

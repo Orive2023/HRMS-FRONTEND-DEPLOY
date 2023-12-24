@@ -21,7 +21,7 @@ const TravelPofile = () => {
 
 	const loadtravel = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/travel/get/${id}`
+			`http://13.200.246.216:5000/travel/get/${id}`
 		);
 		settravel(result.data);
 	};

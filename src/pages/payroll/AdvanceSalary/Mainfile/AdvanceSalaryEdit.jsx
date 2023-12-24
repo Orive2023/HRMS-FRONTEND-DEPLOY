@@ -44,7 +44,7 @@ import React, {
   
     const loadProject = async () => {
       const result = await axios.get(
-        `http://localhost:8086/projects/get/${id}`
+        `http://13.200.246.216:5000/projects/get/${id}`
       );
       setProject(result.data);
     };
@@ -58,7 +58,7 @@ import React, {
     const updateProject = async (e) => {
       e.preventDefault();
       await axios.put(
-        `http://localhost:8086/projects/update/${id}`,
+        `http://13.200.246.216:5000/projects/update/${id}`,
         project
       );
       navigate("/project-view");

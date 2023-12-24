@@ -22,7 +22,7 @@ const EditSalaryTemplate = () => {
   }, []);
   const loadSalaryTemplate = async () => {
     const result = await axios.get(
-        `http://localhost:8085/salaryTemplate/get/${id}`
+        `http://13.200.246.216:5000/salaryTemplate/get/${id}`
     );
     setSalaryTemplate(result.data);
 };
@@ -36,7 +36,7 @@ const EditSalaryTemplate = () => {
 const updateSalaryTemplate = async (e) => {
     e.preventDefault();
     await axios.put(
-        `http://localhost:8085/salaryTemplate/update/${id}`,
+        `http://13.200.246.216:5000/salaryTemplate/update/${id}`,
       salaryTemplate
     );
     navigate("/payroll/salaryTemplate");

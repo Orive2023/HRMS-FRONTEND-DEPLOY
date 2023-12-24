@@ -21,7 +21,7 @@ import React, {
   
     const loadHoliday = async () => {
       const result = await axios.get(
-        `http://localhost:8084/holidays/get/${id}`
+        `http://13.200.246.216:5000/holidays/get/${id}`
       );
       setHoliday(result.data);
     };

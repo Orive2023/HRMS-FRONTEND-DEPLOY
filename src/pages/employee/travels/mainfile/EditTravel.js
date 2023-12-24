@@ -29,7 +29,7 @@ const EditTravel = () => {
 
 	const loadtravel = async () => {
 		const result = await axios.get(
-			`http://localhost:8082/travels/get/${id}`
+			`http://13.200.246.216:5000/travels/get/${id}`
 		);
 		settravel(result.data);
 	};
@@ -43,7 +43,7 @@ const EditTravel = () => {
 	const updatetravel = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8082/travels/update/${id}`,
+			`http://13.200.246.216:5000/travels/update/${id}`,
 			travel
 		);
 		navigate("/view-travel");

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveLeave = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8084/leaves/create/leave",
+            "http://13.200.246.216:5000/leaves/create/leave",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveLeave = async (formData) => {
 
 export const deleteLeave= async (id) => {
     try{
-        await axios.delete(`http://localhost:8084/leaves/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/leaves/delete/${id}`)
     } catch(error) {
         console.error("Error deleting Leave",error)
     }
@@ -22,7 +22,7 @@ export const deleteLeave= async (id) => {
 export const loadLeave = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8084/leave/get/leave",
+            "http://13.200.246.216:5000/leave/get/leave",
             {
               validateStatus: () => {
                 return true;

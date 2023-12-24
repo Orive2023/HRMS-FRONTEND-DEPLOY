@@ -3,7 +3,7 @@ import axios from 'axios';
 export const  saveLoan = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8091/grantloan/create/grantloan",
+            "http://13.200.246.216:5000/grantloan/create/grantloan",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const  saveLoan = async (formData) => {
 
 export const deleteLoan = async (id) => {
     try{
-        await axios.delete(`http://localhost:8091/grantloan/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/grantloan/delete/${id}`)
     } catch(error) {
         console.error("Error deleting loan",error)
     }
@@ -22,7 +22,7 @@ export const deleteLoan = async (id) => {
 export const loadLoan = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8091/grantloan/get/grantloan",
+            "http://13.200.246.216:5000/grantloan/get/grantloan",
             {
               validateStatus: () => {
                 return true;

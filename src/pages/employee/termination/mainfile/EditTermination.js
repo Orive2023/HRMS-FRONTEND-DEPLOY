@@ -24,7 +24,7 @@ const EditTermination = () => {
 
   const loadTermination = async () => {
     const result = await axios.get(
-      `http://localhost:8082/terminations/get/${id}`
+      `http://13.200.246.216:5000/terminations/get/${id}`
     );
     setTermination(result.data);
   };
@@ -38,7 +38,7 @@ const EditTermination = () => {
   const updateTermination = async (e) => {
     e.preventDefault();
     await axios.put(
-      `http://localhost:8082/terminations/update/${id}`,
+      `http://13.200.246.216:5000/terminations/update/${id}`,
       termination
     );
     navigate("/employee/termination");

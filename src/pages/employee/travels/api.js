@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveTravel = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8082/travels/create/travels",
+            "http://13.200.246.216:5000/travels/create/travels",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveTravel = async (formData) => {
 
 export const deleteTravel = async (id) => {
     try{
-        await axios.delete(`http://localhost:8082/travels/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/travels/delete/${id}`)
     } catch(error) {
         console.error("Error deleting trvel",error)
     }
@@ -22,7 +22,7 @@ export const deleteTravel = async (id) => {
 export const loadTravel= async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8082/travels/get/travels",
+            "http://13.200.246.216:5000/travels/get/travels",
             {
               validateStatus: () => {
                 return true;
@@ -38,7 +38,7 @@ export const loadTravel= async () => {
 export const fetchEmployee = async () => {
     try {
         const response = await axios.get(
-            "http://localhost:8082/employee/get/employee"
+            "http://13.200.246.216:5000/employee/get/employee"
           );
           return response.data
     } catch (error){
