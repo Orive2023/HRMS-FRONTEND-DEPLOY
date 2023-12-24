@@ -4,7 +4,7 @@ import axios from "axios";
 export const saveEmployees = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8082/employee/create/employee",
+            "http://13.200.246.216:5000/employee/create/employee",
             formData,{headers: {
                 'Content-Type': 'multipart/form-data'
               }}
@@ -16,7 +16,7 @@ export const saveEmployees = async (formData) => {
 
 export const deleteEmployee = async (id) => {
     try{
-        await axios.delete(`http://localhost:8082/employee/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/employee/delete/${id}`)
     } catch(error) {
         console.error("Error deleting employee",error)
     }
@@ -25,7 +25,7 @@ export const deleteEmployee = async (id) => {
 export const loademployees = async () => {
     try{
         const result = await axios.get(
-            "http://localhost:8082/employee/get/employee",
+            "http://13.200.246.216:5000/employee/get/employee",
             {
               validateStatus: () => {
                 return true;

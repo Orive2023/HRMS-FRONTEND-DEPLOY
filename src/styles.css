@@ -323,12 +323,15 @@ html {
 
 .head-foot-part {
   width: 100%;
-  padding: 20px;
   position: relative;
   height: 100vh;
-  padding: 6vh 35px 0 35px;
+  padding: 6vh 55px 0 55px;
   overflow: scroll;
   background-color: #f4f6f9;
+}
+
+.head-foot-part section {
+  padding: 0 20px;
 }
 
 .nav-links {

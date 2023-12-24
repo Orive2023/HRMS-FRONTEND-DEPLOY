@@ -34,7 +34,7 @@ const Editemployee = () => {
 
 	const loademployee = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/employee/get/${id}`
+			`http://13.200.246.216:5000/employee/get/${id}`
 		);
 		setemployee(result.data);
 	};
@@ -48,7 +48,7 @@ const Editemployee = () => {
 	const updateemployee = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8083/employee/update/${id}`,
+			`http://13.200.246.216:5000/employee/update/${id}`,
 			employee
 		);
 		navigate("/view-employee");

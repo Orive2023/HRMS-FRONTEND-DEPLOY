@@ -27,7 +27,7 @@ const EditPromotion = () => {
 
 	const loadpromotion = async () => {
 		const result = await axios.get(
-			`http://localhost:8082/promotions/get/${id}`
+			`http://13.200.246.216:5000/promotions/get/${id}`
 		);
 		setpromotion(result.data);
 	};
@@ -41,7 +41,7 @@ const EditPromotion = () => {
 	const updatepromotion = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8082/promotions/update/${id}`,
+			`http://13.200.246.216:5000/promotions/update/${id}`,
 			promotion
 		);
 		navigate("/employee/promotion");

@@ -934,7 +934,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 0 && (
         <div style={{ marginTop: "15px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Basic Info</h3>
               <DialogContent>

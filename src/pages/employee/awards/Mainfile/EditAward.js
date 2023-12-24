@@ -30,7 +30,7 @@ const EditAward = () => {
 
 	const loadAward = async () => {
 		const result = await axios.get(
-			`http://localhost:8082/awards/get/${id}`
+			`http://13.200.246.216:5000/awards/get/${id}`
 		);
 		setAward(result.data);
 	};
@@ -44,7 +44,7 @@ const EditAward = () => {
 	const updateAward = async (e) => {
 		e.preventDefault();
 		await axios.put(
-			`http://localhost:8082/awards/update/${id}`,
+			`http://13.200.246.216:5000/awards/update/${id}`,
 			award
 		);
 		navigate("/employee/awards");

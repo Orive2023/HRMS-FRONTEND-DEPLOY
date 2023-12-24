@@ -21,7 +21,7 @@ const AwardPofile = () => {
 
 	const loadaward = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/award/get/${id}`
+			`http://13.200.246.216:5000/award/get/${id}`
 		);
 		setaward(result.data);
 	};

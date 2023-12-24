@@ -15,7 +15,7 @@ const EmployeeProfile = () => {
   }, []);
 
   const loadEmployee = async () => {
-    const result = await axios.get(`http://localhost:8083/employee/get/${id}`);
+    const result = await axios.get(`http://13.200.246.216:5000/employee/get/${id}`);
     setEmployee(result.data);
   };
 

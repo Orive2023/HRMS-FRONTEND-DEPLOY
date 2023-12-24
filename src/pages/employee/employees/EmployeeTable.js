@@ -23,7 +23,7 @@ const EmployeeTable = ({ employee, setRecDelete }) => {
   console.log(employee.length);
   return (
     <div>
-      <table id='table' className="table table-bordered table-hover shadow">
+      <table id='table' className="table table-bordered table-hover">
         <thead>
           <tr className="text-center">
             <th>SL</th>

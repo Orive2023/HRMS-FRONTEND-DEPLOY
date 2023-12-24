@@ -3,7 +3,7 @@ import axios from 'axios';
 export const saveAward = async (formData) => {
     try{
         await axios.post(
-            "http://localhost:8082/awards/create/awards",
+            "http://13.200.246.216:5000/awards/create/awards",
             formData
           );
     } catch(error) {
@@ -13,7 +13,7 @@ export const saveAward = async (formData) => {
 
 export const deleteAward = async (id) => {
     try{
-        await axios.delete(`http://localhost:8082/awards/delete/${id}`)
+        await axios.delete(`http://13.200.246.216:5000/awards/delete/${id}`)
     } catch(error) {
         console.error("Error deleting award",error)
     }
@@ -22,7 +22,7 @@ export const deleteAward = async (id) => {
 export const loadAward = async () => {
     try {
        const result =  await axios.get(
-            "http://localhost:8082/awards/get/awards",
+            "http://13.200.246.216:5000/awards/get/awards",
             {
               validateStatus: () => {
                 return true;
@@ -39,7 +39,7 @@ export const loadAward = async () => {
 export const fetchCompanies = async () => {
     try {
         const response = await axios.get(
-            "http://localhost:8082/awards/get/awards"
+            "http://13.200.246.216:5000/awards/get/awards"
           );
           return response.data
     } catch (error){
@@ -51,7 +51,7 @@ export const fetchCompanies = async () => {
 export const fetchLocations = async () => {
     try {
         const response = await axios.get(
-          "http://localhost:8082/awards/get/awards"
+          "http://13.200.246.216:5000/awards/get/awards"
         );
        return response.data 
       } catch (error) {

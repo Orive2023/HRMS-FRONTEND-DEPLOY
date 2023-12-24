@@ -21,7 +21,7 @@ const EmployeeExitPofile = () => {
 
 	const loademployeeExit = async () => {
 		const result = await axios.get(
-			`http://localhost:8083/employeeExit/get/${id}`
+			`http://13.200.246.216:5000/employeeExit/get/${id}`
 		);
 		setemployeeExit(result.data);
 	};
