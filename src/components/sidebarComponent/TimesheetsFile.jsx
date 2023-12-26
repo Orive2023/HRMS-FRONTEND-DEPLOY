@@ -23,13 +23,15 @@ const TimesheetsFile = () => {
           Timesheets<i class='bx bx-chevron-down'></i>
         </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleTimeclick}>
+    <span></span>
+         <img src={TimesheetLogo} alt="Timesheet"/>
+         
+    </div>
         <div className={timeDropdown}>
-          <p onClick={() => navigation("/Attendance/attendanceView")}>Attendance</p>
-          <p onClick={() => navigation("/timesheets/day-wise-attendance")}>Date Wise Attendance</p>
-          <p onClick={() => navigation("/timesheets/update-attendance")}>Update Attendance</p>
+          <p onClick={() => navigation("/timesheets/attendance")}>Attendance</p>
           <p onClick={() => navigation("/timesheets/leaves")}>Leaves</p>
-          <p onClick={() => navigation("/timesheets/office-shifts")}>Office Shifts</p>
-          <p onClick={() => navigation("/timesheets/holidays")}>Holidays</p>
+          <p onClick={() => navigation("/timesheets/holiday")}>Holidays</p>
         </div>
     </div>
   )

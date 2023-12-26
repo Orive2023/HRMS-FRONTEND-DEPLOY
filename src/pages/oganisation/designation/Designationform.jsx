@@ -8,16 +8,9 @@ import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
 import StateDesignation from "./StateDesignation";
 import * as api from "./DesignationApi";
 
-const Designationform = ({}) => {
-  const {
-    dateError,
-    setDateError,
-    department,
-    setDepartment,
-    setOpen,
-    formData,
-    setFormData,
-  } = StateDesignation();
+const Designationform = ({ formData, setFormData, setOpen }) => {
+  const { dateError, setDateError, department, setDepartment } =
+    StateDesignation();
   let navigate = useNavigate();
 
   const getCurrentDate = () => {
@@ -72,7 +65,7 @@ const Designationform = ({}) => {
     formData.createdDate.length > 0;
 
   const cancelButton = () => {
-    setOpen(false);
+    handleClose();
     setFormData({
       departmentName: "",
       designationName: "",
@@ -81,8 +74,8 @@ const Designationform = ({}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{padding:"10px 0"}}>
-    {/* <TextField
+    <form onSubmit={handleSubmit} style={{ padding: "10px 0" }}>
+      {/* <TextField
             id="departmentName"
             margin="dense"
             select
@@ -107,8 +100,10 @@ const Designationform = ({}) => {
             
           </TextField> */}
 
-          <FormControl fullWidth>
-        <InputLabel id="demo-designation-select-label">Department Name</InputLabel>
+      <FormControl fullWidth>
+        <InputLabel id="demo-designation-select-label">
+          Department Name
+        </InputLabel>
         <Select
           labelId="demo-designation-select-label"
           id="departmentName"
@@ -117,39 +112,35 @@ const Designationform = ({}) => {
           label="Department Name"
           onChange={(e) => handleInputChange(e)}
           SelectProps={{
-              native: true,
-            }}
-            InputLabelProps={{
-              shrink: true
-            }}
-          
+            native: true,
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
         >
-          {department && department.map((item, index) => {
-            return (
-              <MenuItem key={index} value={item.departmentName}>
-                {item.departmentName}
-              </MenuItem>
-            );
-          })}
+          {department &&
+            department.map((item, index) => {
+              return (
+                <MenuItem key={index} value={item.departmentName}>
+                  {item.departmentName}
+                </MenuItem>
+              );
+            })}
         </Select>
       </FormControl>
 
-
-    <div className="data-input-fields">
-          
-
-
-      <TextField
-        margin="dense"
-        label="Designation "
-        type="text"
-        fullWidth
-        name="designationName"
-        value={formData.designationName}
-        onChange={(e) => handleInputChange(e)}
-        required
-      />
-      <TextField
+      <div className="data-input-fields">
+        <TextField
+          margin="dense"
+          label="Designation "
+          type="text"
+          fullWidth
+          name="designationName"
+          value={formData.designationName}
+          onChange={(e) => handleInputChange(e)}
+          required
+        />
+        <TextField
           margin="dense"
           label="Create Date"
           type="date"
@@ -165,9 +156,7 @@ const Designationform = ({}) => {
             shrink: true,
           }}
         />
-
-    </div>
-   
+      </div>
 
       <DialogActions>
         <div className="data-buttons-popup">
@@ -175,7 +164,7 @@ const Designationform = ({}) => {
             type="submit"
             onClick={saveDesignation}
             variant="outlined"
-            disabled={buttonCheck?false:true}
+            disabled={buttonCheck ? false : true}
             id="input-btn-submit-popup"
           >
             Submit

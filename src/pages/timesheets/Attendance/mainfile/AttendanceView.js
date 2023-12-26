@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect} from "react";
 import SideBar from "../../../../components/SideBar";
 import Header from "../../../../components/Header";
 
@@ -10,58 +9,56 @@ import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
 
-import * as api from "../api";
-import StateWorksheet from "../StateWorksheet";
-import WorksheetTable from "../WorksheetTable";
-import WorkSheetForm from "../WorksheetForm";
+import * as api from "../api"
+import StateAttendance from "../StateAttendance";
+import AttendanceTable from "../AttendanceTable";
+import AttendanceForm from "../AttendanceForm";
 
 import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
-const WorksheetView = () => {
-  const {
-    worksheet,
-    setWorksheet,
-    formVisible,
-    setFormVisible,
-    toggle,
-    setToggle,
-    recDelete,
-    setRecDelete,
-    formData,
-    setFormData,
-  } = StateWorksheet();
 
+const  AttendanceView = () => {
+
+  const {formVisible, setFormVisible,toggle,setToggle,recDelete,attendance,setAttendance, setRecDelete,formData,setFormData
+  } = StateAttendance()
+
+  
   const handleButtonClick = () => {
     setFormVisible((prev) => !prev);
   };
 
   useEffect(() => {
-    loadWorksheet();
+    loadAttendance();
   }, []);
 
-  const loadWorksheet = async () => {
-    const result = await api.loadWorksheet();
-    setWorksheet(result);
+  const loadAttendance = async () => {
+    const result = await api.loadAttendance()
+    console.log("rec",result);
+    setAttendance(result);
   };
 
+
+
   const handleDelete = async () => {
-    await api.deleteWorksheet(recDelete);
-    loadWorksheet();
+    await api.deleteAttendance(recDelete)
+    loadAttendance();
   };
 
   useEffect(() => {
     if (recDelete !== "") {
-      handleDelete();
-      setRecDelete("");
+      handleDelete()
+      setRecDelete("")
     }
-  });
+  })
+ 
+
 
   return (
     <div>
-      <div id="header-container" className="header-container">
-        <CompanyLogoFile />
-        <Header />
-      </div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
+      <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -81,34 +78,41 @@ const WorksheetView = () => {
                 >
                   {toggle ? (
                     <div className="hide">
-                      <BiSolidHide />
+                      <BiSolidHide
+                      />
                       HIDE
                     </div>
                   ) : (
                     <div className="add">
                       <MdAdd />
-                      ADD WORKSHEET
+                      ADD ATTENDANCE
                     </div>
                   )}
                 </Button>
               </div>
             </div>
             <Collapse in={formVisible}>
-              <Card variant="outlined">
+              <Card
+                variant="outlined"
+              >
                 <div style={{ marginTop: "20px" }}>
-                  <h3 className="form-header">Add Worksheet</h3>
+                  <h3
+                    style={{
+                      textAlign: "center",
+                      marginTop: "25px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    <h3>ATTENDANCE FORM</h3>
+                  </h3>
                   <DialogContent>
-                    <WorkSheetForm
-                      formData={formData}
-                      setFormData={setFormData}
-                      setFormVisible={setFormVisible}
-                      setToggle={setToggle}
-                    />
+                   
+                    <AttendanceForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>
             </Collapse>
-            <WorksheetTable worksheet={worksheet} setRecDelete={setRecDelete} />
+            <AttendanceTable attendance={attendance} setRecDelete={setRecDelete} />
           </section>
         </div>
       </div>
@@ -116,4 +120,4 @@ const WorksheetView = () => {
   );
 };
 
-export default WorksheetView;
+export default AttendanceView;

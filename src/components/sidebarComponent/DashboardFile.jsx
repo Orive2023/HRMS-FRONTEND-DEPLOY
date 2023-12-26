@@ -6,11 +6,16 @@ const DashboardFile = () => {
   const navigation = useNavigate();
   return (
     <div>
-      <div className="logo-text-p" onClick={() => navigation("/HRMS")}>
+
+    <div className="logo-text-p" onClick={() => navigation("/HRMS")}>
       <span></span>
-        <img src={DashboardLogo} alt="Dashboard" />
-        <p> Dashboard</p>
-      </div>
+      <img src={DashboardLogo} alt="Dashboard" />
+      <p> Dashboard</p>
+    </div>
+    <div className="mobile-logo-text-p" onClick={() => navigation("/HRMS")}>
+      <span></span>
+      <img src={DashboardLogo} alt="Dashboard" />
+    </div>
     </div>
   );
 };

@@ -22,6 +22,11 @@ const Organisationfile = () => {
         Organisation<i class='bx bx-chevron-down'></i>
       </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleOrgclick}>
+    <span></span>
+      <img src={OrganisationLogo} alt="Organisation"/>
+     
+    </div>
       <div className={dropdown}>
         <p onClick={() => navigation("/organisation/company")}>Company</p>
 

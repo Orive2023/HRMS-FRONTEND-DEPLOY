@@ -1,6 +1,7 @@
 import React, { useEffect} from "react";
-import SideBar from "../../../components/SideBar";
-import Header from "../../../components/Header";
+
+import SideBar from "../../../../components/SideBar";
+import Header from "../../../../components/Header";
 
 import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
@@ -9,37 +10,40 @@ import Collapse from "@mui/material/Collapse";
 import { BiSolidHide } from "react-icons/bi";
 import { Card } from "@mui/material";
 
+
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 import * as api from "../api"
-import StateAttendance from "../StateAttendance";
-import AttendanceTable from "../AttendanceTable";
-import AttendanceForm from "../AttendanceForm";
+import StateLeave from "../StateLeave";
+import LeaveTable from "../LeaveTable";
+import LeaveForm from "../LeaveForm";
 
 
-const  AttendanceView = () => {
+const LeaveView = () => {
 
-  const {formVisible, setFormVisible,toggle,setToggle,recDelete,attendance,setAttendance, setRecDelete
-  } = StateAttendance()
+  const { leave, formData,setFormData, formVisible, setFormVisible, toggle, setToggle, recDelete, setRecDelete
+  } = StateLeave()
 
   
   const handleButtonClick = () => {
     setFormVisible((prev) => !prev);
   };
 
-  useEffect(() => {
-    loadAttendance();
-  }, []);
+ 
 
-  const loadAttendance = async () => {
-    const result = await api.loadAttendance()
-    console.log("rec",result);
-    setAttendance(result);
+  useEffect(() => {
+    api.loadLeave();
+  }, );
+
+  const loadLeave= async () => {
+    const result = await api.loadLeave()
+    console.log("rec", result);
+    StateLeave(result);
   };
 
 
-
   const handleDelete = async () => {
-    await api.deleteAttendance(recDelete)
-    loadAttendance();
+    await api.deleteLeave(recDelete)
+    loadLeave();
   };
 
   useEffect(() => {
@@ -48,12 +52,13 @@ const  AttendanceView = () => {
       setRecDelete("")
     }
   })
- 
-
 
   return (
     <div>
+       <div id="header-container" className="header-container">
+    <CompanyLogoFile />
       <Header />
+    </div>
       <div className="dashboard-container">
         <SideBar />
         <div className="head-foot-part">
@@ -69,7 +74,7 @@ const  AttendanceView = () => {
                     setToggle(!toggle);
                     handleButtonClick();
                   }}
-                  style={{ height: "35px", marginBottom: "10px" }}
+                  id="add-btn"
                 >
                   {toggle ? (
                     <div className="hide">
@@ -80,7 +85,7 @@ const  AttendanceView = () => {
                   ) : (
                     <div className="add">
                       <MdAdd />
-                      ADD ATTENDANCE
+                      ADD LEAVE
                     </div>
                   )}
                 </Button>
@@ -89,7 +94,6 @@ const  AttendanceView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3
@@ -99,16 +103,16 @@ const  AttendanceView = () => {
                       fontWeight: "600",
                     }}
                   >
-                    <h3>ATTENDANCE FORM</h3>
+                    <h3> LEAVE FORM</h3>
                   </h3>
                   <DialogContent>
-                   
-                    <AttendanceForm/>
+                    
+                    <LeaveForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
                   </DialogContent>
                 </div>
               </Card>
             </Collapse>
-            <AttendanceTable attendance={attendance} setRecDelete={setRecDelete} />
+            <LeaveTable leave={leave} setRecDelete={setRecDelete} />
           </section>
         </div>
       </div>
@@ -116,4 +120,4 @@ const  AttendanceView = () => {
   );
 };
 
-export default AttendanceView;
+export default LeaveView;

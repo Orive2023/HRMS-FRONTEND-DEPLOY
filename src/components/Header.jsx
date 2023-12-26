@@ -2,6 +2,7 @@ import React from "react";
 import Notificationlogo from "../asset/24px/Notification.png"
 import MessageLogo from "../asset/24px/message.png"
 import UserLogo from "../asset/24px/User.png"
+import Logo from "../asset/Logo.png"
 
 const Header = () => {
   return (

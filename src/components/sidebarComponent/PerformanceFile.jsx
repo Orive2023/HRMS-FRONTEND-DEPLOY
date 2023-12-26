@@ -21,6 +21,11 @@ const PerformanceFile = () => {
           Performance<i class='bx bx-chevron-down'></i>
         </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handlePerclick}>
+    <span></span>
+         <img src={PerformanceLogo} alt="Performance"/>
+        
+    </div>
         <div className={perDropdown}>
             <p onClick={() => navigation("/performance/Performance-Appraisal")}>Appraisal</p>
          

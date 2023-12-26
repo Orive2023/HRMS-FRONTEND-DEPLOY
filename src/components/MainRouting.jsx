@@ -4,7 +4,7 @@ import RoutingPerformance from "../pages/performance/RoutingPerformance";
 import RoutingSingleModules from "../pages/singleModules/RoutingSingleModules";
 import RoutingPayroll from "../pages/payroll/RoutingPayroll";
 import RoutingEmployee from "../pages/employee/RoutingEmployee"
-import RoutingLeave from "../pages/leave/RoutingLeave";
+import RoutingTimesheets from "../pages/timesheets/RoutingTimesheets";
 
 const MainRouting = () => {
   return (
@@ -14,7 +14,7 @@ const MainRouting = () => {
       <RoutingSingleModules/>
       <RoutingPayroll/>
       <RoutingEmployee />
-      <RoutingLeave/>
+      <RoutingTimesheets />
     </div>
   );
 };

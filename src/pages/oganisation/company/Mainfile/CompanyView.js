@@ -39,7 +39,6 @@ const CompanyView = () => {
 
   const loadCompany = async () => {
     const result = await api.loadCompany();
-    console.log("rec", result);
     setCompany(result);
   };
 
@@ -48,7 +47,6 @@ const CompanyView = () => {
   }, []);
 
   const handleDelete = async () => {
-    console.log(recDelete)
     await api.deleteCompany(recDelete);
     loadCompany();
   };
@@ -59,9 +57,6 @@ const CompanyView = () => {
       setRecDelete("");
     }
   });
-
-  console.log("comp", company);
-  console.log(formData);
 
   return (
     <div>

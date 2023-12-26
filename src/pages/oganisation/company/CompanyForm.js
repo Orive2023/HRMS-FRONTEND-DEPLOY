@@ -15,17 +15,6 @@ const CompanyForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
   const {
     file,
     setFile,
-    dateError,   
-    errorMsg,
-    isValidCIN,
-    addressError,
-    isEmailValid,
-    phoneError,
-    websiteError,
-    isValidGSTNumber,
-    isValidUANNumber,
-    errorCode,
-    company,
     setIsValidCIN,
     setIsEmailValid,
     setIsValidUANNumber,
@@ -307,10 +296,6 @@ const CompanyForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
     console.log("Form submitted:", formData);
   };
 
-  console.log(company);
-  console.log(formData);
-  console.log(file);
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
@@ -580,7 +565,6 @@ const CompanyForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
           Cancel
         </Button>
       </div>
-      <SweetAlert2 {...swalProps} />
     </form>
   );
 };

@@ -22,6 +22,11 @@ const Trainingfile = () => {
           Training<i class='bx bx-chevron-down'></i>
         </p>
       </div>
+      <div className="mobile-logo-text-p" onClick={handleTrainclick}>
+      <span></span>
+        <img src={TrainingLogo} alt="Training" />
+       
+      </div>
       <div className={trainDropdown}>
         <p onClick={() => navigation("/trainer")}>Trainer List</p>
       </div>

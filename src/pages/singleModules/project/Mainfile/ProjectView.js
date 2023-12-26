@@ -90,7 +90,7 @@ const ProjectView = () => {
               </div>
             </div>
             <Collapse in={formVisible}>
-              <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+              <Card variant="outlined">
                 <div style={{ marginTop: "20px" }}>
                   <h3
                   className="form-header"

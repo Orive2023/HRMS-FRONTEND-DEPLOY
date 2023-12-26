@@ -23,6 +23,11 @@ const ProcurementFile = () => {
           Procurement<i class='bx bx-chevron-down'></i>
         </p>
       </div>
+      <div className="mobile-logo-text-p" onClick={handleProcurementclick}>
+      <span></span>
+        <img src={ProcurementLogo} alt="Procurement" />
+       
+      </div>
       <div className={procurementDropdown}>
         <p onClick={() => navigation("/procurement/bid-analysis")}>
           Bid Analysis

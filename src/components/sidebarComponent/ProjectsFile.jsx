@@ -6,11 +6,15 @@ const ProjectsFile = () => {
   const navigation = useNavigate();
   return (
     <div>
-      <dv className="logo-text-p" onClick={() => navigation("/project")}>
+      <div className="logo-text-p" onClick={() => navigation("/project")}>
       <span></span>
         <img src={ProjectLogo} alt="Project" />
         <p>Projects</p>
-      </dv>
+      </div>
+      <div className="mobile-logo-text-p" onClick={() => navigation("/project")}>
+      <span></span>
+        <img src={ProjectLogo} alt="Project" />
+      </div>
     </div>
   );
 };

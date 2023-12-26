@@ -11,6 +11,11 @@ const TicketsFile = () => {
         <img src={TicketLogo} alt="Ticket" />
         <p>Tickets</p>
       </div>
+      <div className="mobile-logo-text-p" onClick={() => navigation("/ticket")}>
+      <span></span>
+        <img src={TicketLogo} alt="Ticket" />
+        
+      </div>
     </div>
   );
 };

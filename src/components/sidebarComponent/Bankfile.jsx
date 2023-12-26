@@ -22,6 +22,11 @@ const Bankfile = () => {
         Bank<i class='bx bx-chevron-down'></i>
       </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleBankclick}>
+    <span></span>
+      <img src={BankLogo} alt="Bank"/>
+     
+    </div>
       <div className={bankDropdown}>
         <p onClick={() => navigation("/bank/add-bank")}>Add Banks</p>
       </div>

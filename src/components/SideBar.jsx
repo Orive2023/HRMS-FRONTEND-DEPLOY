@@ -41,6 +41,7 @@ const SideBar = () => {
       </div>
     {/* <div id="logout-hrms-btn" className="logout-hrms-btn"> */}
           <button id="logout-hrms-btn" onClick={() => navigation("/")}>Logout<i class='bx bx-log-out'></i></button>
+          <button id="icon-logout-hrms-btn" onClick={() => navigation("/")}><i class='bx bx-log-out'></i></button>
          {/* </div> */}
     </div>
     

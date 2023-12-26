@@ -24,6 +24,10 @@ const Accountfile = () => {
           Account<i class='bx bx-chevron-down'></i>
         </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleAccountclick}>
+    <span></span>
+         <img src={AccountLogo} alt="Account"/>
+    </div>
         <div className={accountDropdown}>
           <p onClick={() => navigation("/account/account-balance")}>Account Balance</p>
           <p onClick={() => navigation("/account/account-list")}>Account List</p>

@@ -6,27 +6,15 @@ import * as api from "./api";
 import { useNavigate } from "react-router-dom";
 import StateLeave from "./StateLeave";
 
-const LeaveForm = () => {
+const LeaveForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
   const navigate = useNavigate();
 
   const {
     setDateError,
-    formData,
-    setFormData,
-    setFormVisible,
     setLeave,
-    email,
-    setEmail,
     setName,
-    name,
-    phoneError,
-    setPhoneError,
     nameError,
-    setNameError,
-
     setAddress,
-    address,
-    emailError,
     setEmailError,
   } = StateLeave();
 
@@ -46,7 +34,6 @@ const LeaveForm = () => {
 
   const handleEmailChange = (e) => {
     const email = e.target.value;
-    // Regular expression for basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
@@ -89,20 +76,16 @@ const LeaveForm = () => {
 
   const saveLeave = async () => {
     await api.saveLeave(formData);
-    alert("Leave added successfully");
     navigate("/timesheet/leave");
 
     setFormData({
-      id: "",
-      name: "",
-      address: "",
-      emailId: "",
-      password: "",
-      mobile: "",
-      role: "",
-      profileUpload: "",
-      forgetToken: "",
-      otp: "",
+      leaveType: "",
+      startDate: "",
+      endDate: "",
+      employeeName: "",
+      leaveReason: "",
+      description: "",
+      appliedOn: "",
     });
   };
 
@@ -141,11 +124,34 @@ const LeaveForm = () => {
     },
   ];
 
+  let buttonCheck = formData.leaveType.length>0 &&
+                    formData.startDate.length>0 &&
+                    formData.endDate.length>0 &&
+                    formData.employeeName.length>0 &&
+                    formData.leaveReason.length>0 &&
+                    formData.description.length>0 &&
+                    formData.appliedOn.length>0
+
+  const cancelButton = () => {
+    setFormVisible(false);
+    setToggle(false);
+    setFormData({
+      leaveType: "",
+      startDate: "",
+      endDate: "",
+      employeeName: "",
+      leaveReason: "",
+      description: "",
+      appliedOn: "",
+    });
+  };  
+  console.log(formData)
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="data-input-fields">
         <TextField
-          id="priority"
+          id="leaveType"
           margin="dense"
           select
           //  label="Priority"
@@ -155,9 +161,9 @@ const LeaveForm = () => {
           SelectProps={{
             native: true,
           }}
-          value={formData.priority}
+          value={formData.leaveType}
           onChange={(e) => handleInputChange(e)}
-          name="priority"
+          name="leaveType"
         >
           {Type.map((option) => (
             <option key={option.value} value={option.value}>
@@ -247,8 +253,8 @@ const LeaveForm = () => {
           type="text"
           label="Description"
           fullWidth
-          name="Description"
-          value={formData.Description}
+          name="description"
+          value={formData.description}
           onChange={(e) => handleInputChange(e)}
           required
           InputProps={{
@@ -276,19 +282,23 @@ const LeaveForm = () => {
         />
       </div>
 
+
       <div className="data-buttons">
         <Button
-          id="input-btn"
-          variant="outlined"
+          id="input-btn-submit"
+          className="submit"
           type="submit"
           onClick={saveLeave}
+          variant="outlined"
+          disabled={buttonCheck?false:true}
         >
           Submit
         </Button>
         <Button
-          id="input-btn"
+          id="input-btn-cancel"
+          className="cancel"
+          onClick={cancelButton}
           variant="outlined"
-          onClick={() => setFormVisible(false)}
         >
           Cancel
         </Button>

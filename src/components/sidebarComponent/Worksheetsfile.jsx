@@ -11,6 +11,10 @@ const WorksheetsFile = () => {
         <img src={WorksheetLogo} alt="Worksheet" />
         <p>Worksheets</p>
       </div>
+      <div className="mobile-logo-text-p" onClick={() => navigation("/worksheets")}>
+      <span></span>
+        <img src={WorksheetLogo} alt="Worksheet" />
+      </div>
     </div>
   );
 };

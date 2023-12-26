@@ -18,7 +18,7 @@ const StateLeaves = () => {
     endDate: "",
     employeeName: "",
     leaveReason: "",
-    Description: "",
+    description: "",
     appliedOn: "",
   });
 

@@ -22,9 +22,13 @@ const PayrollFile = () => {
           Payroll<i class='bx bx-chevron-down'></i>
         </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handlePayclick}>
+    <span></span>
+        <img src={PayrollLogo} alt="Payroll"/>
+       
+    </div>
         <div className={payDropdown}>
           <p onClick={() => navigation("/payroll/salary-template")}>Payroll Templates</p>
-          <p onClick={() => navigation("/payroll/manage-salary")}>Manage Salary</p>
           <p onClick={() => navigation("/payroll/advance-Salary")}>Advance Salary</p>
         </div>
     </div>

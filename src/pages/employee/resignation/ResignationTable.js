@@ -26,14 +26,9 @@ const  ResignationTable= ({resignation,setRecDelete}) => {
     </thead>
 
     <tbody className="text-center">
-      {resignation
-        // .filter(
-        //   (st) =>
-        //     st.resignationName &&
-        //     st.resignationName.toLowerCase().includes()
-        // )
+      {resignation && resignation
         .map((resignation, index) => (
-          <tr key={resignation.id}>
+          <tr key={index}>
            
             <td>{resignation.employeeName}</td>
             <td>{resignation.noticeDate}</td>

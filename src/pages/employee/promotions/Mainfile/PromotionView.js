@@ -101,7 +101,6 @@ const PromotionView = () => {
             <Collapse in={formVisible}>
               <Card
                 variant="outlined"
-                style={{ boxShadow: " 1px 1px 10px black" }}
               >
                 <div style={{ marginTop: "20px" }}>
                   <h3

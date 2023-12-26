@@ -23,6 +23,11 @@ const EmployeesFile = () => {
           Employees<i class='bx bx-chevron-down'></i>
         </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleEmpclick}>
+    <span></span>
+        <img src={EmployeeLogo} alt="Employee"/>
+        
+    </div>
         <div className={empDropdown}>
          
             <p onClick={() => navigation('/employee/employee')}>Employees</p>

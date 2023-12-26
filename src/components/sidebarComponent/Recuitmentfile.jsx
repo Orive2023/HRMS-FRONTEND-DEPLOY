@@ -22,6 +22,11 @@ const Recuitmentfile = () => {
           Recruitment<i class='bx bx-chevron-down'></i>
         </p>
       </div>
+      <div className="mobile-logo-text-p" onClick={handleReqclick}>
+      <span></span>
+        <img src={RequirementLogo} alt="Requirement" />
+      
+      </div>
       <div className={reqDropdown}>
         <p onClick={() => navigation("/recruitment/job-posts")}>Job Posts</p>
         <p onClick={() => navigation("/recruitment/job-listing-frontend")}>

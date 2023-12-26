@@ -22,6 +22,11 @@ const Loanfile = () => {
         Loan<i class='bx bx-chevron-down'></i>
       </p>
     </div>
+    <div className="mobile-logo-text-p" onClick={handleLoanclick}>
+    <span></span>
+      <img src={LoanLogo} alt="Loan"/>
+      
+    </div>
       <div className={loanDropdown}>
         <p onClick={() => navigation("/loan/grant-loan")}>Grant Loan</p>
       </div>
