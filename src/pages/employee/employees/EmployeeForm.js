@@ -1211,7 +1211,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 1 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Bank Details</h3>
               <DialogContent>
@@ -1335,7 +1335,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 2 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Salary Details</h3>
               <DialogContent>
@@ -1510,7 +1510,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 3 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Personal Info</h3>
               <DialogContent>
@@ -1680,7 +1680,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 4 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Benefit</h3>
               <DialogContent>
@@ -1812,7 +1812,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 5 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Supervisor</h3>
               <DialogContent>
@@ -1889,7 +1889,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 6 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Biographical Info</h3>
               <DialogContent>
@@ -2050,7 +2050,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 7 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined">
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Additional Address</h3>
               <DialogContent>
@@ -2132,7 +2132,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
 
       {activeStep === 8 && (
         <div style={{ marginTop: "30px" }}>
-          <Card variant="outlined" style={{ boxShadow: " 1px 1px 10px black" }}>
+          <Card variant="outlined" >
             <div style={{ marginTop: "20px" }}>
               <h3 className="form-header">Login Info</h3>
               <DialogContent>

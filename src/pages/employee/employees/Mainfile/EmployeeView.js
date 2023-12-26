@@ -100,7 +100,6 @@ const EmployeeView = () => {
               <EmployeeForm formData={formData} setFormData={setFormData} setFormVisible={setFormVisible} setToggle={setToggle}/>
             </Collapse>
             <br />
-
             <EmployeeTable employee={employeeData} setRecDelete={setRecDelete}/>
           </section>
         </div>
