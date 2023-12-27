@@ -19,7 +19,7 @@ const Recuitmentfile = () => {
       <span></span>
         <img src={RequirementLogo} alt="Requirement" />
         <p id="dropdown">
-          Recruitment<i class='bx bx-chevron-down'></i>
+          Interview Scheduler<i class='bx bx-chevron-down'></i>
         </p>
       </div>
       <div className="mobile-logo-text-p" onClick={handleReqclick}>
@@ -28,15 +28,15 @@ const Recuitmentfile = () => {
       
       </div>
       <div className={reqDropdown}>
-        <p onClick={() => navigation("/recruitment/job-posts")}>Job Posts</p>
-        <p onClick={() => navigation("/recruitment/job-listing-frontend")}>
-          Job Listing Frontend
+        <p onClick={() => navigation("/recruitment/candidate")}>Candidates</p>
+        <p onClick={() => navigation("/recruitment/interview")}>
+          Interview
         </p>
-        <p onClick={() => navigation("/recruitment/job-candidates")}>
-          Job Candidates
+        <p onClick={() => navigation("/recruitment/talent")}>
+          Talent
         </p>
-        <p onClick={() => navigation("/recruitment/job-interview")}>
-          Job Interviews
+        <p onClick={() => navigation("/recruitment/user")}>
+          Users
         </p>
       </div>
     </div>

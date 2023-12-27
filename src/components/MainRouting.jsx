@@ -5,6 +5,7 @@ import RoutingSingleModules from "../pages/singleModules/RoutingSingleModules";
 import RoutingPayroll from "../pages/payroll/RoutingPayroll";
 import RoutingEmployee from "../pages/employee/RoutingEmployee"
 import RoutingTimesheets from "../pages/timesheets/RoutingTimesheets";
+import RoutingRecruitment from "../pages/recruitment/RoutingRecruitment";
 
 const MainRouting = () => {
   return (
@@ -15,6 +16,7 @@ const MainRouting = () => {
       <RoutingPayroll/>
       <RoutingEmployee />
       <RoutingTimesheets />
+      <RoutingRecruitment/>
     </div>
   );
 };
