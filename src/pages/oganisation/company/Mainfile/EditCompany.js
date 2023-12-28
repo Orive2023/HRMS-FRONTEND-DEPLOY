@@ -3,6 +3,8 @@ import React, {
 	useState,
 } from "react";
 import axios from "axios";
+import Button from "@mui/material/Button";
+
 
 import Header from "../../../../components/Header"
 import SideBar from "../../../../components/SideBar"
@@ -76,7 +78,7 @@ const EditCompany = () => {
 		<div className="dashboard-container">
 		  <SideBar />
 		  <div className="head-foot-part" style={{ padding: "0" }}>
-		  <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+		  <div className="col-sm-8 py-2 px-5 shadow">
 			<h2 className="mt-5"> Edit Company</h2>
 			<form onSubmit={handleSubmit}>
 				<div className="input-group mb-5">
@@ -179,25 +181,25 @@ const EditCompany = () => {
 					/>
 				</div>
 
-				<div className="row mb-5">
-					<div className="col-sm-2">
-						<button
-						onClick={updateCompany}
-							type="submit"
-							className="btn btn-outline-success btn-lg">
-							Save
-						</button>
-					</div>
-
-					<div className="col-sm-2">
-						<Link
-							to={"/organisation/company"}
-							type="submit"
-							className="btn btn-outline-warning btn-lg">
-							Back
-						</Link>
-					</div>
-				</div>
+				<div className="data-buttons">
+        <Button
+          id="input-btn-submit"
+          className="submit"
+          type="submit"
+          onClick={updateCompany}
+          variant="outlined"
+        >
+          Submit
+        </Button>
+        <Button
+          id="input-btn-cancel"
+          className="cancel"
+          onClick={() => navigation("/organisation/company")}
+          variant="outlined"
+        >
+          Back
+        </Button>
+      </div>
 			</form>
 		</div>		  </div>
 		</div>

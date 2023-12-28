@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import Button from "@mui/material/Button";
 
 import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
@@ -42,17 +43,18 @@ const updateSalaryTemplate = async (e) => {
     navigate("/payroll/salaryTemplate");
 };
 
+const [menu, setMenu] = useState(false);
   return (
 
     <div>
      <div id="header-container" className="header-container">
-    <CompanyLogoFile />
-      <Header />
-    </div>
-    <div className="dashboard-container">
-      <SideBar />
-      <div className="head-foot-part">
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+      <div className="head-foot-part" style={{ padding: "0" }}>
+      <div className="col-sm-8 py-2 px-5 shadow">
       <h2 className="mt-5">Edit Salary Template</h2>
       <form onSubmit={(e) => updateSalaryTemplate(e)}>
         <div className="input-group mb-5">
@@ -70,23 +72,18 @@ const updateSalaryTemplate = async (e) => {
           />
         </div>
 
-        <div className="row mb-5">
-          <div className="col-sm-2">
-            <button type="submit" className="btn btn-outline-success btn-lg">
-              Update
-            </button>
-          </div>
-
-          <div className="col-sm-2">
-            <Link
-              to={"/payroll/salaryTemplate"}
-              type="submit"
-              className="btn btn-outline-warning btn-lg"
-            >
-              Back
-            </Link>
-          </div>
-        </div>
+        <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/payroll/salary-template")}
+                >
+                  Back
+                </Button>
+              </div>
       </form>
     </div>
       </div>

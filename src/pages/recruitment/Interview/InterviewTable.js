@@ -10,7 +10,7 @@ const InterviewTable = ({ interview, setRecDelete }) => {
   console.log(interview);
 
   return (
-    <div>
+    <div className="table-start-container">
       <table className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">

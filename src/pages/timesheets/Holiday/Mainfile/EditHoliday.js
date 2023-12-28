@@ -3,12 +3,17 @@ import React, {
     useState,
   } from "react";
   import axios from "axios";
+  import Button from "@mui/material/Button";
   
   import {
     Link,
     useNavigate,
     useParams,
   } from "react-router-dom";
+
+  import Header from "../../../../components/Header";
+  import SideBar from "../../../../components/SideBar";
+  import CompanyLogoFile from "../../../../components/CompanyLogoFile";
   
   const EditHoliday = () => {
     let navigate = useNavigate();
@@ -50,9 +55,19 @@ import React, {
       );
       navigate("/timesheets/holiday");
     };
+
+    const [menu, setMenu] = useState(false);
   
     return (
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+      <div>
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+        <div className="head-foot-part">
+        <div className="col-sm-8 py-2 px-5 shadow">
         <h2 className="mt-5"> Edit Holiday</h2>
         <form onSubmit={(e) => updateHoliday(e)}>
           <div className="input-group mb-5">
@@ -106,43 +121,24 @@ import React, {
             />
           </div>
   
-          {/* <div className="input-group mb-5">
-            <label
-              className="input-group-text"
-            >
-            Description
-            </label>
-            <input
-              className="form-control col-sm-6"
-              type="text"
-              name="description"
-              id="description"
-              required
-              value={description}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </div> */}
-  
-          <div className="row mb-5">
-            <div className="col-sm-2">
-              <button
-                type="submit"
-                className="btn btn-outline-success btn-lg">
-                Save
-              </button>
-            </div>
-  
-            <div className="col-sm-2">
-              <Link
-                to={"/view-holiday"}
-                type="submit"
-                className="btn btn-outline-warning btn-lg">
-                Cancel
-              </Link>
-            </div>
-          </div>
+          <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/timesheets/holiday")}
+                >
+                  Back
+                </Button>
+              </div>
         </form>
       </div>
+        </div>
+      </div>
+    </div>
+    
     );
   };
   

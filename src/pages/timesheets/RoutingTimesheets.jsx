@@ -12,7 +12,7 @@ const routesData = [
   { path: "/timesheets/leaves", element: <LeaveView /> },
   { path: "/timesheets/leave/edit-Leave/:id", element: <LeaveEdit /> },
   { path: "/timesheets/holiday", element: <HolidayView /> },
-  { path: "/timesheets/edit-holiday/edit-holiday/:id", element: <EditHoliday /> },
+  { path: "/timesheets/edit-holiday/:id", element: <EditHoliday /> },
   { path: "/timesheets/attendance", element: <AttendanceView /> },
 ];
 

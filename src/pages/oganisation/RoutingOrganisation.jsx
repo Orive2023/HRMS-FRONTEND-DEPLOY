@@ -23,6 +23,7 @@ import AnnouncementsProfile from "./announcements/Mainfile/AnnouncementsProfile"
 import EditCompany from "./company/Mainfile/EditCompany";
 import CompanyPofile from "./company/Mainfile/CompanyPofile";
 import LoginSignup from "../../components/LoginSignup"
+// import DesignationProfile from "./designation/Mainfile/DesignationProfile";
 import Landingfile from "../../components/Landingfile"
 
 const routesData = [
@@ -45,6 +46,7 @@ const routesData = [
   { path: "/organisation/announcements", element: <AnnouncementsView /> },
   { path: "/organisation/expences", element: <ExpensesView /> },
   { path: "/organisation/edit-designation/:id", element: <EditDesignation /> },
+  // { path: "/organisation/designation-profile/:id", element: <DesignationProfile /> },
   { path: "/organisation/edit-expences/:id", element: <EditExpenses /> },
   { path: "/organisation/expences-profile/:id", element: <ExpensesProfile /> },
   { path: "/organisation/policies-profile/:id", element: <PoliciesProfile/> },

@@ -5,6 +5,8 @@ import axios from "axios";
 import SideBar from "../../../../components/SideBar";
 import Header from "../../../../components/Header";
 
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 const AnnouncementsProfile = () => {
   const { id } = useParams();
 
@@ -25,17 +27,22 @@ const AnnouncementsProfile = () => {
 
   const loadAnnouncements = async () => {
     const result = await axios.get(
-      `http://localhost:8081/announcement/get/${id}`
+      `http://13.200.246.216:5000/announcement/get/${id}`
     );
     setAnnouncements(result.data);
   };
 
+  const [menu, setMenu] = useState(false);
+
   return (
 
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
+    <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
       <div className="head-foot-part" style={{ padding: "0" }}>
     <section className="shadow" style={{ backgroundColor: "whitesmoke" }}>
             <div className="container py-5">

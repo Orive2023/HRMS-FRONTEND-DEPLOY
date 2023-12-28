@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const EditTransfer = () => {
   let navigate = useNavigate();
@@ -39,12 +40,16 @@ const EditTransfer = () => {
     await axios.put(`http://13.200.246.216:5000/transfers/update/${id}`, transfer);
     navigate("/employee/transfer");
   };
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-      <Header />
+           <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part" style={{ padding: "0" }}>
           <div className="col-sm-8 py-2 px-5 offset-2 shadow">
             <h2 className="mt-5"> Edit Transfer</h2>

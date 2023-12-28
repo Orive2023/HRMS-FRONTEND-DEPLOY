@@ -46,9 +46,18 @@ const EditPromotion = () => {
 		);
 		navigate("/employee/promotion");
 	};
+	const [menu, setMenu] = useState(false);
 
 	return (
-		<div className="col-sm-8 py-2 px-5 offset-2 shadow">
+		<div>
+		<div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+      <div className="head-foot-part" style={{ padding: "0" }}>
+		<div className="col-sm-8 py-2 px-5 shadow">
 			<h2 className="mt-5"> Edit promotion</h2>
 			<form onSubmit={(e) => updatepromotion(e)}>
 				<div className="input-group mb-5">
@@ -122,6 +131,9 @@ const EditPromotion = () => {
 				</div>
 			</form>
 		</div>
+		</div>
+    </div>
+  </div>
 	);
 };
 

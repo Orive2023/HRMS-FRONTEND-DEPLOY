@@ -53,16 +53,16 @@ const TalentView = () => {
     }
   })
  
-
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
       <div id="header-container" className="header-container">
         <CompanyLogoFile />
-        <Header />
+        <Header menu={menu} setMenu={setMenu} />
       </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part">
           <section>
             <div

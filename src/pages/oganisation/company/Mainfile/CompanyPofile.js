@@ -25,14 +25,16 @@ const CompanyPofile = () => {
     setCompany(result.data);
   };
 
+  const [menu, setMenu] = useState(false);
+
   return (
     <div>
        <div id="header-container" className="header-container">
-    <CompanyLogoFile />
-      <Header />
-    </div>
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part" style={{ padding: "0" }}>
           <section className="shadow" style={{ backgroundColor: "whitesmoke" }}>
             <div className="container py-5">

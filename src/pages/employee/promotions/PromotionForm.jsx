@@ -256,6 +256,7 @@ const PromotionForm = ({formData,setFormData, setFormVisible, setToggle}) => {
           id="input-btn"
           variant="outlined"
           type="submit"
+          className="submit"
           onClick={savePromotion}
           disabled={buttonClick? false: true}
 
@@ -265,6 +266,7 @@ const PromotionForm = ({formData,setFormData, setFormVisible, setToggle}) => {
         <Button
           id="input-btn"
           variant="outlined"
+          className="cancel"
           onClick={cancelButton}
           >
           Cancel

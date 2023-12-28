@@ -3,12 +3,16 @@ import React, {
     useState,
   } from "react";
   import axios from "axios";
-  
+  import Button from "@mui/material/Button";
+
   import {
-    Link,
     useNavigate,
     useParams,
   } from "react-router-dom";
+
+  import Header from "../../../../components/Header";
+  import SideBar from "../../../../components/SideBar";
+  import CompanyLogoFile from "../../../../components/CompanyLogoFile";
   
   const EditLeave = () => {
     let navigate = useNavigate();
@@ -16,14 +20,12 @@ import React, {
     const { id } = useParams();
   
     const [leave, setLeave] = useState({
-      departmentName: "",
-      companyName: "",
-      locationName: "",
-      departmentHead: "",
+    startDate: "",
+    endDate: "",
+    employeeName: "",
+    leaveReason: "",
     });
-    const {
-      departmentName, companyName, locationName, departmentHead
-    } = leave;
+   
   
     useEffect(() => {
       loadLeave();
@@ -50,24 +52,34 @@ import React, {
       );
       navigate("/view-leave");
     };
+
+    const [menu, setMenu] = useState(false);
   
     return (
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+      <div>
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+        <div className="head-foot-part">
+        <div className="col-sm-8 py-2 px-5 shadow">
         <h2 className="mt-5"> Edit Leave</h2>
         <form onSubmit={(e) => updateLeave(e)}>
           <div className="input-group mb-5">
             <label
               className="input-group-text"
               htmlFor="departmentName">
-              Department Name
+              Employee Name
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="departmentName"
-              id="departmentName"
+              name="employeeName"
+              id="employeeName"
               required
-              value={departmentName}
+              value={leave.employeeName}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -76,15 +88,15 @@ import React, {
             <label
               className="input-group-text"
               htmlFor="departmentType">
-              Company
+              Start Date
             </label>
             <input
               className="form-control col-sm-6"
-              type="text"
-              name="companyName"
-              id="companyName"
+              type="date"
+              name="startDate"
+              id="startDate"
               required
-              value={companyName}
+              value={leave.startDate}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -93,15 +105,15 @@ import React, {
             <label
               className="input-group-text"
             >
-              Location
+              End Date
             </label>
             <input
               className="form-control col-sm-6"
-              type="text"
-              name="locationName"
-              id="locationName"
+              type="date"
+              name="endDate"
+              id="endDate"
               required
-              value={locationName}
+              value={leave.endDate}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -110,39 +122,37 @@ import React, {
             <label
               className="input-group-text"
             >
-              Department Head
+              Leave Reason
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="departmentHead"
-              id="departmentHead"
+              name="leaveReason"
+              id="leaveReason"
               required
-              value={departmentHead}
+              value={leave.leaveReason}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
   
-          <div className="row mb-5">
-            <div className="col-sm-2">
-              <button
-                type="submit"
-                className="btn btn-outline-success btn-lg">
-                Save
-              </button>
-            </div>
-  
-            <div className="col-sm-2">
-              <Link
-                to={"/view-jobPost"}
-                type="submit"
-                className="btn btn-outline-warning btn-lg">
-                Cancel
-              </Link>
-            </div>
-          </div>
+          <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/timesheets/leaves")}
+                >
+                  Back
+                </Button>
+              </div>
         </form>
       </div>
+        </div>
+      </div>
+    </div>
+    
     );
   };
   

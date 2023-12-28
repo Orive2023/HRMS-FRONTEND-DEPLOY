@@ -17,34 +17,35 @@ import Recuitmentfile from "./sidebarComponent/Recuitmentfile";
 import Trainingfile from "./sidebarComponent/Trainingfile";
 import { useNavigate } from "react-router-dom/dist";
 
-const SideBar = () => {
-  const navigation = useNavigate()
+const SideBar = ({ menu, setMenu }) => {
+  const navigation = useNavigate();
+  const classBtnName = menu ? "mobile-sidebar-container" : "";
+  const classSidebarName = menu ? "mobile-sidebar" : "";
+  console.log(menu);
   return (
     <>
-    <div className="sidebar-btn-container">
-    <div className="sidebar-container">
-        <DashboardFile />
-        <Organisationfile />
-        <EmployeesFile />
-        <PerformanceFile />
-        <TimesheetsFile />
-        <PayrollFile />
-        <ProjectsFile />
-        <TicketsFile />
-        <WorksheetsFile />
-        <Bankfile />
-        <Loanfile />
-        <Accountfile />
-        <ProcurementFile />
-        <Recuitmentfile />
-        <Trainingfile />
+      <div className={`sidebar-btn-container ${classBtnName}`}>
+        <div className={`sidebar-container ${classSidebarName}`}>
+          <DashboardFile  />
+          <Organisationfile  />
+          <EmployeesFile  />
+          <PerformanceFile  />
+          <TimesheetsFile />
+          <PayrollFile  />
+          <ProjectsFile  />
+          <TicketsFile  />
+          <WorksheetsFile />
+          <Bankfile />
+          <Loanfile />
+          <Accountfile />
+          <ProcurementFile />
+          <Recuitmentfile />
+          <Trainingfile />
+        </div>
+        <button id="logout-hrms-btn" onClick={() => navigation("/")}>
+          Logout<i class="bx bx-log-out"></i>
+        </button>
       </div>
-    {/* <div id="logout-hrms-btn" className="logout-hrms-btn"> */}
-          <button id="logout-hrms-btn" onClick={() => navigation("/")}>Logout<i class='bx bx-log-out'></i></button>
-          <button id="icon-logout-hrms-btn" onClick={() => navigation("/")}><i class='bx bx-log-out'></i></button>
-         {/* </div> */}
-    </div>
-    
     </>
   );
 };

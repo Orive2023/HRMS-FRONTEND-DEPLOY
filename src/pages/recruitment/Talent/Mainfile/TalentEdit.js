@@ -3,71 +3,89 @@ import React, {
     useState,
   } from "react";
   import axios from "axios";
+
+  import Button from "@mui/material/Button";
   
   import {
     Link,
     useNavigate,
     useParams,
   } from "react-router-dom";
+
+  import Header from "../../../../components/Header";
+  import SideBar from "../../../../components/SideBar";
+  import CompanyLogoFile from "../../../../components/CompanyLogoFile";
   
   const EditTalent = () => {
     let navigate = useNavigate();
   
     const { id } = useParams();
   
-    const [department, setDepartment] = useState({
-      departmentName: "",
-      companyName: "",
-      locationName: "",
-      departmentHead: "",
+    const [talent, setTalent] = useState({
+      name: "",
+      requirements: "",
+      projectName: "",
+      managerName: "",
+      startDate: "",
+      endDate: "",
+      jobLocation: ""
     });
-    const {
-      departmentName, companyName, locationName, departmentHead
-    } = department;
+  
   
     useEffect(() => {
-      loadDepartment();
+      loadTalent();
     }, []);
   
-    const loadDepartment = async () => {
+    const loadTalent = async () => {
       const result = await axios.get(
-        `http://localhost:8083/department/get/${id}`
+        `http://localhost:8083/talent/get/${id}`
       );
-      setDepartment(result.data);
+      setTalent(result.data);
     };
   
     const handleInputChange = (e) => {
-      setDepartment({
-        ...department,
+      setTalent({
+        ...talent,
         [e.target.name]: e.target.value,
       });
     };
-    const updateDepartment = async (e) => {
+    const updateTalent = async (e) => {
       e.preventDefault();
       await axios.put(
-        `http://localhost:8083/department/update/${id}`,
-        department
+        `http://localhost:8083/talent/update/${id}`,
+        talent
       );
-      navigate("/view-department");
+      navigate("/recruitment/talent");
     };
+
+    const [menu, setMenu] = useState(false);
+
   
     return (
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
-        <h2 className="mt-5"> Edit Department</h2>
-        <form onSubmit={(e) => updateDepartment(e)}>
+      <div>
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+        <div className="head-foot-part">
+        <div className="col-sm-8 py-2 px-5 shadow">
+        <h2 className="mt-5"> Edit Talent</h2>
+        <form onSubmit={(e) => updateTalent(e)}>
           <div className="input-group mb-5">
             <label
               className="input-group-text"
               htmlFor="departmentName">
-              Department Name
+              Name
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="departmentName"
-              id="departmentName"
+              name="name"
+              id="name"
               required
-              value={departmentName}
+              value={talent.name}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -76,15 +94,15 @@ import React, {
             <label
               className="input-group-text"
               htmlFor="departmentType">
-              Company
+              Manager Name
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="companyName"
-              id="companyName"
+              name="managerName"
+              id="managerName"
               required
-              value={companyName}
+              value={talent.managerName}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -93,15 +111,15 @@ import React, {
             <label
               className="input-group-text"
             >
-              Location
+              Project Name
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="locationName"
-              id="locationName"
+              name="projectName"
+              id="projectName"
               required
-              value={locationName}
+              value={talent.projectName}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -110,39 +128,85 @@ import React, {
             <label
               className="input-group-text"
             >
-              Department Head
+              Start Date
+            </label>
+            <input
+              className="form-control col-sm-6"
+              type="date"
+              name="startDate"
+              id="startDate"
+              required
+              value={talent.startDate}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          <div className="input-group mb-5">
+            <label
+              className="input-group-text"
+            >
+              End Date
+            </label>
+            <input
+              className="form-control col-sm-6"
+              type="date"
+              name="endDate"
+              id="endDate"
+              required
+              value={talent.endDate}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          <div className="input-group mb-5">
+            <label
+              className="input-group-text"
+            >
+              Job Location
             </label>
             <input
               className="form-control col-sm-6"
               type="text"
-              name="departmentHead"
-              id="departmentHead"
+              name="jobLocation"
+              id="jobLocation"
               required
-              value={departmentHead}
+              value={talent.jobLocation}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          <div className="input-group mb-5">
+            <label
+              className="input-group-text"
+            >
+              Requirements
+            </label>
+            <input
+              className="form-control col-sm-6"
+              type="text"
+              name="requirements"
+              id="requirements"
+              required
+              value={talent.requirements}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
   
-          <div className="row mb-5">
-            <div className="col-sm-2">
-              <button
-                type="submit"
-                className="btn btn-outline-success btn-lg">
-                Save
-              </button>
-            </div>
-  
-            <div className="col-sm-2">
-              <Link
-                to={"/view-talent"}
-                type="submit"
-                className="btn btn-outline-warning btn-lg">
-                Cancel
-              </Link>
-            </div>
-          </div>
+          <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/recruitment/talent")}
+                >
+                  Back
+                </Button>
+              </div>
         </form>
       </div>
+        </div>
+      </div>
+    </div>
+     
     );
   };
   

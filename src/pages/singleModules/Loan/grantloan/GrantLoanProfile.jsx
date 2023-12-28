@@ -5,6 +5,8 @@ import axios from "axios";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 const GrantLoanProfile = () => {
   const { id } = useParams();
 
@@ -25,12 +27,17 @@ const GrantLoanProfile = () => {
     const result = await axios.get(`http://13.200.246.216:5000/grantloan/get/${id}`);
     setLoan(result.data);
   };
+  const [menu, setMenu] = useState(false);
+
 
   return (
     <div>
-      <Header />
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part" style={{ padding: "0" }}>
           <div className="shadow" style={{ backgroundColor: "whitesmoke" }}>
             <div className="container py-5">

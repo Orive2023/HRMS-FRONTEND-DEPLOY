@@ -14,7 +14,7 @@ const DepartmentTable = ({department,setRecDelete}) => {
   }
     
   return (
-    <div>
+    <div className="table-start-container">
         <table id='table' className="table table-bordered table-hover shadow">
               <thead>
                 <tr className="text-center">
@@ -24,8 +24,6 @@ const DepartmentTable = ({department,setRecDelete}) => {
                   <th>Location</th>
                   <th>Department Head</th>
                   <th colSpan="3">Actions</th>
-
-                 
                 </tr>
               </thead>
 
@@ -42,9 +40,12 @@ const DepartmentTable = ({department,setRecDelete}) => {
                       <td>{department.locationName}</td>
                       <td>{department.departmentHead}</td>
                       <td className="mx-2">
-                       
-                          <FaEye onClick={() => handleProfile(department.departmentId)}/>
-                        
+                         <Link
+                          to={`/organisation/department-profile/${department.departmentId}`}
+                          className="btn btn-primary"
+                        >
+                          <FaEye />
+                        </Link>
                       </td>
                       <td className="mx-2">
                         <Link

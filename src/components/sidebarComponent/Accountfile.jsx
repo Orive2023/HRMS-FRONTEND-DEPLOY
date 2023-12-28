@@ -30,13 +30,13 @@ const Accountfile = () => {
     </div>
         <div className={accountDropdown}>
           <p onClick={() => navigation("/account/account-balance")}>Account Balance</p>
-          <p onClick={() => navigation("/account/account-list")}>Account List</p>
-          <p onClick={() => navigation("/account/conta-voucher")}>Contra Voucher</p>
-          <p onClick={() => navigation("/account/debit-voucher")}>Debit Voucher</p>
+          <p onClick={() => navigation("/account/subType")}>Sub Type</p>
+          <p onClick={() => navigation("/account/debit")}>Debit Voucher</p>
           <p onClick={() => navigation("/account/credit-voucher")}>Credit Voucher</p>
-          <p onClick={() => navigation("/account/financial-year")}>Financial Year</p>
-          <p onClick={() => navigation("/account/journal-voucher")}>Journal Voucher</p>
+          <p onClick={() => navigation("/account/financial-year")}>Finacial Year</p>
+          <p onClick={() => navigation("/account/contra-voucher")}>Contra Voucher</p>
           <p onClick={() => navigation("/account/opening-balance")}>Opening Balance</p>
+          {/* <p onClick={() => navigation("/account/debit-voucher")}>Contra Voucher</p> */}
         </div>
     </div>
   )

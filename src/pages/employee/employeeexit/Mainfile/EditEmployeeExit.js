@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const EditEmployeeExit = () => {
   let navigate = useNavigate();
@@ -45,12 +46,16 @@ const EditEmployeeExit = () => {
     );
     navigate("/employee/employee-exit");
   };
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-      <Header />
+     <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="col-sm-8 py-2 px-5 offset-2 shadow">
           <h2 className="mt-5"> Edit employeeExit</h2>
           <form onSubmit={(e) => updateemployeeExit(e)}>

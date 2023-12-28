@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
@@ -48,11 +48,6 @@ const AnnouncementsView = () => {
     const result = await api.loadAnnouncements();
     setAnnouncements(result);
   };
-
-  console.log("dept", department);
-  console.log("loc", location);
-  console.log("comp", company);
-  console.log("data", announcements);
   console.log(formData);
   const handleDelete = async () => {
     await api.deleteAnnouncement(recDelete);
@@ -70,14 +65,16 @@ const AnnouncementsView = () => {
     setFormVisible((prev) => !prev);
   };
 
+  const [menu, setMenu] = useState(false);
+
   return (
     <div>
-      <div id="header-container" className="header-container">
+       <div id="header-container" className="header-container">
         <CompanyLogoFile />
-        <Header />
+        <Header menu={menu} setMenu={setMenu} />
       </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part">
           <section>
             <div

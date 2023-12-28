@@ -1,23 +1,18 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import SideBar from "../../../../components/SideBar";
 import Header from "../../../../components/Header";
+import Button from "@mui/material/Button";
 
-import {
-  Link,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditDepartment = () => {
   let navigate = useNavigate();
 
   const { id } = useParams();
-  console.log(id)
 
   const [department, setDepartment] = useState({
     departmentName: "",
@@ -25,9 +20,8 @@ const EditDepartment = () => {
     locationName: "",
     departmentHead: "",
   });
-  const {
-    departmentName, companyName, locationName, departmentHead
-  } = department;
+  const { departmentName, locationName } =
+    department;
 
   useEffect(() => {
     loadDepartment();
@@ -54,79 +48,65 @@ const EditDepartment = () => {
     );
     navigate("/organisation/department");
   };
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
-      <div className="head-foot-part" style={{ padding: "0" }}>
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
-      <h2 className="mt-5"> Edit Department</h2>
-      <form onSubmit={(e) => updateDepartment(e)}>
-        <div className="input-group mb-5">
-          <label
-            className="input-group-text"
-            htmlFor="departmentName">
-            Department Name
-          </label>
-          <input
-            className="form-control col-sm-6"
-            type="text"
-            name="departmentName"
-            id="departmentName"
-            required
-            value={departmentName}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </div>
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+        <div className="head-foot-part" style={{ padding: "0" }}>
+          <div className="col-sm-8 py-2 px-5 shadow">
+            <h2 className="mt-5"> Edit Department</h2>
+            <form onSubmit={(e) => updateDepartment(e)}>
+              <div className="input-group mb-5">
+                <label className="input-group-text" htmlFor="departmentName">
+                  Department Name
+                </label>
+                <input
+                  className="form-control col-sm-6"
+                  type="text"
+                  name="departmentName"
+                  id="departmentName"
+                  required
+                  value={departmentName}
+                  onChange={(e) => handleInputChange(e)}
+                />
+              </div>
 
-        
+              <div className="input-group mb-5">
+                <label className="input-group-text">Location</label>
+                <input
+                  className="form-control col-sm-6"
+                  type="text"
+                  name="locationName"
+                  id="locationName"
+                  required
+                  value={locationName}
+                  onChange={(e) => handleInputChange(e)}
+                />
+              </div>
 
-        <div className="input-group mb-5">
-          <label
-            className="input-group-text"
-          >
-            Location
-          </label>
-          <input
-            className="form-control col-sm-6"
-            type="text"
-            name="locationName"
-            id="locationName"
-            required
-            value={locationName}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </div>
-
-        
-
-        <div className="row mb-5">
-          <div className="col-sm-2">
-            <button
-              type="submit"
-              className="btn btn-outline-success btn-lg">
-              Save
-            </button>
-            
-          </div>
-
-          <div className="col-sm-2">
-            <Link
-              to={"/organisation/department"}
-              type="submit"
-              className="btn btn-outline-warning btn-lg">
-              Cancel
-            </Link>
+              <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/organisation/department")}
+                >
+                  Back
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
-    </div>
       </div>
     </div>
-  </div>
-  
   );
 };
 

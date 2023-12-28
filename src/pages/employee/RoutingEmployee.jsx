@@ -15,15 +15,21 @@ import TransferView from "./transfers/mainfile/TransferView"
 import EditTransfer from "./transfers/mainfile/EditTransfer"
 import TravelView from "./travels/mainfile/TravelView"
 import WarningView from "./warnings/Mainfile/WarningView"
+import EditComplaint from "./complaints/Mainfile/EditComplaint";
+import Editemployee from "./employees/Mainfile/EditEmployee";
+import EditTravel from "./travels/mainfile/EditTravel";
 
 const routesData = [
   { path: "/employee/awards", element: <AwardsView /> },
   { path: "/employee/edit-awards/:id", element: <EditAward /> },
   { path: "/employee/complaints", element: <ComplaintView /> },
+  { path: "/employee/edit-complaints/:id", element: <EditComplaint/> },
   { path: "/employee/employee-exit", element: <EmployeeExitView /> },
   { path: "/employee/edit-employee-exit/:id", element: <EditEmployeeExit /> },
   { path: "/employee/employee", element: <EmployeeView /> },
+  { path: "/employee/edit-employee/:id", element: <Editemployee /> },
   { path: "/employee/promotions", element: <PromotionView /> },
+  { path: "/employee/edit-promotions/:id", element: <PromotionView /> },
   { path: "/employee/resignation", element: <ResignationView /> },
   { path: "/employee/edit-resignation/:id", element: <EditResignation /> },
   { path: "/employee/termination", element: <TerminationView /> },
@@ -31,7 +37,9 @@ const routesData = [
   { path: "/employee/transfer", element: <TransferView /> },
   { path: "/employee/edit-transfer/:id", element: <EditTransfer /> },
   { path: "/employee/travel", element: <TravelView /> },
+  { path: "/employee/edit-travel/:id", element: <EditTravel/> },
   { path: "/employee/warning", element: <WarningView /> },
+  { path: "/employee/edit-warning/:id", element: <WarningView /> },
 ];
 
 const RoutingOrganisation = () => {

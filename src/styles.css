@@ -194,6 +194,9 @@ html {
   height: 5px;
 }
 
+#header-part .mobile-right {
+  display: none;
+}
 
 .data-buttons {
   display: flex;
@@ -205,6 +208,38 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.sidebar-btn-container.mobile-sidebar-container {
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 99;
+  margin-top: 10.4vh;
+  height: 90vh;
+  overflow: scroll;
+  animation: sidebarIn 500ms ease-out backwards;
+}
+
+@keyframes sidebarIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.mobile-right i {
+  cursor: pointer;
+}
+
+.sidebar-container.mobile-sidebar {
+  padding: 10px 0 0;
 }
 
 .sidebar-container {
@@ -310,6 +345,10 @@ html {
   cursor: pointer;
 }
 
+.page {
+  padding-top: 15px;
+}
+
 @media screen and (min-width:1950px) {
   .sidebar-container p {
     font-size: 1.7rem;
@@ -326,6 +365,7 @@ html {
   #logo-design-container{
     width: 15%;
   }
+
 }
 
 .sidebar-container p:last-child {
@@ -452,7 +492,7 @@ html {
 
 @media screen and (max-width:1950px) {
   .head-foot-part {
-    padding: 9vh 0 0 0;
+    padding: 6vh 0 0 0;
   }
 
   .sidebar-container {
@@ -7590,6 +7630,27 @@ a:hover {
   .sm-hide {
     display: none !important;
   }
+
+  .right {
+    display: none;
+  }
+
+  #header-part .mobile-right {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .sidebar-btn-container {
+    display: none;
+  }
+
+  #logo-design-container {
+    display: none;
+  }
+
+  #header-part .right {
+    display: none;
+  }
 }
 @media screen and (max-width: 767px) {
   .xs-hide {
@@ -7597,6 +7658,20 @@ a:hover {
   }
   .sort_stat {
     margin-top: 15px;
+  }
+
+  .data-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #table thead th {
+    font-size: 0.8rem;
+  }
+
+  #table tbody td {
+    font-size: 0.7rem;
   }
 }
 @media screen and (max-width: 640px) {
@@ -7612,6 +7687,9 @@ a:hover {
   #News .media .media-body {
     margin-top: 20px;
   }
+  .sidebar-btn-container.mobile-sidebar-container {
+    margin-top: 7.3vh;
+}
 }
 .page {
   -webkit-transition: all 0.5s ease-in-out;
@@ -7627,10 +7705,13 @@ a:hover {
     left: 60px;
     width: calc(100% - 60px);
   }
+  .mobile-right {
+    display: none;
+  }
 }
 @media screen and (max-width: 767px) {
   .page {
-    padding: 56px 0 0;
+    padding: 10px 10px 0;
     width: 100%;
     left: 0;
   }
@@ -7726,9 +7807,7 @@ a:hover {
   animation: pulse 2s infinite;
 }
 @media screen and (max-width: 992px) {
-  .page-header {
-    display: block;
-  }
+  
   .page-header .right {
     margin-top: 15px;
     justify-content: space-between;
@@ -8574,6 +8653,7 @@ a.icon:hover {
   overflow: hidden !important;
 }
 .shadow {
+  margin-top: 50px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
 .shadow-none {

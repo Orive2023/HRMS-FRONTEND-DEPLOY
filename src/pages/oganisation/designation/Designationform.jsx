@@ -40,7 +40,7 @@ const Designationform = ({ formData, setFormData, setOpen }) => {
 
   useEffect(() => {
     fetchDepartment();
-  });
+  },[]);
 
   const fetchDepartment = async () => {
     const response = await api.fetchDepartment();
@@ -75,30 +75,6 @@ const Designationform = ({ formData, setFormData, setOpen }) => {
 
   return (
     <form onSubmit={handleSubmit} style={{ padding: "10px 0" }}>
-      {/* <TextField
-            id="departmentName"
-            margin="dense"
-            select
-            label="Department Name"
-            fullWidth
-            defaultValue="Choose"
-            SelectProps={{
-              native: true,
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={formData.departmentName}
-            onChange={(e) => handleInputChange(e)}
-            name="departmentName"
-          >
-          {department.map((option,index) => (
-                <option key={index} value={option.departmentName}>
-                  {option.departmentName}
-                </option>
-              ))}
-            
-          </TextField> */}
 
       <FormControl fullWidth>
         <InputLabel id="demo-designation-select-label">

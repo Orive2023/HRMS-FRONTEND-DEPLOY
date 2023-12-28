@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 const EditTermination = () => {
   let navigate = useNavigate();
 
@@ -43,12 +45,17 @@ const EditTermination = () => {
     );
     navigate("/employee/termination");
   };
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-      <Header />
-      <div className="dashboard-container">
-        <SideBar />
+    <div id="header-container" className="header-container">
+       <CompanyLogoFile />
+       <Header menu={menu} setMenu={setMenu} />
+     </div>
+     <div className="dashboard-container">
+       <SideBar menu={menu} setMenu={setMenu} />
+     <div className="head-foot-part" style={{ padding: "0" }}>
         <div className="col-sm-8 py-2 px-5 offset-2 shadow">
           <h2 className="mt-5"> Edit Termination</h2>
           <form onSubmit={(e) => updateTermination(e)}>
@@ -138,6 +145,7 @@ const EditTermination = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

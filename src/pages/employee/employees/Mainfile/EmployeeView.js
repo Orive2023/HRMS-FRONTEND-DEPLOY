@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { MdAdd } from "react-icons/md";
@@ -57,15 +57,16 @@ const EmployeeView = () => {
   useEffect(() => {
     loademployees();
   }, []);
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-       <div id="header-container" className="header-container">
-    <CompanyLogoFile />
-      <Header />
-    </div>
+         <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part">
           <section>
             <div

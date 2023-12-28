@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState} from "react";
 import axios from "axios";
 import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -79,15 +79,16 @@ const AddBankView = () => {
     }
   });
   console.log(bankNameError);
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-      <div id="header-container" className="header-container">
+  <div id="header-container" className="header-container">
         <CompanyLogoFile />
-        <Header />
+        <Header menu={menu} setMenu={setMenu} />
       </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div
           className="head-foot-part"
           // style={{ padding: "0", marginTop: "10px" }}

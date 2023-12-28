@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from "@mui/material/Button";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const EditLoan = () => {
   let navigate = useNavigate();
@@ -50,13 +52,17 @@ const updateLoan = async (e) => {
     navigate("/loan/grant-loan");
 };
 
+const [menu, setMenu] = useState(false);
   return (
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
+     <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
       <div className="head-foot-part" style={{ padding: "0" }}>
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+      <div className="col-sm-8 py-2 px-5 shadow">
       <h2 className="mt-5">Edit Loan</h2>
       <form onSubmit={(e) => updateLoan(e)}>
        
@@ -103,23 +109,18 @@ const updateLoan = async (e) => {
           />
         </div>
 
-        <div className="row mb-5">
-          <div className="col-sm-2">
-            <button type="submit" className="btn btn-outline-success btn-lg">
-              Save
-            </button>
-          </div>
-
-          <div className="col-sm-2">
-            <Link
-              to={"/loan/grant-loan"}
-              type="submit"
-              className="btn btn-outline-warning btn-lg"
-            >
-              Back
-            </Link>
-          </div>
-        </div>
+        <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/loan/grant-loan")}
+                >
+                  Back
+                </Button>
+              </div>
       </form>
     </div>
       </div>

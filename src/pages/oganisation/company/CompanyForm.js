@@ -409,7 +409,7 @@ const CompanyForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
         <TextField
           margin="dense"
           label="Contact Number"
-          type="tel"
+          type="text"
           fullWidth
           name="contactNumber"
           id="contactNumber"

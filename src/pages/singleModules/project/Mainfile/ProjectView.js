@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 
 
 import Button from "@mui/material/Button";
@@ -49,16 +49,17 @@ const ProjectView = () => {
       setRecDelete("")
     }
   })
- 
+  const [menu, setMenu] = useState(false);
+
 
   return (
     <div>
       <div id="header-container" className="header-container">
         <CompanyLogoFile />
-        <Header />
+        <Header menu={menu} setMenu={setMenu} />
       </div>
       <div className="dashboard-container">
-        <SideBar />
+        <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part" >
 
           <section>

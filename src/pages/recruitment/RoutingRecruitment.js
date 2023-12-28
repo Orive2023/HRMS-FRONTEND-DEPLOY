@@ -12,19 +12,16 @@ import EditUser from "./User/Mainfile/UserEdit";
 import CandidateProfile from "./Candidate/Mainfile/CandidateProfile";
 
 const routesData = [
-  { path: "/HRMS", element: <Dashboard /> },
-  // { path: "/HRMS", element: <Dashboard /> },
-  { path: "/", element: <LoginSignup /> },
   { path: "/recruitment/candidate", element: <CandidateView /> },
   { path: "/recruitment/interview", element: <InterviewView /> },
   { path: "/recruitment/talent", element: <TalentView /> },
   { path: "/recruitment/user", element: <UserView /> },
 
-  { path: "/organisation/edit-candidate/:id", element: <EditCandidate /> },
-  { path: "/organisation/edit-talent/:id", element: <EditTalent /> },
-  { path: "/organisation/edit-user/:id", element: <EditUser /> },
+  { path: "/recruitment/edit-candidate/:id", element: <EditCandidate /> },
+  { path: "/recruitment/edit-talent/:id", element: <EditTalent /> },
+  { path: "/recruitment/edit-user/:id", element: <EditUser /> },
 
-  { path: "/organisation/candidate-profile/:id", element: <CandidateProfile /> }
+  { path: "/recruitment/candidate-profile/:id", element: <CandidateProfile /> }
 ];
 
 const RoutingRecruitment = () => {

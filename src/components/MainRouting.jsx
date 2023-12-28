@@ -6,6 +6,7 @@ import RoutingPayroll from "../pages/payroll/RoutingPayroll";
 import RoutingEmployee from "../pages/employee/RoutingEmployee"
 import RoutingTimesheets from "../pages/timesheets/RoutingTimesheets";
 import RoutingRecruitment from "../pages/recruitment/RoutingRecruitment";
+import RoutingAccount from "../pages/Accounts/RoutingAccount";
 
 const MainRouting = () => {
   return (
@@ -17,6 +18,7 @@ const MainRouting = () => {
       <RoutingEmployee />
       <RoutingTimesheets />
       <RoutingRecruitment/>
+      <RoutingAccount/>
     </div>
   );
 };

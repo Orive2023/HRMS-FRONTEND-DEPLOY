@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
+import Button from "@mui/material/Button";
+
 
 const EditDesignation = () => {
   let navigate = useNavigate();
@@ -10,17 +14,19 @@ const EditDesignation = () => {
   const { id } = useParams();
 
   const [designation, setDesignation] = useState({
-   designationName: "",
+    designationName: "",
   });
 
-  const {designationName } = designation;
+  const { designationName } = designation;
 
   useEffect(() => {
     loadDesignation();
   }, []);
 
   const loadDesignation = async () => {
-    const result = await axios.get(`http://13.200.246.216:5000/designation/get/${id}`);
+    const result = await axios.get(
+      `http://13.200.246.216:5000/designation/get/${id}`
+    );
     setDesignation(result.data);
   };
 
@@ -33,56 +39,59 @@ const EditDesignation = () => {
 
   const updateDesignation = async (e) => {
     e.preventDefault();
-    await axios.put(`http://13.200.246.216:5000/designation/update/${id}`, designation);
+    await axios.put(
+      `http://13.200.246.216:5000/designation/update/${id}`,
+      designation
+    );
     navigate("/organisation/designation");
   };
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
-      <div className="head-foot-part" style={{ padding: "0" }}>
-      <div className="col-sm-8 py-2 px-5 offset-2 shadow">
-      <h2 className="mt-5">Edit Designation</h2>
-      <form onSubmit={(e) => updateDesignation(e)}>
+      <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+        <div className="head-foot-part" style={{ padding: "0" }}>
+          <div className="col-sm-8 py-2 px-5 shadow">
+            <h2 className="mt-5">Edit Designation</h2>
+            <form onSubmit={(e) => updateDesignation(e)}>
+              <div className="input-group mb-5">
+                <label className="input-group-text" htmlFor="designationName">
+                  Designation Name
+                </label>
+                <input
+                  className="form-control col-sm-6"
+                  type="text"
+                  name="designationName"
+                  id="designationName"
+                  required
+                  value={designationName}
+                  onChange={(e) => handleInputChange(e)}
+                />
+              </div>
 
-        <div className="input-group mb-5">
-          <label className="input-group-text" htmlFor="designationName">
-            Designation Name
-          </label>
-          <input
-            className="form-control col-sm-6"
-            type="text"
-            name="designationName"
-            id="designationName"
-            required
-            value={designationName}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </div>
-
-        <div className="row mb-5">
-          <div className="col-sm-2" style={{marginRight:"20px"}}>
-            <button type="submit" className="btn btn-outline-success btn-lg">
-              Submit
-            </button>
+              <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/organisation/designation")}
+                >
+                  Back
+                </Button>
+              </div>
+            </form>
           </div>
-
-          <div className="col-sm-2">
-            <Link to={"/organisation/designation"} className="btn btn-outline-warning btn-lg">
-              Cancel
-            </Link>
-          </div>
         </div>
-      </form>
-    </div>
       </div>
     </div>
-  </div>
-    
   );
 };
 
 export default EditDesignation;
-

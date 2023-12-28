@@ -17,7 +17,6 @@ import StateDepartment from "../StateDepartment";
 import DepartmentTable from "../DepartmentTable";
 import DepartmentForm from "../DepartmentForm";
 import CompanyLogoFile from "../../../../components/CompanyLogoFile";
-
 const DepartmentView = () => {
 
   const { formData,setFormData,department, setDepartment, formVisible, setFormVisible, toggle, setToggle, recDelete, setRecDelete
@@ -56,15 +55,16 @@ const DepartmentView = () => {
  
 
 console.log(formData)
+const [menu, setMenu] = useState(false);
 
   return (
     <div>
-    <div id="header-container" className="header-container">
- <CompanyLogoFile />
-   <Header />
- </div>
-    <div className="dashboard-container">
-      <SideBar />
+   <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
       <div className="head-foot-part">
         <section>
           <div

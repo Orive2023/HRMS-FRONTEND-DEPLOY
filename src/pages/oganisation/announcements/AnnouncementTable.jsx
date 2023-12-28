@@ -8,6 +8,8 @@ const AnnouncementTable = ({announcements,setRecDelete}) => {
         setRecDelete(id)
     }
   return (
+
+    <div className="table-start-container">
     <table id='table' className="table table-bordered table-hover shadow">
               <thead>
                 <tr className="text-center">
@@ -68,6 +70,7 @@ const AnnouncementTable = ({announcements,setRecDelete}) => {
                 ))}
               </tbody>
             </table>
+    </div>
   )
 }
 

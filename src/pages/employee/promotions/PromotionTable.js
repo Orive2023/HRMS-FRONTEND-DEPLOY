@@ -36,7 +36,7 @@ const PromotionTable = ({promotion,setRecDelete}) => {
                
                 <td className="mx-2">
                   <Link
-                    to={`/employee/edit-promotion/${promotion.promotionsId}`}
+                    to={`/employee/edit-promotions/${promotion.promotionsId}`}
                     className="btn btn-warning"
                   >
                     <FaEdit />

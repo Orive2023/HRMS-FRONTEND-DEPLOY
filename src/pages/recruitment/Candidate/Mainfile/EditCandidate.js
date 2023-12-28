@@ -9,6 +9,10 @@ import {
 	useNavigate,
 	useParams,
 } from "react-router-dom";
+import SideBar from "../../../../components/SideBar";
+import Header from "../../../../components/Header";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+import Button from "@mui/material/Button";
 
 const EditCandidate = () => {
 	let navigate = useNavigate();
@@ -47,17 +51,19 @@ const EditCandidate = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
-	// const updateCandidate = async (e) => {
-	// 	e.preventDefault();
-	// 	await axios.put(
-	// 		`http://localhost:8089/candidates/update/${id}`,
-	// 		candidate
-	// 	);
-	// 	navigate("/view-candidate");
-	// };
+
+	const [menu, setMenu] = useState(false);
 
 	return (
-		<div className="col-sm-8 py-2 px-5 offset-2 shadow">
+		<div >
+		   <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+	  <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
+      <div className="head-foot-part" style={{ padding: "0" }}>
+			<div className="col-sm-8 py-2 px-5 shadow">
 			<h2 className="mt-5"> Edit Candidate</h2>
 			<form onSubmit={(e) => updateCandidate(e)}>
 				<div className="input-group mb-5">
@@ -195,7 +201,7 @@ const EditCandidate = () => {
 					<label
 						className="input-group-text"
 						htmlFor="resumeUrl">
-						Resume Url
+						Resume
 					</label>
 					<input
 						className="form-control col-sm-6"
@@ -208,26 +214,24 @@ const EditCandidate = () => {
 					/>
 				</div>
 
-				<div className="row mb-5">
-					<div className="col-sm-2">
-						<button
-							type="submit"
-							className="btn btn-outline-success btn-lg">
-							Save
-						</button>
-					</div>
-
-					<div className="col-sm-2">
-						<Link
-							to={"/view-candidate"}
-							type="submit"
-							className="btn btn-outline-warning btn-lg">
-							Cancel
-						</Link>
-					</div>
-				</div>
+				<div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/recruitment/candidate")}
+                >
+                  Back
+                </Button>
+              </div>
 			</form>
+			</div>
 		</div>
+		</div>
+		</div>
+		
 	);
 };
 

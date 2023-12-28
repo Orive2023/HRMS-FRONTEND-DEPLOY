@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const DepartmentTable = ({salary,setRecDelete}) => {
 
@@ -12,7 +12,7 @@ const DepartmentTable = ({salary,setRecDelete}) => {
     
    
   return (
-    <div>
+    <div className="table-start-container">
         <table id='table' className="table table-bordered table-hover shadow">
               <thead>
                 <tr className="text-center">
@@ -39,17 +39,10 @@ const DepartmentTable = ({salary,setRecDelete}) => {
                       <td>{salary.medicalAllowance}</td>
                       <td>{salary.taxDeductiion}</td>
                       <td>{salary.createdDate}</td>
+                    
                       <td className="mx-2">
                         <Link
-                          to={`/department-profile/${salary.salaryTemplateId}`}
-                          className="btn btn-info"
-                        >
-                          <FaEye />
-                        </Link>
-                      </td>
-                      <td className="mx-2">
-                        <Link
-                          to={`/edit-department/${salary.salaryTemplateId}`}
+                          to={`/payroll/edit-salary-template/${salary.salaryTemplateId}`}
                           className="btn btn-warning"
                         >
                           <FaEdit />

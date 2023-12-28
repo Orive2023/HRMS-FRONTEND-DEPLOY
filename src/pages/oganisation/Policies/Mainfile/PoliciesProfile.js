@@ -2,16 +2,18 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import axios from "axios";
 
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+
 const PoliciesProfile = () => {
   const { id } = useParams();
 
-  const [expenses, setExpenses] = useState({
+  const [policies, setPolicies] = useState({
     companyName: "",
     title: "",
     description: "",
@@ -26,14 +28,19 @@ const PoliciesProfile = () => {
     const result = await axios.get(
       `http://13.200.246.216:5000/policies/get/${id}`
     );
-    setExpenses(result.data);
+    setPolicies(result.data);
   };
+
+  const [menu, setMenu] = useState(false);
 
   return (
     <div>
-    <Header />
-    <div className="dashboard-container">
-      <SideBar />
+    <div id="header-container" className="header-container">
+        <CompanyLogoFile />
+        <Header menu={menu} setMenu={setMenu} />
+      </div>
+      <div className="dashboard-container">
+        <SideBar menu={menu} setMenu={setMenu} />
       <div className="head-foot-part" style={{ padding: "0" }}>
       <section
       className="shadow"
@@ -49,7 +56,19 @@ const PoliciesProfile = () => {
                   className="rounded-circle img-fluid"
                   style={{ width: 150 }}
                 />
-
+                   <h5 className="my-3">
+                  {`${policies.departmentName} ${policies.companyName}`}
+                </h5>
+                <div className="d-flex justify-content-center mb-2">
+                        <Link to="/organisation/policies">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary ms-1"
+                          >
+                            Back
+                          </button>
+                        </Link>
+                      </div>
 
               </div>
             </div>
@@ -69,7 +88,7 @@ const PoliciesProfile = () => {
 
                   <div className="col-sm-9">
                     <p className="text-muted mb-0">
-                      {expenses.companyName}
+                      {policies.companyName}
                     </p>
                   </div>
                 </div>
@@ -85,7 +104,7 @@ const PoliciesProfile = () => {
 
                   <div className="col-sm-9">
                     <p className="text-muted mb-0">
-                      {expenses.title}
+                      {policies.title}
                     </p>
                   </div>
                 </div>
@@ -100,7 +119,7 @@ const PoliciesProfile = () => {
 
                   <div className="col-sm-9">
                     <p className="text-muted mb-0">
-                      {expenses.description}
+                      {policies.description}
                     </p>
                   </div>
                 </div>
