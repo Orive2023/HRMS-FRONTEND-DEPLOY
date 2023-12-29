@@ -253,22 +253,21 @@ const PromotionForm = ({formData,setFormData, setFormVisible, setToggle}) => {
 
       <div className="data-buttons">
         <Button
-          id="input-btn"
-          variant="outlined"
-          type="submit"
+          id="input-btn-submit"
           className="submit"
-          onClick={savePromotion}
-          disabled={buttonClick? false: true}
-
+          type="submit"
+          onClick={(e) => savePromotion(e)}
+          variant="outlined"
+          disabled={buttonClick?false:true}
         >
           Submit
         </Button>
         <Button
-          id="input-btn"
-          variant="outlined"
+          id="input-btn-cancel"
           className="cancel"
           onClick={cancelButton}
-          >
+          variant="outlined"
+        >
           Cancel
         </Button>
       </div>

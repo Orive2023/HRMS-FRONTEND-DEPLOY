@@ -2,8 +2,12 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import axios from "axios";
+
+import Header from "../../../../components/Header";
+import SideBar from "../../../../components/SideBar";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const TransferPofile = () => {
 	const { id } = useParams();
@@ -26,8 +30,18 @@ const TransferPofile = () => {
 		settransfer(result.data);
 	};
 
+	const [menu, setMenu] = useState(false);
+
 	return (
-		<section
+		<div>
+		<div id="header-container" className="header-container">
+		  <CompanyLogoFile />
+		  <Header menu={menu} setMenu={setMenu} />
+		</div>
+		<div className="dashboard-container">
+		  <SideBar menu={menu} setMenu={setMenu} />
+		  <div className="head-foot-part">
+		  <section
 			className="shadow"
 			style={{ backgroundColor: "whitesmoke" }}>
 			<div className="container py-5">
@@ -45,17 +59,15 @@ const TransferPofile = () => {
 									{`${transfer.transferName} ${transfer.transferType}`}
 								</h5>
 								<div className="d-flex justify-content-center mb-2">
-									<button
-										type="button"
-										className="btn btn-outline-primary">
-										Call
-									</button>
-									<button
-										type="button"
-										className="btn btn-outline-warning ms-1">
-										Message
-									</button>
-								</div>
+                        <Link to="/employee/transfer">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary ms-1"
+                          >
+                            Back
+                          </button>
+                        </Link>
+                      </div>
 							</div>
 						</div>
 					</div>
@@ -130,6 +142,10 @@ const TransferPofile = () => {
 				</div>
 			</div>
 		</section>
+		  </div>
+		</div>
+	  </div>
+		
 	);
 };
 

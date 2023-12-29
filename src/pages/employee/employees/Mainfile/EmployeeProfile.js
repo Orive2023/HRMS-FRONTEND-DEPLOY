@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import axios from "axios";
+
+import SideBar from "../../../../components/SideBar";
+import Header from "../../../../components/Header";
+import CompanyLogoFile from "../../../../components/CompanyLogoFile";
 
 const EmployeeProfile = () => {
   const { id } = useParams();
 
-  const [employee, setemployee] = useState({
+  const [employee, setEmployee] = useState({
     employeeName: "",
     employeeType: "",
   });
@@ -19,8 +23,18 @@ const EmployeeProfile = () => {
     setEmployee(result.data);
   };
 
+  const [menu, setMenu] = useState(false);
+
   return (
-    <section className="shadow" style={{ backgroundColor: "whitesmoke" }}>
+    <div>
+    <div id="header-container" className="header-container">
+      <CompanyLogoFile />
+      <Header menu={menu} setMenu={setMenu} />
+    </div>
+    <div className="dashboard-container">
+      <SideBar menu={menu} setMenu={setMenu} />
+      <div className="head-foot-part">
+      <section className="shadow" style={{ backgroundColor: "whitesmoke" }}>
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-3">
@@ -36,16 +50,15 @@ const EmployeeProfile = () => {
                   {`${employee.employeeName} ${employee.employeeType}`}
                 </h5>
                 <div className="d-flex justify-content-center mb-2">
-                  <button type="button" className="btn btn-outline-primary">
-                    Call
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-warning ms-1"
-                  >
-                    Message
-                  </button>
-                </div>
+                        <Link to="/employee/employee">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary ms-1"
+                          >
+                            Back
+                          </button>
+                        </Link>
+                      </div>
               </div>
             </div>
           </div>
@@ -104,6 +117,10 @@ const EmployeeProfile = () => {
         </div>
       </div>
     </section>
+      </div>
+    </div>
+  </div>
+
   );
 };
 

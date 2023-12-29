@@ -7,39 +7,45 @@ import EmployeeExitView from "./employeeexit/Mainfile/EmployeeExitView";
 import EditEmployeeExit from "./employeeexit/Mainfile/EditEmployeeExit";
 import EmployeeView from "./employees/Mainfile/EmployeeView";
 import PromotionView from "./promotions/Mainfile/PromotionView";
-import ResignationView from "./resignation/mainfile/ResignationView"
-import EditResignation from "./resignation/mainfile/EditResignation"
-import TerminationView from "./termination/mainfile/TerminationView"
-import EditTermination from "./termination/mainfile/EditTermination"
-import TransferView from "./transfers/mainfile/TransferView"
-import EditTransfer from "./transfers/mainfile/EditTransfer"
-import TravelView from "./travels/mainfile/TravelView"
-import WarningView from "./warnings/Mainfile/WarningView"
+import ResignationView from "./resignation/mainfile/ResignationView";
+import EditResignation from "./resignation/mainfile/EditResignation";
+import TerminationView from "./termination/mainfile/TerminationView";
+import EditTermination from "./termination/mainfile/EditTermination";
+import TransferView from "./transfers/mainfile/TransferView";
+import EditTransfer from "./transfers/mainfile/EditTransfer";
+import TravelView from "./travels/mainfile/TravelView";
+import WarningView from "./warnings/Mainfile/WarningView";
 import EditComplaint from "./complaints/Mainfile/EditComplaint";
 import Editemployee from "./employees/Mainfile/EditEmployee";
 import EditTravel from "./travels/mainfile/EditTravel";
+import EmployeeProfile from "./employees/Mainfile/EmployeeProfile"
+import TransferProfile from "./transfers/mainfile/TransferPofile"
+import EditPromotion from "./promotions/Mainfile/EditPromotion";
+import EditWarning from "./warnings/Mainfile/EditWarning";
 
 const routesData = [
   { path: "/employee/awards", element: <AwardsView /> },
   { path: "/employee/edit-awards/:id", element: <EditAward /> },
   { path: "/employee/complaints", element: <ComplaintView /> },
-  { path: "/employee/edit-complaints/:id", element: <EditComplaint/> },
+  { path: "/employee/edit-complaints/:id", element: <EditComplaint /> },
   { path: "/employee/employee-exit", element: <EmployeeExitView /> },
   { path: "/employee/edit-employee-exit/:id", element: <EditEmployeeExit /> },
   { path: "/employee/employee", element: <EmployeeView /> },
   { path: "/employee/edit-employee/:id", element: <Editemployee /> },
+  { path: "/employee/employee-profile/:id", element: <EmployeeProfile /> },
   { path: "/employee/promotions", element: <PromotionView /> },
-  { path: "/employee/edit-promotions/:id", element: <PromotionView /> },
+  { path: "/employee/edit-promotions/:id", element: <EditPromotion /> },
   { path: "/employee/resignation", element: <ResignationView /> },
   { path: "/employee/edit-resignation/:id", element: <EditResignation /> },
   { path: "/employee/termination", element: <TerminationView /> },
-  { path: "/employee/edit-termination/:id", element: <EditTermination/> },
+  { path: "/employee/edit-termination/:id", element: <EditTermination /> },
   { path: "/employee/transfer", element: <TransferView /> },
   { path: "/employee/edit-transfer/:id", element: <EditTransfer /> },
+  { path: "/employee/transfer-profile/:id", element: <TransferProfile /> },
   { path: "/employee/travel", element: <TravelView /> },
-  { path: "/employee/edit-travel/:id", element: <EditTravel/> },
+  { path: "/employee/edit-travel/:id", element: <EditTravel /> },
   { path: "/employee/warning", element: <WarningView /> },
-  { path: "/employee/edit-warning/:id", element: <WarningView /> },
+  { path: "/employee/edit-warning/:id", element: <EditWarning /> },
 ];
 
 const RoutingOrganisation = () => {
@@ -57,4 +63,3 @@ const RoutingOrganisation = () => {
 };
 
 export default RoutingOrganisation;
-

@@ -12,7 +12,7 @@ const TransferTable= ({transfer,setRecDelete}) => {
     
    
   return (
-    <div>
+    <div className="table-start-container">
        <table id='table' className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">
@@ -31,14 +31,14 @@ const TransferTable= ({transfer,setRecDelete}) => {
                 <td>{transfer.transferDate}</td>
                 <td>{transfer.departmentName}</td>
                 <td>{transfer.locationName}</td>
-                {/* <td className="mx-2">
+                <td className="mx-2">
                   <Link
-                    to={`/transfer-profile/${transfer.transferId}`}
+                    to={`/employee/transfer-profile/${transfer.transferId}`}
                     className="btn btn-info"
                   >
                     <FaEye />
                   </Link>
-                </td> */}
+                </td>
                 <td className="mx-2">
                   <Link
                     to={`/employee/edit-transfer/${transfer.transferId}`}

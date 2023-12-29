@@ -22,7 +22,7 @@ const EmployeeTable = ({ employee, setRecDelete }) => {
 
   console.log(employee.length);
   return (
-    <div>
+    <div className="table-start-container">
       <table id='table' className="table table-bordered table-hover">
         <thead>
           <tr className="text-center">
@@ -63,7 +63,7 @@ const EmployeeTable = ({ employee, setRecDelete }) => {
 
                   <td className="mx-2">
                     <Link
-                      to={`/employee-profile/${employee.employeeId}`}
+                      to={`/employee/employee-profile/${employee.employeeId}`}
                       className="btn btn-info"
                     >
                       <FaEye />
@@ -71,7 +71,7 @@ const EmployeeTable = ({ employee, setRecDelete }) => {
                   </td>
                   <td className="mx-2">
                     <Link
-                      to={`/edit-employee/${employee.employeeId}`}
+                      to={`/employee/edit-employee/${employee.employeeId}`}
                       className="btn btn-warning"
                     >
                       <FaEdit />

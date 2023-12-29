@@ -1183,7 +1183,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                     />
                   </div>
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         onClick={cancelButton}
@@ -1200,7 +1200,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+              
                   </div>
                 </form>
               </DialogContent>
@@ -1306,7 +1306,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                   </div>
 
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -1324,7 +1324,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -1481,7 +1481,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                     />
                   </div>
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -1499,7 +1499,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -1783,7 +1783,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                     </TextField>
                   </div>
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -1801,7 +1801,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -1860,7 +1860,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                   </div>
 
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -1878,7 +1878,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -2021,7 +2021,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                     />
                   </div>
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -2039,7 +2039,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -2103,7 +2103,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                   </div>
 
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -2121,7 +2121,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>
@@ -2178,7 +2178,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                   </div>
 
                   <div className="data-buttons">
-                    <DialogActions className="dialog">
+                    
                       <Button
                         id="input-btn-cancel"
                         type="submit"
@@ -2196,7 +2196,7 @@ const EmployeeForm = ({ formData, setFormData, setFormVisible, setToggle }) => {
                       >
                         SUBMIT
                       </Button>
-                    </DialogActions>
+                    
                   </div>
                 </form>
               </DialogContent>

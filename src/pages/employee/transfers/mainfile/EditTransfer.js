@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+import Button from "@mui/material/Button";
 
 const EditTransfer = () => {
   let navigate = useNavigate();
@@ -51,7 +52,7 @@ const EditTransfer = () => {
       <div className="dashboard-container">
         <SideBar menu={menu} setMenu={setMenu} />
         <div className="head-foot-part" style={{ padding: "0" }}>
-          <div className="col-sm-8 py-2 px-5 offset-2 shadow">
+          <div className="col-sm-8 py-2 px-5 shadow">
             <h2 className="mt-5"> Edit Transfer</h2>
             <form onSubmit={(e) => updateTransfer(e)}>
               <div className="input-group mb-5">
@@ -104,27 +105,19 @@ const EditTransfer = () => {
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
-
-              <div className="row mb-5">
-                <div className="col-sm-2">
-                  <button
-                    type="submit"
-                    className="btn btn-outline-success btn-lg"
-                  >
-                    Update
-                  </button>
-                </div>
-
-                <div className="col-sm-2">
-                  <Link
-                    to={"/employee/transfer"}
-                    type="submit"
-                    className="btn btn-outline-warning btn-lg"
-                  >
-                    Back
-                  </Link>
-                </div>
+              <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/employee/transfer")}
+                >
+                  Back
+                </Button>
               </div>
+             
             </form>
           </div>
         </div>

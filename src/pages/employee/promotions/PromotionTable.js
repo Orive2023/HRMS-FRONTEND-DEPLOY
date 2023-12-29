@@ -12,7 +12,7 @@ const PromotionTable = ({promotion,setRecDelete}) => {
     
    
   return (
-    <div>
+    <div className="table-start-container">
         <table id='table' className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">

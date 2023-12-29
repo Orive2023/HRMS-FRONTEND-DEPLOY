@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from "@mui/material/Button";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
@@ -102,23 +103,18 @@ const EditResignation = () => {
           />
         </div>
 
-        <div className="row mb-5">
-          <div className="col-sm-2">
-            <button type="submit" className="btn btn-outline-success btn-lg">
-              Update
-            </button>
-          </div>
-
-          <div className="col-sm-2">
-            <Link
-              to={"/employee/resignation"}
-              type="submit"
-              className="btn btn-outline-warning btn-lg"
-            >
-              Back
-            </Link>
-          </div>
-        </div>
+        <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/employee/resignation")}
+                >
+                  Back
+                </Button>
+              </div>
       </form>
     </div>
     </div>

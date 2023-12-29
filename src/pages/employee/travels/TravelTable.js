@@ -10,7 +10,7 @@ const TravelTable = ({travel,setRecDelete}) => {
 
     console.log(travel)
   return (
-    <div>
+    <div className="table-start-container">
        <table id='table' className="table table-bordered table-hover shadow">
         <thead>
           <tr className="text-center">
@@ -34,14 +34,6 @@ const TravelTable = ({travel,setRecDelete}) => {
                 <td>{travel.startDate}</td>
                 <td>{travel.endDate}</td>
                 <td>{travel.placeOfVisit}</td>
-                <td className="mx-2">
-                  <Link
-                    to={`/travel-profile/${travel.travelId}`}
-                    className="btn btn-info"
-                  >
-                    <FaEye />
-                  </Link>
-                </td>
                 <td className="mx-2">
                   <Link
                     to={`/employee/edit-travel/${travel.travelId}`}

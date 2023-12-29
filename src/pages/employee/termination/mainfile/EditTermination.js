@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/Header";
 import SideBar from "../../../../components/SideBar";
 import CompanyLogoFile from "../../../../components/CompanyLogoFile";
+import Button from "@mui/material/Button";
 
 const EditTermination = () => {
   let navigate = useNavigate();
@@ -122,27 +123,19 @@ const EditTermination = () => {
               />
             </div>
 
-            <div className="row mb-5">
-              <div className="col-sm-2">
-                <button
-                  type="submit"
-                  className="btn btn-outline-success btn-lg"
+            <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/employee/termination")}
                 >
-                  Save
-                </button>
+                  Back
+                </Button>
               </div>
-
-              <div className="col-sm-2">
-                <Link
-                  to={"/employee/termination"}
-                  type="submit"
-                  className="btn btn-outline-warning btn-lg"
-                >
-                  Cancel
-                </Link>
-              </div>
-            </div>
-          </form>
+    </form>
         </div>
       </div>
     </div>

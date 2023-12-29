@@ -6,7 +6,7 @@ import RoutingPayroll from "../pages/payroll/RoutingPayroll";
 import RoutingEmployee from "../pages/employee/RoutingEmployee"
 import RoutingTimesheets from "../pages/timesheets/RoutingTimesheets";
 import RoutingRecruitment from "../pages/recruitment/RoutingRecruitment";
-import RoutingAccount from "../pages/Accounts/RoutingAccount";
+import RoutingAccount from "../pages/account/RoutingAccount";
 
 const MainRouting = () => {
   return (

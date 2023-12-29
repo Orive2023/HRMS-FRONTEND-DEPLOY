@@ -117,25 +117,17 @@ const Editemployee = () => {
                 />
               </div>
 
-              <div className="row mb-5">
-                <div className="col-sm-2">
-                  <button
-                    type="submit"
-                    className="btn btn-outline-success btn-lg"
-                  >
-                    Save
-                  </button>
-                </div>
-
-                <div className="col-sm-2">
-                  <Link
-                    to={"/view-employee"}
-                    type="submit"
-                    className="btn btn-outline-warning btn-lg"
-                  >
-                    Cancel
-                  </Link>
-                </div>
+              <div className="data-buttons">
+                <Button id="input-btn-submit" variant="outlined" type="submit">
+                  Submit
+                </Button>
+                <Button
+                  id="input-btn-cancel"
+                  variant="outlined"
+                  onClick={() => navigate("/employee/employee")}
+                >
+                  Back
+                </Button>
               </div>
             </form>
           </div>

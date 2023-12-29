@@ -169,7 +169,7 @@ const EmployeeExitForm = ({formData,setFormData,setOpen}) => {
       });
     };
     
-    let buttonClick = formData.employeeToExit.length>0 &&
+    let buttonCheck = formData.employeeToExit.length>0 &&
     formData.exitDate.length>0 &&
     formData.typeOfExit.length>0 &&
     formData.exitInterview.length>0 &&
@@ -306,25 +306,25 @@ const EmployeeExitForm = ({formData,setFormData,setOpen}) => {
           "Please enter a description between 2 and 100 characters."
         }
       />
-      <div className="data-buttons">
-        <DialogActions className="dialog">
-          <Button
-            id="input-btn-submit-popup"
-            type="submit"
-            onClick={saveEmployeeExit}
-            variant="outlined"
-            disabled={buttonClick? false : true}
-          >
-            Submit
-          </Button>
-          <Button
-            id="input-btn-cancel-popup"
-            onClick={cancelButton}
-            variant="outlined"
-          >
-            Cancel
-          </Button>
-        </DialogActions>
+       <div className="data-buttons">
+        <Button
+          id="input-btn-submit"
+          className="submit"
+          type="submit"
+          onClick={(e) => saveEmployeeExit(e)}
+          variant="outlined"
+          disabled={buttonCheck?false:true}
+        >
+          Submit
+        </Button>
+        <Button
+          id="input-btn-cancel"
+          className="cancel"
+          onClick={cancelButton}
+          variant="outlined"
+        >
+          Cancel
+        </Button>
       </div>
     </form>
   );
