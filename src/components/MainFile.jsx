@@ -285,7 +285,7 @@ const [lightOptions] = useState({
                     <div className="card-body ribbon">
                       <div className="ribbon-box voilet">8</div>
                       <a
-                        href="hr-events.html"
+                        onClick={() => navigation("/event")}
                         className="my_sort_cut text-muted"
                       >
                         <img src={EventsLogo} />

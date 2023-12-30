@@ -8,12 +8,15 @@ import EditHoliday from "../timesheets/Holiday/Mainfile/EditHoliday"
 
 import AttendanceView from "./Attendance/mainfile/AttendanceView";
 
+import EventCalender from "./Event/EventCalender"
+
 const routesData = [
   { path: "/timesheets/leaves", element: <LeaveView /> },
   { path: "/timesheets/leave/edit-Leave/:id", element: <LeaveEdit /> },
   { path: "/timesheets/holiday", element: <HolidayView /> },
   { path: "/timesheets/edit-holiday/:id", element: <EditHoliday /> },
   { path: "/timesheets/attendance", element: <AttendanceView /> },
+  { path: "/event", element: <EventCalender /> },
 ];
 
 const RoutingTimesheets = () => {

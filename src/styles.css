@@ -14,6 +14,145 @@ body {
 html {
   font-size: 80%;
 }
+
+#card .event-list {
+  padding: 0 10px;
+}
+#card .event-list p {
+  background-color: #f2711c;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+.added-event-data {
+  background-color: #f2711c;
+  border: none;
+  padding-left: 10px;
+}
+
+.event-input {
+  width: 400px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+.added-holiday-data {
+  background-color: #501a51;
+  border: none;
+  padding-left: 10px;
+}
+
+.fc-col-header-cell-cushion {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fc .fc-daygrid-day-number {
+  color: rgb(29, 29, 29);
+  text-decoration: none;
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  margin-left: 0;
+}
+
+.fc .fc-button-group {
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+.fc-col-header-cell {
+  background-color: rgb(194, 189, 189);
+}
+
+.fc .fc-button-primary:disabled {
+  background-color: #501a51;
+  color: white;
+  border: none;
+}
+
+.my_sort_cut {
+  /* padding-top: 15px; */
+  min-height: 60px;
+  display: block;
+  /* text-align: center; */
+}
+.my_sort_cut:hover i {
+  font-size: 40px;
+}
+.my_sort_cut i {
+  font-size: 30px;
+  -webkit-transition: font-size 0.2s;
+  -moz-transition: font-size 0.2s;
+  -ms-transition: font-size 0.2s;
+  -o-transition: font-size 0.2s;
+  transition: font-size 0.2s;
+}
+.my_sort_cut span {
+  display: block;
+}
+.ribbon {
+  position: relative;
+}
+.ribbon .ribbon-box {
+  color: #fff;
+  left: auto;
+  right: 0;
+  top: 15px;
+  position: absolute;
+  height: 32px;
+  min-width: 30px;
+  padding: 0 5px;
+  text-align: center;
+  line-height: 32px;
+ 
+ transform: rotate(180deg);
+}
+ .ribbon-box-other {
+  color: #fff;
+  left: auto;
+  right: 0;
+  top: 15px;
+  position: absolute;
+  height: 32px;
+  min-width: 30px;
+  padding: 0 5px;
+  text-align: center;
+  line-height: 32px;
+
+}
+.ribbon .ribbon-box .ribbon-text {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+ 
+ 
+.hover-border{
+  cursor :pointer;
+}
+.hover-border:hover{
+  border-bottom: 5px solid purple;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  transition-duration: 0.1s;
+}
+
+.ribbon .ribbon-box::before {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  content: "";
+  top: 0;
+  right: -8px;
+  height: 32px;
+  border: 16px solid;
+  
+  border-right-width: 8px;
+  border-left-width: 0px;
+}
 .form-header {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
