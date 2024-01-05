@@ -29,7 +29,6 @@ const AppraisalForm = ({
     setJobKnowledgeRating,
     communicationSkillsRating,
     setCommunicationSkillsRating,
-
     qualityOfWorkRating,
     setQualityOfWorkRating,
   } = StatePerformance();
