@@ -6,6 +6,40 @@ import { useNavigate, Link } from "react-router-dom";
 import profile from "../asset/images/profile.png";
 import password from "../asset/images/password.png";
 import oriveLogo from "../asset/images/Orive Logo 3.png";
+import httpClient from "./HttpClient"
+import keycloak from "keycloak-js";
+
+
+let initOptions = {
+  url:"http://localhost:8080/",
+  realm:"master",
+  clientId:"react-client"
+}
+
+let kc = new keycloak(initOptions);
+
+kc.init({
+  onLoad:"login-required",
+  checkLoginIframe:true,
+  pkceMethod:"S256"
+}).then((auth) => {
+  if(!auth){
+    window.location.reload();
+  }else{
+    console.info("Authenticated");
+    console.log("auth",auth);
+    console.log("keycloak",kc);
+    console.log("Access token",kc.token);
+
+    httpClient.default.headers.common['Authorization'] = `Bearer $('token expired')`;
+
+    kc.onTokenExpired = () =>{
+      console.log('token expired')
+    }
+  }
+}, () => {
+  console.error("Authentication Error")
+})
 
 const LoginSignup = () => {
   const [isSignup, setIsSignup] = useState(false);
